@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Us | Bedrock Boulders</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Bedrock Boulders</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </nav>
+    <p class="contact-info">Call us: 281-901-0788 | Email: bedrockbouldersco@gmail.com</p>
+  </header>
+
+  <main>
+    <section class="contact">
+      <h2>Contact Us / Get a Quote</h2>
+      <p>Whether you're planning a memorial, designing a ranch sign, or updating your business signage, we’re here to help. Use the form below or call us directly — we’ll walk you through the next steps and provide a personalized quote.</p>
+
+      <address>
+        <p><strong>Address:</strong> 10511 Windsor Ln, Houston, TX 77031</p>
+        <p><strong>Phone:</strong> <a href="tel:2819010788">281-901-0788</a></p>
+        <p><strong>Email:</strong> <a href="mailto:bedrockbouldersco@gmail.com">bedrockbouldersco@gmail.com</a></p>
+        <p><strong>Hours:</strong> Monday–Saturday, 9am–6pm</p>
+      </address>
+
+      <!-- Simple contact form using Formspree -->
+      <form action="https://formspree.io/f/your-form-id" method="POST">
+        <label for="name">Full Name *</label><br />
+        <input type="text" id="name" name="name" required /><br />
+
+        <label for="phone">Phone Number *</label><br />
+        <input type="tel" id="phone" name="phone" required /><br />
+
+        <label for="email">Email Address *</label><br />
+        <input type="email" id="email" name="_replyto" required /><br />
+
+        <label for="service">Service You’re Interested In</label><br />
+        <select id="service" name="service">
+          <option value="Headstone">Headstone</option>
+          <option value="Ranch Sign">Ranch Sign</option>
+          <option value="Commercial Sign">Commercial Sign</option>
+          <option value="Other">Other</option>
+        </select><br />
+
+        <label for="message">Tell Us What You Need</label><br />
+        <textarea id="message" name="message"></textarea><br />
+
+        <button type="submit">Submit</button>
+      </form>
+
+      <p><em>We respond within 1 business day.</em></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Bedrock Boulders | 10511 Windsor Ln, Houston, TX 77031</p>
+    <p>Website: www.BedrockBoulders.net</p>
+  </footer>
+</body>
+</html>
