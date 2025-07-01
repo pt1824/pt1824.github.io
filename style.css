@@ -179,3 +179,42 @@ blockquote {
 address p {
   margin: 5px 0;
 }
+
+.testimonials {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+    gap: 20px;
+}
+.testimonial {
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.testimonial img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+.testimonial-content {
+    flex-grow: 1;
+}
+.testimonial-content h3 {
+    color: #2c3e50;
+    margin: 0 0 0px;
+}
+.testimonial-content span {
+    color: #7f8c8d;
+    font-size: 0.9em;
+    display: block;
+    margin-bottom: 0px;
+}
+.testimonial-content p {
+    font-style: italic;
+    margin: 0;
+}
