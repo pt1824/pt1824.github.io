@@ -90,9 +90,40 @@ nav {
 
 /* Main Content */
 main {
-    max-width: 960px;
-    margin: 100px auto 20px;
+    max-width: 1000px;
+    margin: 50px auto 20px;
     padding: 0 1rem;
+}
+
+#about {
+    padding: 3rem 1rem;
+    text-align: center;
+}
+
+#about h2 {
+    font-family: 'Roboto', 'Georgia', serif;
+    color: var(--heading-dark); /* Darker brown */
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+#contact {
+    padding: 3rem 1rem;
+}
+
+#contact h2 {
+    font-family: 'Roboto', 'Georgia', serif;
+    color: var(--heading-dark); /* Darker brown */
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+	text-align: center;
+}
+
+#contact p {
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+	font-size: 1.2rem;
+	text-align: center;
 }
 
 /* Products Section */
@@ -126,23 +157,20 @@ main {
 
 #products ul {
     list-style: none;
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto 2rem;
     padding: 0;
-    display: grid;
+    /* display: grid; */
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1rem;
 }
 
 #products ul li {
     background-color: var(--accent-sand);
-    padding: 1rem;
+    padding: .3rem;
     border-radius: 5px;
     font-size: 1rem;
     color: var(--text-color);
-}
-
-#products ul li {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -379,6 +407,7 @@ footer {
     margin-top: 40px;
     border-top: 2px solid var(--accent-sand);
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+
 }
 
 footer p {
@@ -467,6 +496,7 @@ footer p {
     }
 
     #products h2,
+   	
     #testimonials h2 {
         font-size: 1.3rem;
     }
