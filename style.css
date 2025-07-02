@@ -142,6 +142,13 @@ main {
     color: var(--text-color);
 }
 
+#products ul li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
 #products a:not(.cta) {
     color: var(--secondary-red);
     text-decoration: none;
@@ -165,6 +172,11 @@ main {
     height: auto;
     border-radius: 6px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.image-grid img:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
 }
 
 /* Testimonials Section */
