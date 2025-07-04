@@ -25,9 +25,24 @@ body {
     background-color: var(--background-taupe);
 }
 
+/* Bottom Image Section */
+.bottom-image {
+    text-align: center;
+    padding: 2rem 1rem;
+    background-color: var(--accent-sand); /* Matches intro-features background */
+}
+
+.bottom-image img {
+    max-width: 100%;
+    height: auto;
+    max-height: 440px; /* Adjust as needed */
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Matches image-grid styling */
+}
+
 /* Container */
 .container {
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 0 auto;
     padding: 0 1rem;
     display: flex;
@@ -90,7 +105,7 @@ nav {
 
 /* Main Content */
 main {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 50px auto 20px;
     padding: 0 1rem;
 }
@@ -116,14 +131,56 @@ main {
     color: var(--heading-dark); /* Darker brown */
     font-size: 2rem;
     margin-bottom: 1.5rem;
-	text-align: center;
+    text-align: center; /* Keep the heading centered */
 }
 
-#contact p {
+/* Target the <p> before the form */
+#contact p:not(:last-of-type) {
     max-width: 800px;
     margin: 0 auto 1.5rem;
-	font-size: 1.2rem;
-	text-align: center;
+    font-size: 1.2rem;
+    text-align: left; /* Left-align the pre-form paragraph */
+}
+
+/* Target the <p> after the form to keep it centered */
+#contact p:last-of-type {
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    font-size: 1.2rem;
+    text-align: center; /* Keep centered */
+}
+
+address {
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    font-style: normal;
+    text-align: left; /* Left-align address */
+}
+
+address p {
+    display: flex;
+    align-items: flex-start; /* Align top for multi-line content */
+    margin-bottom: 0.5rem; /* Consistent spacing between lines */
+}
+
+address p strong {
+    min-width: 120px; /* Increased to accommodate "Address:" */
+    font-weight: 600;
+    margin-right: 10px; /* Space between label and content */
+}
+
+/* Map Section */
+main > div {
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+main > div h3 {
+    font-family: 'Roboto', 'Georgia', serif;
+    color: var(--heading-dark);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center; /* Keep centered */
 }
 
 /* Products Section */
@@ -160,7 +217,6 @@ main {
     max-width: 1000px;
     margin: 0 auto 2rem;
     padding: 0;
-    /* display: grid; */
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1rem;
 }
@@ -222,7 +278,7 @@ main {
 
 .testimonials {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 20px;
     margin-bottom: 2rem;
 }
@@ -238,8 +294,8 @@ main {
 }
 
 .testimonial img {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     object-fit: cover;
     flex-shrink: 0;
@@ -266,7 +322,7 @@ main {
 
 /* CTA and Links */
 #testimonials p {
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto 2rem;
 }
 
@@ -407,7 +463,6 @@ footer {
     margin-top: 40px;
     border-top: 2px solid var(--accent-sand);
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-
 }
 
 footer p {
@@ -470,6 +525,15 @@ footer p {
     .testimonial-content .star-rating {
         font-size: 1rem;
     }
+
+    .bottom-image img {
+        max-height: 200px; /* Smaller image on tablets */
+    }
+
+    address p strong {
+        min-width: 100px; /* Adjusted for smaller screens */
+        margin-right: 8px; /* Slightly reduced margin */
+    }
 }
 
 @media (max-width: 480px) {
@@ -496,7 +560,6 @@ footer p {
     }
 
     #products h2,
-   	
     #testimonials h2 {
         font-size: 1.3rem;
     }
@@ -511,5 +574,14 @@ footer p {
 
     .testimonial-content .star-rating {
         font-size: 0.9rem;
+    }
+
+    .bottom-image img {
+        max-height: 150px; /* Smaller image on mobile */
+    }
+
+    address p strong {
+        min-width: 80px; /* Further adjusted for mobile */
+        margin-right: 6px; /* Further reduced margin */
     }
 }
