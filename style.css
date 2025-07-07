@@ -7,10 +7,18 @@
 
 /* Color Theme Variables */
 :root {
-    --primary-khaki: #D9C2A6;
+    /* --primary-khaki: #D9C2A6; */
+	--primary-khaki: #e1cdb4;
+	
     --secondary-red: #A61C2E;
+
+	/* --accent-sand: #e1cdb4; */	
     --accent-sand: #F2E8D5;
-    --background-taupe: #F5F0E8;
+
+	
+	/* --background-taupe: #e1cdb4; */
+    --background-taupe: #F2ECE5;
+	
     --text-color: #333333;
     --footer-brown: #A68A64; /* Used for header and footer */
     --star-yellow: #FFC107; /* Yellow for star ratings */
