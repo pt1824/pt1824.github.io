@@ -75,7 +75,7 @@ body {
 
 /* Header and Navigation */
 header {
-    background: var(--footer-brown);
+    background: var(--footer-brown) url('Images/header-background.jpg') no-repeat center center/cover;
     position: fixed;
     top: 0;
     width: 100%;
@@ -83,7 +83,10 @@ header {
     transition: all 0.3s ease;
 }
 
+/* Ensure header content is above the overlay */
 .header-container {
+    position: relative;
+    z-index: 2;
     max-width: 1300px;
     margin: 0 auto;
     padding: 1rem;
@@ -125,7 +128,7 @@ nav {
     color: var(--accent-sand);
     text-decoration: none;
     font-weight: 500;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     position: relative;
     transition: color 0.3s ease;
 }
@@ -744,7 +747,8 @@ button[type="submit"]:hover {
 
 
 footer {
-    background-color: var(--footer-brown);
+	background: var(--footer-brown) url('Images/header-background.jpg') no-repeat center center/cover;
+    /* background-color: var(--footer-brown); */
     color: var(--accent-sand);
     text-align: center;
     padding: 2rem 1rem;
