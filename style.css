@@ -15,6 +15,7 @@
 	/* --accent-sand: #e1cdb4; */	
     --accent-sand: #F2E8D5;
 
+    --accent-black: #000000;
 	
 	/* --background-taupe: #e1cdb4; */
     --background-taupe: #F2ECE5;
@@ -125,7 +126,7 @@ nav {
 }
 
 .nav-links a {
-    color: var(--accent-sand);
+    color: var(--accent-black);
     text-decoration: none;
     font-weight: 500;
     font-size: 1.2rem;
@@ -163,10 +164,10 @@ nav {
 }
 
 .phone-number a {
-    color: var(--accent-sand);
+    color: var(--accent-black);
     text-decoration: none;
-    font-weight: 500;
-    font-size: 1.1rem;
+    font-weight: 700;
+    font-size: 1.5rem;
     transition: color 0.3s ease;
 }
 
@@ -749,7 +750,7 @@ button[type="submit"]:hover {
 footer {
 	background: var(--footer-brown) url('Images/header-background.jpg') no-repeat center center/cover;
     /* background-color: var(--footer-brown); */
-    color: var(--accent-sand);
+    color: var(--accent-black);
     text-align: center;
     padding: 2rem 1rem;
     margin-top: 40px;
@@ -767,9 +768,10 @@ footer p {
     margin-top: 1rem;
 }
 .social-links a {
-    color: var(--accent-sand);
+    color: var(--accent-black);
     text-decoration: none;
     margin: 0 1rem;
+	font-weight: 700;
     font-size: 1rem;
 }
 .social-links a:hover {
