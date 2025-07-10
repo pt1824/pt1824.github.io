@@ -37,7 +37,7 @@ body {
 /* Top Image Section */
 .top-image {
     text-align: center;
-    padding: 2rem 1rem;
+    padding: 1rem 1rem;
     background-color: var(--accent-sand);
 }
 
@@ -52,7 +52,7 @@ body {
 /* Bottom Image Section */
 .bottom-image {
     text-align: center;
-    padding: 2rem 1rem;
+    padding: 1rem 1rem;
     background-color: var(--accent-sand);
 }
 
@@ -989,7 +989,7 @@ footer p {
     }
 
     .top-image img {
-        max-height: 250px;
+        max-height: 200px;
     }
 
     .bottom-image img {
