@@ -607,11 +607,12 @@ main > div h3 {
 }
 
 .image-grid img {
-    max-width: 100%;
-    height: auto;
+    width: 250px; /* Fixed width for uniformity */
+    height: 200px; /* Fixed height for uniformity */
+    object-fit: cover; /* Crop to fill, maintaining aspect ratio */
     border-radius: 6px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    cursor: pointer; /* Indicates the image is clickable */
+    cursor: pointer;
 }
 
 .image-grid img:hover {
