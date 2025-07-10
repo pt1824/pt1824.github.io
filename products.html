@@ -54,53 +54,61 @@
             </nav>
         </div>
     </header>
-    <main>
-        <section id="products">
-            <h2>Products</h2>
-            <p>At <strong>Bedrock Boulders</strong>, we specialize in crafting custom pieces from engineered stone that are built to last. Whether you're honoring a loved one, showcasing your ranch, or advertising your business, we’re here to deliver timeless, durable results.</p>
-            <h3>Headstones and Memorials</h3>
-            <p><strong>Unique memorials with a Texas touch</strong></p>
-            <ul>
-                <li>Prices start at $899</li>
-                <li>Completed in 6–10 weeks</li>
-                <li>Variety of shapes, fonts, and designs</li>
-                <li>Artwork and portrait options available</li>
-                <li>Personalized design support</li>
-				<li>Online obituaries, matching columbariums, borders and benches</li>
-            </ul>
-            <div class="image-grid">
-                <img src="Images/houston-headstone-example-1.jpg" alt="Custom headstone made of engineered stone in Houston by Bedrock Boulders.">
-                <img src="Images/houston-headstone-example-2.jpg" alt="Custom headstone made of engineered stone in Houston by Bedrock Boulders.">
-                <img src="Images/houston-headstone-example-3.jpg" alt="Custom headstone made of engineered stone in Houston by Bedrock Boulders.">
-            </div>
-            <h3>Ranch Signage</h3>
-            <p><strong>Make your property stand out with custom signage.</strong></p>
-            <ul>
-                <li>Custom lettering, logos, and branding</li>
-                <li>Rustic or modern design options</li>
-                <li>Posts and mounting available</li>
-                <li>Built tough for Texas weather</li>
-            </ul>
-            <div class="image-grid">
-                <img src="Images/ranch1.jpg" alt="Custom ranch sign made of engineered stone in Houston by Bedrock Boulders.">
-                <img src="Images/ranch2.jpg" alt="Custom ranch sign made of engineered stone in Houston by Bedrock Boulders.">
-                <img src="Images/ranch3.jpg" alt="Custom ranch sign made of engineered stone in Houston by Bedrock Boulders.">
-            </div>
-            <h3>Commercial Signage</h3>
-            <p><strong>Turn your business sign into a landmark</strong></p>
-            <ul>
-                <li>Engineered for visibility and durability</li>
-                <li>Custom branding, logos, and messaging</li>
-                <li>Great for new businesses, rebrands, or upgrades</li>
-            </ul>
-            <div class="image-grid">
-                <img src="Images/commercial1.jpg" alt="Custom commercial sign made of engineered stone in Houston by Bedrock Boulders.">
-                <img src="Images/commercial2.jpg" alt="Custom commercial sign made of engineered stone in Houston by Bedrock Boulders.">
-                <img src="Images/commercial3.jpg" alt="Custom commercial sign made of engineered stone in Houston by Bedrock Boulders.">
-            </div>
-            <p>Need something custom? <a href="contact.html" class="cta">Let us know</a></p>
-        </section>
-    </main>
+   <main>
+    <section id="products">
+        <h2>Products</h2>
+        <p>At <strong>Bedrock Boulders</strong>, we specialize in crafting custom pieces from engineered stone that are built to last. Whether you're honoring a loved one, showcasing your ranch, or advertising your business, we’re here to deliver timeless, durable results.</p>
+        <h3>Headstones and Memorials</h3>
+        <p><strong>Unique memorials with a Texas touch</strong></p>
+        <ul>
+            <li>Prices start at $899</li>
+            <li>Completed in 6–10 weeks</li>
+            <li>Variety of shapes, fonts, and designs</li>
+            <li>Artwork and portrait options available</li>
+            <li>Personalized design support</li>
+            <li>Online obituaries, matching columbariums, borders and benches</li>
+        </ul>
+        <div class="image-grid">
+            <img src="Images/houston-headstone-example-1.jpg" alt="Custom headstone made of engineered stone in Houston by Bedrock Boulders.">
+            <img src="Images/houston-headstone-example-2.jpg" alt="Custom headstone made of engineered stone in Houston by Bedrock Boulders.">
+            <img src="Images/houston-headstone-example-3.jpg" alt="Custom headstone made of engineered stone in Houston by Bedrock Boulders.">
+        </div>
+        <h3>Ranch Signage</h3>
+        <p><strong>Make your property stand out with custom signage.</strong></p>
+        <ul>
+            <li>Custom lettering, logos, and branding</li>
+            <li>Rustic or modern design options</li>
+            <li>Posts and mounting available</li>
+            <li>Built tough for Texas weather</li>
+        </ul>
+        <div class="image-grid">
+            <img src="Images/ranch1.jpg" alt="Custom ranch sign made of engineered stone in Houston by Bedrock Boulders.">
+            <img src="Images/ranch2.jpg" alt="Custom ranch sign made of engineered stone in Houston by Bedrock Boulders.">
+            <img src="Images/ranch3.jpg" alt="Custom ranch sign made of engineered stone in Houston by Bedrock Boulders.">
+        </div>
+        <h3>Commercial Signage</h3>
+        <p><strong>Turn your business sign into a landmark</strong></p>
+        <ul>
+            <li>Engineered for visibility and durability</li>
+            <li>Custom branding, logos, and messaging</li>
+            <li>Great for new businesses, rebrands, or upgrades</li>
+        </ul>
+        <div class="image-grid">
+            <img src="Images/commercial1.jpg" alt="Custom commercial sign made of engineered stone in Houston by Bedrock Boulders.">
+            <img src="Images/commercial2.jpg" alt="Custom commercial sign made of engineered stone in Houston by Bedrock Boulders.">
+            <img src="Images/commercial3.jpg" alt="Custom commercial sign made of engineered stone in Houston by Bedrock Boulders.">
+        </div>
+        <p>Need something custom? <a href="contact.html" class="cta">Let us know</a></p>
+    </section>
+
+    <!-- Modal for expanded image -->
+    <div id="imageModal" class="modal">
+        <span class="close">×</span>
+        <div class="modal-content">
+            <img id="expandedImg" src="" alt="Expanded Image">
+        </div>
+    </div>
+</main>
 <footer>
     <img src="Images/bedrock-boulders-logo.png" class="footer-logo" alt="Bedrock Boulders company logo">
     <p>© 2025 Bedrock Boulders | 10511 Windsor Ln, Houston, TX 77031</p>
@@ -110,5 +118,6 @@
         <a href="https://www.facebook.com/bdbybedrockboulders" target="_blank">Facebook</a>
     </div>
 </footer>
+<script src="script.js"></script>
 </body>
 </html>
