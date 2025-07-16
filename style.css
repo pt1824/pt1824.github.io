@@ -74,105 +74,131 @@ body {
     align-items: center;
 }
 
-/* Header and Navigation */
-header {
-    background: var(--footer-brown) url('Images/header-background.jpg') no-repeat center center/cover;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    transition: all 0.3s ease;
+/* Base Header Styling */
+.header {
+  background: var(--footer-brown) url('Images/header-background.jpg') no-repeat center center/cover;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
-/* Ensure header content is above the overlay */
 .header-container {
-    position: relative;
-    z-index: 2;
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
-.logo {
-    flex: 0 0 auto;
-}
-
+/* Logo */
 .logo img {
-    max-height: 100px;
-    width: auto;
-    animation: fadeIn 1s ease-in;
+  max-height: 100px;
+  width: auto;
 }
 
-@keyframes fadeIn {
-    0% { opacity: 0; transform: scale(0.9); }
-    100% { opacity: 1; transform: scale(1); }
-}
-
-nav {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 1.5rem;
-    margin: 0;
-    padding: 0;
-}
-
-.nav-links a {
-    color: var(--accent-black);
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 1.1rem;
-    position: relative;
-    transition: color 0.3s ease;
-}
-
-.nav-links a:hover {
-    color: var(--secondary-red);
-}
-
-.nav-links a.active {
-    color: var(--secondary-red);
-    font-weight: 700;
-}
-
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--secondary-red);
-    transition: width 0.3s ease;
-}
-
-.nav-links a:hover::after,
-.nav-links a.active::after {
-    width: 100%;
-}
-
-.phone-number {
-    flex: 0 0 auto;
-}
-
+/* Phone number */
 .phone-number a {
-    color: var(--accent-black);
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 1.5rem;
-    transition: color 0.3s ease;
+  color: var(--accent-black);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
 }
 
 .phone-number a:hover {
-    color: var(--secondary-red);
+  color: var(--secondary-red);
+}
+
+/* Navigation */
+nav {
+  flex: 1 1 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.nav-links a {
+  color: var(--accent-black);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.1rem;
+  position: relative;
+}
+
+.nav-links a:hover {
+  color: var(--secondary-red);
+}
+
+.nav-links a.active {
+  color: var(--secondary-red);
+  font-weight: 700;
+}
+
+/* MOBILE LAYOUT */
+@media (max-width: 768px) {
+  .header-container {
+    display: grid;
+    grid-template-areas:
+      "logo phone"
+      "nav nav";
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+  }
+
+  .logo {
+    grid-area: logo;
+    justify-self: start;
+  }
+
+  .logo img {
+    max-height: 45px;
+  }
+
+  .phone-number {
+    grid-area: phone;
+    justify-self: end;
+  }
+
+  .main-nav {
+    grid-area: nav;
+    width: 100%;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.95rem;
+    white-space: nowrap;
+  }
+
+  .phone-number a {
+    font-size: 1.1rem;
+  }
 }
 
 
@@ -948,13 +974,8 @@ footer p {
         gap: 1rem;
     }
 
-    .nav-links {
-        flex-direction: column;
-        gap: 1rem;
-    }
-
     .logo {
-        max-height: 60px;
+        max-height: 40px;
     }
 
     .hero h1 {
@@ -1029,11 +1050,7 @@ footer p {
 
 @media (max-width: 480px) {
     .logo {
-        max-height: 50px;
-    }
-
-    .nav-links a {
-        font-size: 1rem;
+        max-height: 30px;
     }
 
     .cta {
