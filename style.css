@@ -393,7 +393,7 @@ main {
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   .hero {
-    padding: 3rem 1тонкая настройкаrem;
+    padding: 3rem 1rem;
     min-height: 80vh;
   }
 
