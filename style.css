@@ -252,7 +252,7 @@ main {
 
 /* Hero Section */
 .hero {
-  background-image: url("Images/commercial0.jpg");
+  background-image: url("Images/hero-background.jpg");
   background-size: cover; /* Scales the image to cover the entire container */
   background-position: center; /* Centers the image */
   background-repeat: no-repeat; /* Prevents the image from repeating */
