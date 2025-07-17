@@ -1210,7 +1210,7 @@ footer p {
     }
 
     address p strong {
-        min-width: 80px;
-        margin-right: 6px;
+        min-width: 85px;
+        margin-right: 10px;
     }
 }
