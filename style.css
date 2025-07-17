@@ -186,7 +186,7 @@ nav {
         grid-template-rows: auto auto;
         align-items: center;
         gap: 0.75rem;
-        padding: 1rem;
+        padding: .25rem;
     }
 
     .logo {
@@ -232,13 +232,13 @@ nav {
     }
 
     .phone-number a {
-        font-size: 1rem;
+        font-size: .9rem;
     }
 
     /* Adjust for very narrow screens */
     @media (max-width: 340px) {
         .nav-links a {
-            font-size: 0.85rem; /* Further reduce on narrowest screens */
+            font-size: 0.7rem; /* Further reduce on narrowest screens */
             padding: 0.2rem 0.4rem;
         }
         .nav-links {
