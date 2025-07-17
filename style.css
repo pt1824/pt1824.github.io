@@ -176,57 +176,80 @@ nav {
 }
 
 /* MOBILE LAYOUT */
+/* MOBILE LAYOUT */
 @media (max-width: 768px) {
-  .header-container {
-    display: grid;
-    grid-template-areas:
-      "logo phone"
-      "nav nav";
-    grid-template-columns: 1fr auto;
-    grid-template-rows: auto auto;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 1rem;
-  }
+    .header-container {
+        display: grid;
+        grid-template-areas:
+            "logo phone"
+            "nav nav";
+        grid-template-columns: 1fr auto;
+        grid-template-rows: auto auto;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 1rem;
+    }
 
-  .logo {
-    grid-area: logo;
-    justify-self: start;
-  }
+    .logo {
+        grid-area: logo;
+        justify-self: start;
+    }
 
-  .logo img {
-    max-height: 45px;
-  }
+    .logo img {
+        max-height: 45px;
+    }
 
-  .phone-number {
-    grid-area: phone;
-    justify-self: end;
-  }
+    .phone-number {
+        grid-area: phone;
+        justify-self: end;
+    }
 
-  .main-nav {
-    grid-area: nav;
-    width: 100%;
-  }
+    .main-nav {
+        grid-area: nav;
+        width: 100%;
+    }
 
-  .nav-links {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0rem;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-  }
+    .nav-links {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap; /* Allow wrapping if needed */
+        justify-content: center;
+        gap: 0.3rem; /* Reduced gap for tighter fit */
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
 
-  .nav-links a {
-    font-size: 0.95rem;
-    white-space: nowrap;
-  }
+    .nav-links li {
+        flex: 0 1 auto; /* Allow shrinking */
+        min-width: 0; /* Prevent overflow */
+        padding: 0.25rem;
+    }
 
-  .phone-number a {
-    font-size: 1rem;
-  }
+    .nav-links a {
+        font-size: 0.9rem; /* Reduced for better fit */
+        white-space: nowrap; /* Prevent text wrapping within items */
+        padding: 0.25rem 0.5rem; /* Ensure touch target (min 44x44px) */
+    }
+
+    .phone-number a {
+        font-size: 1rem;
+    }
+
+    /* Adjust for very narrow screens */
+    @media (max-width: 340px) {
+        .nav-links a {
+            font-size: 0.85rem; /* Further reduce on narrowest screens */
+            padding: 0.2rem 0.4rem;
+        }
+        .nav-links {
+            gap: 0.2rem;
+        }
+    }
+
+    main {
+        margin-top: 100px;
+    }
 }
 
 
