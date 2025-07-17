@@ -660,7 +660,7 @@ address p {
 }
 
 address p strong {
-    min-width: 120px;
+    min-width: 125px;
     font-weight: 600;
     margin-right: 10px;
 }
