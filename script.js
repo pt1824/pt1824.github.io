@@ -5,41 +5,44 @@ const closeBtn = document.querySelector('.close');
 const images = document.querySelectorAll('.image-grid img');
 
 // Swiper Initialization for Mobile
-let swiperInstance = null;
+let swiperInstances = [];
 
-function initSwiper() {
-    // Destroy existing Swiper instance if it exists
-    if (swiperInstance) {
-        swiperInstance.destroy(true, true);
-        swiperInstance = null;
-    }
+function initSwipers() {
+    // Destroy existing Swiper instances if they exist
+    swiperInstances.forEach(instance => {
+        instance.destroy(true, true);
+    });
+    swiperInstances = [];
 
-    // Initialize Swiper only on mobile (≤ 768px)
+    // Initialize Swiper for each .image-grid.swiper on mobile (≤ 768px)
     if (window.innerWidth <= 768) {
-        swiperInstance = new Swiper('.swiper', {
-            slidesPerView: 1,
-            spaceBetween: 10,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            loop: true,
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-            },
+        document.querySelectorAll('.image-grid.swiper').forEach((swiperElement) => {
+            const swiperInstance = new Swiper(swiperElement, {
+                slidesPerView: 1,
+                spaceBetween: 10,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                loop: true,
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
+            });
+            swiperInstances.push(swiperInstance);
         });
     }
 }
 
 // Run on page load
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize Swiper
-    initSwiper();
+    // Initialize Swipers
+    initSwipers();
 
     // Add click event to each image for modal
     images.forEach(img => {
@@ -71,4 +74,4 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Re-run Swiper initialization on window resize
-window.addEventListener('resize', initSwiper);
+window.addEventListener('resize', initSwipers);
