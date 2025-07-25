@@ -76,12 +76,12 @@ body {
 
 /* Base Header Styling */
 .header {
-    background: var(--footer-brown) url('Images/header-background.jpg') no-repeat center center/cover;
+    background: url('Images/header-background.jpg') no-repeat center center/cover;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .header-container {
@@ -97,9 +97,9 @@ body {
 
 /* Logo */
 .logo img {
-    max-height: 80px; /* Slightly smaller for balance */
-    width: auto;
-    object-fit: contain; /* Prevent distortion */
+    height: 80px; /* Use fixed height instead of max-height */
+    width: 160px;
+    object-fit: contain;
     animation: fadeIn 1s ease-in;
 }
 
@@ -679,50 +679,51 @@ main > div h3 {
     text-align: center;
 }
 
-/* Products Section */
-#products {
+/* Headstones Section */
+#headstones {
     padding: 3rem 1rem;
     text-align: center;
 }
 
-#products h2 {
+#headstones h2 {
     font-family: 'Roboto', 'Georgia', serif;
     color: var(--heading-dark);
     font-size: 2rem;
     margin-bottom: 1.5rem;
 }
 
-#products h3 {
+#headstones h3 {
     font-family: 'Roboto', 'Georgia', serif;
     color: var(--heading-dark);
     font-size: 1.5rem;
     margin: 2rem 0 1rem;
 }
 
-#products p {
+#headstones p {
     max-width: 800px;
     margin: 0 auto 1.5rem;
 }
 
-#products strong {
+#headstones strong {
     color: var(--text-color);
 }
 
-#products ul {
+#headstones ul {
     list-style: none;
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto 2rem;
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1rem;
 }
 
-#products ul li {
+#headstones ul li {
     background-color: var(--accent-sand);
-    padding: 0.2rem;
+    padding: 0.5rem;
     border-radius: 5px;
     font-size: 1rem;
+	font-weight:bold;
     color: var(--text-color);
     display: flex;
     align-items: center;
@@ -730,13 +731,76 @@ main > div h3 {
     text-align: center;
 }
 
-#products a:not(.cta) {
+#headstones a:not(.cta) {
     color: var(--secondary-red);
     text-decoration: none;
     font-weight: 500;
 }
 
-#products a:not(.cta):hover {
+#headstones a:not(.cta):hover {
+    text-decoration: underline;
+}
+
+
+/* Signage Section */
+#signage {
+    padding: 3rem 1rem;
+    text-align: center;
+}
+
+#signage h2 {
+    font-family: 'Roboto', 'Georgia', serif;
+    color: var(--heading-dark);
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+#signage h3 {
+    font-family: 'Roboto', 'Georgia', serif;
+    color: var(--heading-dark);
+    font-size: 1.5rem;
+    margin: 2rem 0 1rem;
+}
+
+#signage p {
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+}
+
+#signage strong {
+    color: var(--text-color);
+}
+
+#signage ul {
+    list-style: none;
+    max-width: 1200px;
+    margin: 0 auto 2rem;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+#signage ul li {
+    background-color: var(--accent-sand);
+    padding: 0.5rem;
+    border-radius: 5px;
+    font-size: 1rem;
+	font-weight:bold;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#signage a:not(.cta) {
+    color: var(--secondary-red);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+#signage a:not(.cta):hover {
     text-decoration: underline;
 }
 
