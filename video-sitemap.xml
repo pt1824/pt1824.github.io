@@ -4,7 +4,7 @@
   <url>
     <loc>https://bedrockboulders.net/testimonials.html</loc>
     <video:video>
-      <video:content_loc>https://www.youtube.com/watch?v=M-A-1gm1Bp4</video:content_loc>
+      <video:player_loc allow_embed="yes">https://www.youtube.com/watch?v=M-A-1gm1Bp4</video:player_loc>
       <video:title>Customer Testimonials for Bedrock Boulders</video:title>
       <video:description>Hear from satisfied customers about their experience with Bedrock Boulders’ affordable custom headstones and commercial signs made from durable engineered stone in Houston, Sugar Land, and beyond.</video:description>
       <video:thumbnail_loc>https://img.youtube.com/vi/M-A-1gm1Bp4/maxresdefault.jpg</video:thumbnail_loc>
@@ -15,7 +15,7 @@
   <url>
     <loc>https://bedrockboulders.net/about.html</loc>
     <video:video>
-      <video:content_loc>https://www.youtube.com/watch?v=wwrCPzLD-r0</video:content_loc>
+      <video:player_loc allow_embed="yes">https://www.youtube.com/watch?v=wwrCPzLD-r0</video:player_loc>
       <video:title>Bedrock Boulders KPRC Interview</video:title>
       <video:description>KPRC interview showcasing Bedrock Boulders’ expertise in crafting affordable custom headstones and commercial signs using durable engineered stone in Houston, Sugar Land, and beyond.</video:description>
       <video:thumbnail_loc>https://img.youtube.com/vi/wwrCPzLD-r0/maxresdefault.jpg</video:thumbnail_loc>
@@ -26,10 +26,10 @@
   <url>
     <loc>https://bedrockboulders.net/index.html</loc>
     <video:video>
-      <video:content_loc>https://vimeo.com/1104991642</video:content_loc>
+      <video:player_loc allow_embed="yes">https://vimeo.com/1104991642</video:player_loc>
       <video:title>Houston Food Bank Sign Installation by Bedrock Boulders</video:title>
       <video:description>Showcase of a custom engineered stone sign installed for Houston Food Bank by Bedrock Boulders. Durable and elegant, our signs are perfect for businesses and memorials in Houston, Sugar Land, and beyond.</video:description>
-      <video:thumbnail_loc>https://i.vimeocdn.com/video/2041399795-01ca37eb7cca97b6e4c96672c7ac4041eb7bec26266920745cc8572c310bca7a-d_640x360?&region=us</video:thumbnail_loc>
+      <video:thumbnail_loc>https://i.vimeocdn.com/video/2041399795-01ca37eb7cca97b6e4c96672c7ac4041eb7bec26266920745cc8572c310bca7a-d_640x360</video:thumbnail_loc>
       <video:duration>90</video:duration>
       <video:publication_date>2025-07-01</video:publication_date>
     </video:video>
