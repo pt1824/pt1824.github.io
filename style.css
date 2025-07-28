@@ -1072,11 +1072,31 @@ button[type="submit"]:hover {
     max-height: 50px;
     width: auto;
     margin-bottom: 0.5rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto; /* Center the main logo */
+}
+
+.org-logos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem; /* Space between logos */
+    margin-top: 1rem;
+}
+
+.org-logo {
+    max-height: 40px; /* Slightly smaller than main logo for balance */
+    width: auto;
+    filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.3)); /* Subtle shadow for contrast */
 }
 
 @media (max-width: 768px) {
     .footer-logo {
         max-height: 40px;
+    }
+    .org-logo {
+        max-height: 35px; /* Adjust for smaller screens */
     }
 }
 
@@ -1084,14 +1104,20 @@ button[type="submit"]:hover {
     .footer-logo {
         max-height: 30px;
     }
+    .org-logo {
+        max-height: 30px; /* Ensure logos remain legible */
+    }
+    .org-logos {
+        gap: 0.5rem; /* Reduce gap for smaller screens */
+    }
 }
 
 footer {
     background: var(--footer-brown) url('Images/header-background.jpg') no-repeat center center/cover;
     color: var(--accent-black);
     text-align: center;
-    padding: 2rem 1rem;
-    margin-top: 40px;
+    padding: 1rem 1rem;
+    margin-top: 10px;
     border-top: 2px solid var(--accent-sand);
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -1099,7 +1125,7 @@ footer {
 footer p {
     font-size: 1.2rem;
     font-weight: 700;
-    margin: 0.5rem 0;
+    margin: 0.25rem 0;
 }
 
 .social-links {
