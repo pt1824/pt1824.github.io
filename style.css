@@ -306,6 +306,7 @@ main {
     max-width: 800px;
     margin: 0 auto 1.5rem;
     font-size: 1.2rem;
+	text-align: left;
 }
 
 .intro-features {
@@ -343,6 +344,7 @@ main {
     max-width: 800px;
     margin: 0 auto 2rem;
     font-size: 1.2rem;
+	text-align: left;
 }
 
 .services-grid {
@@ -370,6 +372,7 @@ main {
 .service-item p {
     margin-bottom: 1.5rem;
     font-size: 1.1rem;
+	text-align: left;
 }
 
 .services video {
@@ -451,6 +454,7 @@ main {
     font-style: italic;
     font-size: 1.2rem;
     margin-bottom: 1rem;
+	text-align: left;
 }
 
 .client-highlight blockquote footer {
@@ -492,6 +496,7 @@ main {
 
 .about-section p {
     margin-bottom: 1rem;
+	text-align: left;
 }
 
 .feature-list {
@@ -543,6 +548,7 @@ blockquote p {
     font-style: italic;
     font-size: 1.2rem;
     margin-bottom: 1rem;
+	text-align: left;
 }
 
 blockquote footer {
@@ -643,6 +649,7 @@ address p {
     display: flex;
     align-items: flex-start;
     margin-bottom: 0.5rem;
+	text-align: left;
 }
 
 address p strong {
@@ -688,6 +695,7 @@ main > div h3 {
 #headstones p {
     max-width: 800px;
     margin: 0 auto 1.5rem;
+	text-align: left;
 }
 
 #headstones strong {
@@ -750,6 +758,7 @@ main > div h3 {
 #signage p {
     max-width: 800px;
     margin: 0 auto 1.5rem;
+	text-align: left;
 }
 
 #signage strong {
@@ -913,12 +922,14 @@ main > div h3 {
     font-style: italic;
     margin: 0;
     color: var(--text-color);
+	text-align: left;
 }
 
 /* CTA and Links */
 #testimonials p {
     max-width: 800px;
     margin: 0 auto 2rem;
+	text-align: left;
 }
 
 #testimonials a:not(.cta) {
@@ -971,6 +982,7 @@ main > div h3 {
 
     .service-item p {
         font-size: 1rem;
+		text-align: left;
     }
 
     .testimonials {
@@ -1001,6 +1013,7 @@ main > div h3 {
 
     .testimonial-content p {
         font-size: 1rem;
+		text-align: left;
     }
 }
 
@@ -1173,7 +1186,7 @@ footer p {
     .intro p,
     .services p,
     .client-highlight p {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
     }
 
     .intro-features li,
