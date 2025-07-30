@@ -31,6 +31,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://bedrockboulders.net/blog.html</loc>
+    <lastmod>2025-07-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://bedrockboulders.net/contact.html</loc>
     <lastmod>2025-07-21</lastmod>
     <changefreq>monthly</changefreq>
