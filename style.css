@@ -951,6 +951,126 @@ main > div h3 {
     text-decoration: underline;
 }
 
+
+
+
+
+
+
+
+
+/* Blogs Section */
+#blogs {
+    padding: 3rem 1rem;
+    text-align: center;
+}
+
+#blogs h2 {
+    font-family: 'Roboto', 'Georgia', serif;
+    color: var(--heading-dark);
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.blog {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 2rem;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.blog {
+    background: var(--accent-sand);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.blog-posts {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 2rem;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.blog-meta {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    margin-bottom: 0.8rem;
+    font-style: normal;
+}
+.read-more {
+    color: var(--secondary-red);
+    text-decoration: none;
+    font-weight: 500;
+}
+.read-more:hover {
+    text-decoration: underline;
+}
+	
+
+.blog img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.blog-content h3 {
+    font-family: 'Roboto', 'Georgia', serif;
+    color: var(--heading-dark);
+    font-size: 1.5rem;
+    margin: 0 0 8px;
+}
+
+
+/* CTA and Links */
+#blogs p {
+    max-width: 800px;
+    margin: 0 auto 2rem;
+	text-align: left;
+}
+
+#blogs a:not(.cta) {
+    color: var(--secondary-red);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+#blogs a:not(.cta):hover {
+    text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Responsive Adjustments */
 @media (max-width: 768px) {
     .hero {
