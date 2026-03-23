@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google Tag Manager (same as your other pages) -->
+    <!-- Google Tag Manager -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-50CZMEMCYK"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -18,18 +18,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Headstone Designer | Bedrock Boulders - Houston, TX</title>
-    <meta name="description" content="Design your custom headstone online. Choose shape, color, add text. Free quote available.">
+    <meta name="description" content="Design your custom headstone online. Choose color, add text. Free quote available.">
     
     <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts for memorial styles -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Georgia&family=Playfair+Display&family=Great+Vibes&family=Cinzel&display=swap" rel="stylesheet">
     
-    <!-- Local Fabric.js (place fabric.min.js in the same folder) -->
+    <!-- Local Fabric.js -->
     <script src="fabric.min.js"></script>
 </head>
 <body>
 
-    <!-- Header (same as your headstones.html) -->
     <header class="header">
         <div class="header-container">
             <div class="logo">
@@ -58,7 +57,7 @@
     <main style="margin-top: 140px; padding: 1rem; max-width: 1200px; margin-left: auto; margin-right: auto;">
         <h1 style="text-align: center; color: var(--heading-dark);">Design Your Custom Headstone</h1>
         <p style="text-align: center; max-width: 800px; margin: 1rem auto;">
-            Preview your memorial here. Change shape, color, add names/dates/epitaph. 
+            Preview your memorial here. Add names/dates/epitaph on the blank headstone. 
             Download and send us for a free quote!
         </p>
 
@@ -67,42 +66,46 @@
             <div style="flex: 1; min-width: 300px; background: var(--accent-sand); padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
                 <h2>Customize</h2>
 
-                <label>Shape:</label><br>
-                <select id="shapeSelect">
-                    <option value="upright-rect">Upright Rectangle</option>
-                    <option value="serpentine">Upright Serpentine Top</option>
-                    <option value="slant">Slant Marker</option>
-                    <option value="oval">Oval Top</option>
-                </select><br><br>
+                <div style="margin-bottom: 1rem;">
+                    <label for="colorSelect" style="display: block; margin-bottom: 0.3rem; font-weight: 600;">Color Variant:</label>
+                    <select id="colorSelect" style="width: 100%; padding: 0.5rem; font-size: 1rem;">
+                        <option value="brown">Brown (Current)</option>
+                        <!-- Add more when you provide images, e.g.:
+                        <option value="gray">Gray</option>
+                        <option value="black">Black</option>
+                        -->
+                    </select>
+                </div>
 
-                <label>Color:</label><br>
-                <select id="colorSelect">
-                    <option value="#000000">Black Granite</option>
-                    <option value="#4A4A4A">Dark Gray</option>
-                    <option value="#A0522D">Bronze</option>
-                    <option value="#D3D3D3">Light Gray</option>
-                </select><br><br>
+                <div style="margin-bottom: 1rem;">
+                    <label for="text1" style="display: block; margin-bottom: 0.3rem; font-weight: 600;">Name / Inscription Line 1:</label>
+                    <input type="text" id="text1" placeholder="John Doe" value="John Doe" style="width: 100%; padding: 0.5rem; font-size: 1rem;">
+                </div>
 
-                <label>Name / Inscription Line 1:</label><br>
-                <input type="text" id="text1" placeholder="John Doe" value="John Doe"><br><br>
+                <div style="margin-bottom: 1rem;">
+                    <label for="text2" style="display: block; margin-bottom: 0.3rem; font-weight: 600;">Dates:</label>
+                    <input type="text" id="text2" placeholder="1950 - 2025" value="1950 - 2025" style="width: 100%; padding: 0.5rem; font-size: 1rem;">
+                </div>
 
-                <label>Dates:</label><br>
-                <input type="text" id="text2" placeholder="1950 - 2025" value="1950 - 2025"><br><br>
+                <div style="margin-bottom: 1rem;">
+                    <label for="text3" style="display: block; margin-bottom: 0.3rem; font-weight: 600;">Epitaph / Line 3:</label>
+                    <input type="text" id="text3" placeholder="Beloved Father" value="Beloved Father" style="width: 100%; padding: 0.5rem; font-size: 1rem;">
+                </div>
 
-                <label>Epitaph:</label><br>
-                <input type="text" id="text3" placeholder="Beloved Father" value="Beloved Father"><br><br>
+                <div style="margin-bottom: 1.2rem;">
+                    <label for="fontSelect" style="display: block; margin-bottom: 0.3rem; font-weight: 600;">Font:</label>
+                    <select id="fontSelect" style="width: 100%; padding: 0.5rem; font-size: 1rem;">
+                        <option value="Georgia">Georgia (Classic Serif)</option>
+                        <option value="'Times New Roman'">Times New Roman</option>
+                        <option value="Roboto">Roboto (Clean Modern)</option>
+                        <option value="'Playfair Display'">Playfair Display (Elegant Serif)</option>
+                        <option value="'Great Vibes'">Great Vibes (Script / Cursive)</option>
+                        <option value="Cinzel">Cinzel (Roman / Monument)</option>
+                    </select>
+                </div>
 
-                <label>Font:</label><br>
-                <select id="fontSelect">
-                    <option value="Georgia">Georgia (Classic Serif)</option>
-                    <option value="'Times New Roman'">Times New Roman</option>
-                    <option value="Roboto">Roboto (Clean)</option>
-                    <option value="'Playfair Display'">Playfair Display (Elegant)</option>
-                    <option value="'Great Vibes'">Great Vibes (Script)</option>
-                    <option value="Cinzel">Cinzel (Roman)</option>
-                </select><br><br>
-
-                <button id="downloadBtn" class="cta" style="margin-top: 1rem; width: 100%;">Download PNG</button>
+                <button id="resetBtn" class="cta" style="margin-top: 0.5rem; width: 100%; background: #6c757d;">Reset to Defaults</button>
+                <button id="downloadBtn" class="cta" style="margin-top: 0.5rem; width: 100%;">Download PNG</button>
                 <a href="quote.html" class="cta" style="margin-top: 0.5rem; display: block; text-align: center;">Get Free Quote with This Design</a>
             </div>
 
@@ -118,7 +121,6 @@
         </p>
     </main>
 
-    <!-- Footer (same as your other pages) -->
     <footer>
         <p>© 2025 Bedrock Boulders | 10511 Windsor Ln, Houston, TX 77031</p>
         <p><a href="tel:+12819010788" aria-label="Call Bedrock Boulders at (281) 901-0788">(281) 901-0788</a></p>
@@ -143,109 +145,111 @@
 
     <script>
       window.onload = function() {
-        console.log("Page fully loaded - starting Fabric init");
-
         const canvasElement = document.getElementById('canvas');
+        
+        console.log("Attempting to load image from: Images/blank-headstone-brown.png");
+
+fabric.Image.fromURL('Images/blank-headstone-brown.png', function(img) {
+  if (img) {
+    console.log("Image loaded successfully! Width:", img.width, "Height:", img.height);
+  } else {
+    console.error("Image failed to load - check path, file existence, or browser security");
+  }
+}, { crossOrigin: 'anonymous' });
+
+
         if (!canvasElement) {
           console.error("Canvas element not found!");
           return;
         }
 
         const canvas = new fabric.Canvas('canvas', {
-          backgroundColor: '#e0f0ff',          // TEMP light blue – remove later if you want transparent/white
-          width: 500,
+          backgroundColor: '#ffffff',
+          width: 600,    // Slightly wider for boulder style
           height: 700,
           selection: false,
           renderOnAddRemove: true,
           preserveObjectStacking: true
         });
 
-        console.log("Canvas dimensions after init:", canvas.getWidth(), canvas.getHeight());
+        let headstoneImg, base, text1Obj, text2Obj, text3Obj;
 
-        let headstone, base, text1Obj, text2Obj, text3Obj;
+        function loadHeadstone() {
+          fabric.Image.fromURL('Images/blank-headstone-brown.png', function(img) {  // ← Change this path to your brown image file
+            headstoneImg = img;
+            headstoneImg.scaleToWidth(400);  // Adjust scale to fit nicely
+            headstoneImg.set({
+              left: 100,
+              top: 80,
+              selectable: false,
+              hasControls: false
+            });
+            canvas.add(headstoneImg);
+            canvas.sendToBack(headstoneImg);
+            if (base) canvas.bringToFront(base);
+            updateTexts();  // Ensure text is on top
+            canvas.requestRenderAll();
+          }, { crossOrigin: 'anonymous' });
+        }
 
         function initDesign() {
-          console.log("initDesign called");
           canvas.clear();
 
-          // Base (brown rectangle at bottom)
+          // Optional base (if your image doesn't include it)
           base = new fabric.Rect({
-            left: 100, top: 500, width: 300, height: 80,
-            fill: '#6B4E31', selectable: false
+            left: 50, top: 520, width: 500, height: 100,
+            fill: '#8B7355', selectable: false  // darker brown base
           });
           canvas.add(base);
 
-          updateShape();
-          updateColor();
-          updateTexts();
-
-          console.log("Design initialized - objects added:", canvas.getObjects().length);
-          canvas.requestRenderAll();
-        }
-
-        function updateShape() {
-          console.log("Updating shape");
-          if (headstone) canvas.remove(headstone);
-
-          const shape = document.getElementById('shapeSelect').value;
-          let obj;
-
-          if (shape === 'upright-rect') {
-            obj = new fabric.Rect({ left: 150, top: 100, width: 200, height: 400, rx: 10, ry: 10 });
-          } else if (shape === 'serpentine') {
-            obj = new fabric.Rect({ left: 150, top: 100, width: 200, height: 400, rx: 60, ry: 60 });
-          } else if (shape === 'slant') {
-            obj = new fabric.Polygon([
-              {x: 0, y: 0}, {x: 200, y: 0}, {x: 150, y: 400}, {x: 50, y: 400}
-            ], { left: 150, top: 100 });
-          } else if (shape === 'oval') {
-            obj = new fabric.Ellipse({ left: 250, top: 250, rx: 120, ry: 220 });
-          }
-
-          if (obj) {
-            headstone = obj;
-            headstone.set({ fill: document.getElementById('colorSelect').value, selectable: false });
-            canvas.add(headstone);
-            canvas.sendToBack(headstone);
-            if (base) canvas.bringToFront(base);
-          }
-          canvas.requestRenderAll();
+          loadHeadstone();  // Loads the image async
         }
 
         function updateColor() {
-          console.log("Updating color");
-          const color = document.getElementById('colorSelect').value;
-          if (headstone) headstone.set('fill', color);
-          canvas.requestRenderAll();
+          // For now placeholder – when you add more colors, change headstoneImg src here
+          // e.g. headstoneImg.setSrc('Images/blank-headstone-gray.png', canvas.requestRenderAll.bind(canvas));
+          console.log("Color change (add more images to enable)");
         }
 
         function updateTexts() {
-          console.log("Updating texts");
           const font = document.getElementById('fontSelect').value;
 
           if (text1Obj) canvas.remove(text1Obj);
           text1Obj = new fabric.IText(document.getElementById('text1').value || 'John Doe', {
-            left: 250, top: 180, fontFamily: font, fontSize: 32, fill: '#000', originX: 'center'
+            left: 300, top: 200, fontFamily: font, fontSize: 36, fill: '#000', originX: 'center'
           });
           canvas.add(text1Obj);
 
           if (text2Obj) canvas.remove(text2Obj);
           text2Obj = new fabric.IText(document.getElementById('text2').value || '1950 - 2025', {
-            left: 250, top: 240, fontFamily: font, fontSize: 24, fill: '#000', originX: 'center'
+            left: 300, top: 260, fontFamily: font, fontSize: 28, fill: '#000', originX: 'center'
           });
           canvas.add(text2Obj);
 
           if (text3Obj) canvas.remove(text3Obj);
           text3Obj = new fabric.IText(document.getElementById('text3').value || 'Beloved Father', {
-            left: 250, top: 320, fontFamily: font, fontSize: 28, fill: '#000', originX: 'center', fontStyle: 'italic'
+            left: 300, top: 340, fontFamily: font, fontSize: 30, fill: '#000', originX: 'center', fontStyle: 'italic'
           });
           canvas.add(text3Obj);
 
+          canvas.bringToFront(text1Obj);
+          canvas.bringToFront(text2Obj);
+          canvas.bringToFront(text3Obj);
           canvas.requestRenderAll();
         }
 
-        // Event listeners
-        document.getElementById('shapeSelect').addEventListener('change', updateShape);
+        // Reset
+        document.getElementById('resetBtn').addEventListener('click', () => {
+          document.getElementById('colorSelect').value = 'brown';
+          document.getElementById('text1').value = 'John Doe';
+          document.getElementById('text2').value = '1950 - 2025';
+          document.getElementById('text3').value = 'Beloved Father';
+          document.getElementById('fontSelect').value = 'Georgia';
+          updateColor();
+          updateTexts();
+        });
+
+        // Events
         document.getElementById('colorSelect').addEventListener('change', updateColor);
         document.getElementById('fontSelect').addEventListener('change', updateTexts);
         document.getElementById('text1').addEventListener('input', updateTexts);
@@ -260,7 +264,7 @@
           link.click();
         });
 
-        // Start everything
+        // Start
         initDesign();
       };
     </script>
