@@ -18,13 +18,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Headstone Designer | Bedrock Boulders - Houston, TX</title>
-    <meta name="description" content="Design your custom headstone online. Choose template, add text & photo. Free quote available.">
-
+    <meta name="description" content="Design your custom headstone online. Choose template, font, photo &amp; more. Free quote in 24 hours.">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Georgia&family=Playfair+Display&family=Great+Vibes&family=Cinzel&display=swap" rel="stylesheet">
-
     <script src="fabric.min.js"></script>
-
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -32,20 +29,6 @@
             padding: 0;
             background: #f8f8f8;
             color: #333;
-        }
-        .container {
-            max-width: 1100px;
-            margin: 20px auto;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-        header {
-            background: #2c3e50;
-            color: white;
-            padding: 15px 20px;
-            text-align: center;
         }
         .designer-area {
             padding: 25px 20px;
@@ -82,6 +65,7 @@
         }
         .control-group {
             min-width: 240px;
+            flex: 1;
         }
         select, button {
             padding: 12px 18px;
@@ -118,7 +102,6 @@
     </style>
 </head>
 <body>
-
 <header class="header">
     <div class="header-container">
         <div class="logo">
@@ -147,17 +130,18 @@
 <main style="margin-top: 140px; padding: 1rem; max-width: 1600px; margin-left: auto; margin-right: auto;">
     <h1 style="text-align: center; color: var(--heading-dark);">Design Your Custom Headstone</h1>
     <p style="text-align: center; max-width: 800px; margin: 0.8rem auto 1.5rem;">
-        Choose a template, add text, upload a photo, and preview your memorial.
+        Choose template, font, stock photo or upload your own, and preview your memorial.
     </p>
 
     <div class="designer-area">
-        <!-- Big Canvas -->
+        <!-- Canvas -->
         <div id="canvas-wrapper">
             <canvas id="designer-canvas" width="900" height="700"></canvas>
         </div>
 
-        <!-- Controls Below Canvas -->
+        <!-- Controls -->
         <div class="controls">
+            <!-- First row: Template + Font + Stock Photo -->
             <div class="control-row">
                 <div class="control-group">
                     <select id="templateSelect">
@@ -176,8 +160,23 @@
                         <option value="'Times New Roman'">Times New Roman</option>
                     </select>
                 </div>
+                <div class="control-group">
+                    <select id="stockPhotoSelect">
+                        <option value="">-- Stock Photo / Symbol --</option>
+                        <option value="Images/stock-photos/rose.png">Rose</option>
+                        <option value="Images/stock-photos/cross.png">Cross</option>
+                        <option value="Images/stock-photos/angel.png">Angel</option>
+                        <option value="Images/stock-photos/praying-hands.png">Praying Hands</option>
+                        <option value="Images/stock-photos/heart.png">Heart</option>
+                        <option value="Images/stock-photos/dove.png">Dove</option>
+                        <option value="Images/stock-photos/bible.png">Bible</option>
+                        <option value="Images/stock-photos/landscape.png">Landscape</option>
+                        <!-- Add more options here as you upload new images -->
+                    </select>
+                </div>
             </div>
 
+            <!-- Second row: Action buttons -->
             <div class="control-row">
                 <button onclick="addText()">Add Text</button>
                 <button onclick="uploadImage()">Upload Photo</button>
@@ -213,13 +212,12 @@
     </div>
 </footer>
 
-<!-- Hidden file input for photo upload -->
+<!-- Hidden file input -->
 <input type="file" id="imageUpload" accept="image/*" style="display:none" onchange="handleImageUpload(event)">
 
 <script>
-// === FABRIC.JS MOBILE-FRIENDLY INITIALIZATION ===
+// FABRIC.JS SETUP
 let canvas;
-fabric.devicePixelRatio = 1;
 let currentBackground = null;
 
 function initCanvas() {
@@ -232,32 +230,18 @@ function initCanvas() {
         selection: true,
         preserveObjectStacking: true
     });
-
     loadTemplate('Images/blank-headstone-brown.png');
 
-    // Keyboard delete support
     document.addEventListener('keydown', function(e) {
-        if (e.key === 'Delete' || e.key === 'Backspace') {
-            deleteSelected();
-        }
-    });
-
-    canvas.on('mouse:down', function() {
-        console.log('Touch/Mouse down');
+        if (e.key === 'Delete' || e.key === 'Backspace') deleteSelected();
     });
 }
 
 function loadTemplate(imagePath) {
     fabric.Image.fromURL(imagePath, function(img) {
-        if (!img) return;
         const scale = canvas.width / img.width;
         img.scale(scale);
-        img.set({
-            left: 0,
-            top: 0,
-            selectable: false,
-            evented: false
-        });
+        img.set({ left: 0, top: 0, selectable: false, evented: false });
         canvas.clear();
         canvas.add(img);
         canvas.sendToBack(img);
@@ -267,63 +251,61 @@ function loadTemplate(imagePath) {
     }, { crossOrigin: 'anonymous' });
 }
 
+// Add selected stock photo from dropdown
+function addStockPhoto() {
+    const select = document.getElementById('stockPhotoSelect');
+    const imagePath = select.value;
+    if (!imagePath) return;
+
+    fabric.Image.fromURL(imagePath, function(img) {
+        img.scaleToWidth(220);
+        img.set({
+            left: 340,
+            top: 280,
+            shadow: new fabric.Shadow({ color: 'rgba(0,0,0,0.25)', blur: 6 })
+        });
+        canvas.add(img);
+        canvas.setActiveObject(img);
+        canvas.requestRenderAll();
+    }, { crossOrigin: 'anonymous' });
+
+    // Reset dropdown
+    select.value = '';
+}
+
 function addDefaultTexts() {
     const font = document.getElementById('fontSelect').value || 'Georgia';
-
     canvas.getObjects().forEach(obj => {
         if (obj.type === 'textbox' || obj.type === 'i-text') canvas.remove(obj);
     });
 
-    const firstName = new fabric.Textbox("MARTHA", {
-        left: 270, top: 150, width: 400, fontSize: 60, fill: '#000000',
-        fontFamily: font, fontWeight: 'bold', textAlign: 'center',
-        charSpacing: 10
-    });
-    canvas.add(firstName);
+    const texts = [
+        { text: "MARTHA", top: 150, fontSize: 60 },
+        { text: "PARKER", top: 210, fontSize: 60 },
+        { text: "March 15, 1950", top: 355, fontSize: 30 },
+        { text: "October 22, 2025", top: 390, fontSize: 30 },
+        { text: "In Loving Memory", top: 500, fontSize: 45 }
+    ];
 
-    const lastName = new fabric.Textbox("PARKER", {
-        left: 270, top: 210, width: 400, fontSize: 60, fill: '#000000',
-        fontFamily: font, fontWeight: 'bold', textAlign: 'center',
-        charSpacing: 10
+    texts.forEach(item => {
+        const textbox = new fabric.Textbox(item.text, {
+            left: 270, top: item.top, width: 400,
+            fontSize: item.fontSize, fill: '#000000',
+            fontFamily: font, fontWeight: 'bold',
+            textAlign: 'center', charSpacing: 6
+        });
+        canvas.add(textbox);
     });
-    canvas.add(lastName);
-
-    const birth = new fabric.Textbox("March 15, 1950", {
-        left: 270, top: 355, width: 400, fontSize: 30, fill: '#000000',
-        fontFamily: font, fontWeight: 'bold', textAlign: 'center',
-        charSpacing: 6
-    });
-    canvas.add(birth);
-
-    const death = new fabric.Textbox("October 22, 2025", {
-        left: 270, top: 390, width: 400, fontSize: 30, fill: '#000000',
-        fontFamily: font, fontWeight: 'bold', textAlign: 'center',
-        charSpacing: 6
-    });
-    canvas.add(death);
-
-    const quote = new fabric.Textbox("In Loving Memory", {
-        left: 180, top: 500, width: 600, fontSize: 45, fill: '#000000',
-        fontFamily: font, fontWeight: 'bold', textAlign: 'center',
-        charSpacing: 6
-    });
-    canvas.add(quote);
-
     canvas.requestRenderAll();
 }
 
 function addText() {
     const font = document.getElementById('fontSelect').value || 'Georgia';
     const text = new fabric.Textbox("Additional Text", {
-        left: 250,
-        top: 460,
-        width: 400,
-        fontSize: 28,
-        fill: '#000000',
-        fontFamily: font,
-        fontWeight: 'bold',
-        textAlign: 'center',
-        charSpacing: 3
+        left: 250, top: 460, width: 400,
+        fontSize: 28, fill: '#000000',
+        fontFamily: font, fontWeight: 'bold',
+        textAlign: 'center', charSpacing: 3
     });
     canvas.add(text);
     canvas.setActiveObject(text);
@@ -331,17 +313,16 @@ function addText() {
 }
 
 function deleteSelected() {
-    const activeObject = canvas.getActiveObject();
-    if (!activeObject) {
+    const active = canvas.getActiveObject();
+    if (!active) {
         alert("Please select an object to delete.");
         return;
     }
-    // Prevent deleting the background headstone image
-    if (activeObject === currentBackground) {
+    if (active === currentBackground) {
         alert("Cannot delete the headstone background.");
         return;
     }
-    canvas.remove(activeObject);
+    canvas.remove(active);
     canvas.requestRenderAll();
 }
 
@@ -383,18 +364,17 @@ function exportDesign() {
     link.click();
 }
 
-// Font change - live update
-document.getElementById('fontSelect').addEventListener('change', function() {
-    addDefaultTexts();
-});
-
-// Template change
+// Event Listeners
+document.getElementById('fontSelect').addEventListener('change', addDefaultTexts);
 document.getElementById('templateSelect').addEventListener('change', function() {
     loadTemplate(this.value);
 });
+document.getElementById('stockPhotoSelect').addEventListener('change', addStockPhoto);
 
 // Initialize
-window.onload = initCanvas;
+window.onload = function() {
+    initCanvas();
+};
 </script>
 </body>
 </html>
