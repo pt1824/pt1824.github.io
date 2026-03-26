@@ -146,6 +146,9 @@
 
 <main style="margin-top: 140px; padding: 1rem; max-width: 1600px; margin-left: auto; margin-right: auto;">
     <h1 style="text-align: center; color: var(--heading-dark);">Design Your Custom Headstone</h1>
+    <p style="text-align: center; max-width: 800px; margin: 0.8rem auto 1.5rem;">
+        Choose a template, add text, upload a photo, and preview your memorial.
+    </p>
 
     <div class="designer-area">
         <!-- Big Canvas -->
@@ -210,11 +213,13 @@
     </div>
 </footer>
 
+<!-- Hidden file input for photo upload -->
+<input type="file" id="imageUpload" accept="image/*" style="display:none" onchange="handleImageUpload(event)">
+
 <script>
 // === FABRIC.JS MOBILE-FRIENDLY INITIALIZATION ===
 let canvas;
 fabric.devicePixelRatio = 1;
-
 let currentBackground = null;
 
 function initCanvas() {
@@ -272,7 +277,7 @@ function addDefaultTexts() {
     const firstName = new fabric.Textbox("MARTHA", {
         left: 270, top: 150, width: 400, fontSize: 60, fill: '#000000',
         fontFamily: font, fontWeight: 'bold', textAlign: 'center',
-        charSpacing: 10   // Increased letter spacing
+        charSpacing: 10
     });
     canvas.add(firstName);
 
@@ -318,7 +323,7 @@ function addText() {
         fontFamily: font,
         fontWeight: 'bold',
         textAlign: 'center',
-        charSpacing: 3   // Good spacing for additional text
+        charSpacing: 3
     });
     canvas.add(text);
     canvas.setActiveObject(text);
@@ -327,14 +332,17 @@ function addText() {
 
 function deleteSelected() {
     const activeObject = canvas.getActiveObject();
-    if (activeObject && activeObject.type !== 'image') {
-        canvas.remove(activeObject);
-        canvas.requestRenderAll();
-    } else if (activeObject) {
-        alert("Cannot delete the headstone background.");
-    } else {
+    if (!activeObject) {
         alert("Please select an object to delete.");
+        return;
     }
+    // Prevent deleting the background headstone image
+    if (activeObject === currentBackground) {
+        alert("Cannot delete the headstone background.");
+        return;
+    }
+    canvas.remove(activeObject);
+    canvas.requestRenderAll();
 }
 
 function uploadImage() {
