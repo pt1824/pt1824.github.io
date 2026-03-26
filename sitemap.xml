@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Newest blog post first -->
+  <url>
+    <loc>https://www.houstonheadstones.com/blog/headstone-prices-houston-2026.html</loc>
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <url>
     <loc>https://www.houstonheadstones.com/index.html</loc>
     <lastmod>2025-07-21</lastmod>
@@ -32,7 +40,7 @@
   </url>
   <url>
     <loc>https://www.houstonheadstones.com/blog.html</loc>
-    <lastmod>2025-09-05</lastmod>
+    <lastmod>2026-03-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -42,6 +50,8 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- Blog posts (newest to oldest) -->
   <url>
     <loc>https://www.houstonheadstones.com/blog/ranch-entrance-boulder-guide.html</loc>
     <lastmod>2025-09-05</lastmod>
