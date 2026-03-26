@@ -16,332 +16,377 @@
     })(window,document,'script','dataLayer','GTM-MK5XP3V8');</script>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Headstone Designer | Bedrock Boulders - Houston, TX</title>
-    <meta name="description" content="Design your custom headstone online. Choose color, add text. Free quote available.">
-    
+    <meta name="description" content="Design your custom headstone online. Choose template, add text & photo. Free quote available.">
+
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Georgia&family=Playfair+Display&family=Great+Vibes&family=Cinzel&display=swap" rel="stylesheet">
-    
+
     <script src="fabric.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f8f8f8;
+            color: #333;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 20px auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+        }
+        .designer-area {
+            padding: 25px 20px;
+            text-align: center;
+        }
+        #canvas-wrapper {
+            display: inline-block;
+            border: 3px solid #ddd;
+            background: #fff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            touch-action: none;
+            margin-bottom: 20px;
+        }
+        canvas {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+        .controls {
+            background: #f9f5eb;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .control-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            align-items: flex-end;
+            margin-bottom: 15px;
+        }
+        .control-group {
+            min-width: 240px;
+        }
+        select, button {
+            padding: 12px 18px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        select {
+            width: 100%;
+            max-width: 280px;
+        }
+        button {
+            background: #e67e22;
+            color: white;
+            min-width: 150px;
+            flex: 1;
+        }
+        button:hover { background: #d35400; }
+        .quote-btn {
+            background: #27ae60;
+            color: white;
+            font-size: 18px;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 420px;
+            margin: 10px auto 0;
+            display: block;
+            text-decoration: none;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
 
-    <header class="header">
-        <div class="header-container">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="Images/bedrock-boulders-logo.png" alt="Bedrock Boulders Logo" loading="lazy">
-                </a>
-            </div>
-            <nav class="main-nav" aria-label="Main navigation">
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="headstones.html">Headstones</a></li>
-                    <li><a href="signage.html">Signage</a></li>
-                    <li><a href="testimonials.html">Testimonials</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="phone-number">
-                <a href="tel:+12819010788" aria-label="Call Bedrock Boulders at (281) 901-0788">(281) 901-0788</a>
-                <p class="language-notice">Hablamos Español</p>
-            </div>
+<header class="header">
+    <div class="header-container">
+        <div class="logo">
+            <a href="index.html">
+                <img src="Images/bedrock-boulders-logo.png" alt="Bedrock Boulders Logo" loading="lazy">
+            </a>
         </div>
-    </header>
+        <nav class="main-nav" aria-label="Main navigation">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="headstones.html">Headstones</a></li>
+                <li><a href="signage.html">Signage</a></li>
+                <li><a href="testimonials.html">Testimonials</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="phone-number">
+            <a href="tel:+12819010788">(281) 901-0788</a>
+            <p class="language-notice">Hablamos Español</p>
+        </div>
+    </div>
+</header>
 
-    <main style="margin-top: 140px; padding: 1rem; max-width: 1600px; margin-left: auto; margin-right: auto;">
-        <h1 style="text-align: center; color: var(--heading-dark);">Design Your Custom Headstone</h1>
-        <p style="text-align: center; max-width: 800px; margin: 1rem auto;">
-            Preview your memorial here. Drag each text line separately to position it.
-        </p>
+<main style="margin-top: 140px; padding: 1rem; max-width: 1600px; margin-left: auto; margin-right: auto;">
+    <h1 style="text-align: center; color: var(--heading-dark);">Design Your Custom Headstone</h1>
 
-        <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center;">
-            <!-- Controls -->
-            <div style="flex: 1; min-width: 300px; background: var(--accent-sand); padding: 1.1rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-                <h2 style="margin-bottom: 0.9rem;">Customize</h2>
+    <div class="designer-area">
+        <!-- Big Canvas -->
+        <div id="canvas-wrapper">
+            <canvas id="designer-canvas" width="900" height="700"></canvas>
+        </div>
 
-                <!-- Color Variant -->
-                <div style="margin-bottom: 1rem; display: flex; align-items: center; gap: 12px;">
-                    <label for="colorSelect" style="width: 110px; font-weight: 600; flex-shrink: 0;">Color Variant:</label>
-                    <select id="colorSelect" style="flex: 1; padding: 0.45rem; font-size: 1rem;">
-                        <option value="brown">Brown</option>
-                        <option value="red">Red</option>
-                        <option value="white">White</option>
-                        <option value="bench">Bench</option>
+        <!-- Controls Below Canvas -->
+        <div class="controls">
+            <div class="control-row">
+                <div class="control-group">
+                    <select id="templateSelect">
+                        <option value="Images/blank-headstone-brown.png">Classic Brown</option>
+                        <option value="Images/red.png">Red Granite</option>
+                        <option value="Images/white.png">White Marble</option>
+                        <option value="Images/bench.png">Memorial Bench</option>
                     </select>
                 </div>
-
-                <!-- Name Group -->
-                <div style="margin-bottom: 1.1rem; padding: 0.9rem; background: rgba(255,255,255,0.6); border-radius: 6px;">
-                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 0.6rem;">
-                        <label for="textFirst" style="width: 110px; font-weight: 600; flex-shrink: 0;">First Name:</label>
-                        <input type="text" id="textFirst" value="John" style="flex: 1; padding: 0.5rem; font-size: 1rem;">
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 0.6rem;">
-                        <label for="textLast" style="width: 110px; font-weight: 600; flex-shrink: 0;">Last Name:</label>
-                        <input type="text" id="textLast" value="Doe" style="flex: 1; padding: 0.5rem; font-size: 1rem;">
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 12px;">
-                        <label for="sizeName" style="width: 110px; font-weight: 600; flex-shrink: 0;">Name Size:</label>
-                        <select id="sizeName" style="flex: 1; padding: 0.45rem;">
-                            <option value="28">28 pt</option>
-                            <option value="32" selected>32 pt</option>
-                            <option value="36">36 pt</option>
-                            <option value="40">40 pt</option>
-                            <option value="44">44 pt</option>
-                        </select>
-                    </div>
+                <div class="control-group">
+                    <select id="fontSelect">
+                        <option value="Georgia">Georgia (Classic Serif)</option>
+                        <option value="'Playfair Display'">Playfair Display (Elegant)</option>
+                        <option value="Cinzel">Cinzel (Roman)</option>
+                        <option value="'Great Vibes'">Great Vibes (Script)</option>
+                        <option value="'Times New Roman'">Times New Roman</option>
+                    </select>
                 </div>
-
-                <!-- Birth & Death -->
-                <div style="margin-bottom: 1.1rem; padding: 0.9rem; background: rgba(255,255,255,0.6); border-radius: 6px;">
-                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 0.6rem;">
-                        <label for="textBirth" style="width: 110px; font-weight: 600; flex-shrink: 0;">Birth:</label>
-                        <input type="text" id="textBirth" value="March 15, 1950" style="flex: 1; padding: 0.5rem; font-size: 1rem;">
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 0.6rem;">
-                        <label for="textDeath" style="width: 110px; font-weight: 600; flex-shrink: 0;">Death:</label>
-                        <input type="text" id="textDeath" value="October 22, 2025" style="flex: 1; padding: 0.5rem; font-size: 1rem;">
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 12px;">
-                        <label for="sizeDates" style="width: 110px; font-weight: 600; flex-shrink: 0;">Date Size:</label>
-                        <select id="sizeDates" style="flex: 1; padding: 0.45rem;">
-                            <option value="22">22 pt</option>
-                            <option value="24" selected>24 pt</option>
-                            <option value="26">26 pt</option>
-                            <option value="28">28 pt</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Epitaph -->
-                <div style="margin-bottom: 1.1rem; padding: 0.9rem; background: rgba(255,255,255,0.6); border-radius: 6px;">
-                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 0.6rem;">
-                        <label for="text3" style="width: 110px; font-weight: 600; flex-shrink: 0;">Epitaph:</label>
-                        <input type="text" id="text3" value="Beloved Father" style="flex: 1; padding: 0.5rem; font-size: 1rem;">
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 12px;">
-                        <label for="size3" style="width: 110px; font-weight: 600; flex-shrink: 0;">Size:</label>
-                        <select id="size3" style="flex: 1; padding: 0.45rem;">
-                            <option value="24">24 pt</option>
-                            <option value="26" selected>26 pt</option>
-                            <option value="28">28 pt</option>
-                            <option value="30">30 pt</option>
-                            <option value="32">32 pt</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Global Font Style -->
-                <div style="margin-bottom: 1.1rem; padding: 0.9rem; background: rgba(255,255,255,0.6); border-radius: 6px;">
-                    <div style="display: flex; align-items: center; gap: 12px;">
-                        <label for="fontSelect" style="width: 110px; font-weight: 600; flex-shrink: 0;">Font Style:</label>
-                        <select id="fontSelect" style="flex: 1; padding: 0.45rem;">
-                            <option value="Georgia">Georgia (Classic Serif)</option>
-                            <option value="'Times New Roman'">Times New Roman</option>
-                            <option value="Roboto">Roboto (Clean Modern)</option>
-                            <option value="'Playfair Display'">Playfair Display (Elegant)</option>
-                            <option value="'Great Vibes'">Great Vibes (Script)</option>
-                            <option value="Cinzel">Cinzel (Roman)</option>
-                        </select>
-                    </div>
-                </div>
-
-                <button id="resetBtn" class="cta" style="margin-top: 0.5rem; width: 100%; background: #6c757d;">Reset to Defaults</button>
-                <button id="downloadBtn" class="cta" style="margin-top: 0.5rem; width: 100%;">Download PNG</button>
-                <a href="quote.html" class="cta" style="margin-top: 0.5rem; display: block; text-align: center;">Get Free Quote with This Design</a>
             </div>
 
-            <!-- Canvas -->
-            <div style="flex: 2; min-width: 500px; text-align: center;">
-                <canvas id="canvas" style="border: 1px solid #ccc; max-width: 100%; display: block; margin: 0 auto;"></canvas>
+            <div class="control-row">
+                <button onclick="addText()">Add Text</button>
+                <button onclick="uploadImage()">Upload Photo</button>
+                <button onclick="deleteSelected()">Delete Selected</button>
+                <button onclick="resetCanvas()">Reset</button>
+                <button onclick="exportDesign()">Download PNG</button>
             </div>
+
+            <a href="quote.html" class="quote-btn">Get Free Quote with This Design</a>
         </div>
+    </div>
+</main>
 
-        <p style="text-align: center; margin-top: 1.5rem; font-size: 0.95rem; color: #666;">
-            Drag each text line separately to reposition it.
-        </p>
-    </main>
+<footer>
+    <p>© 2025 Bedrock Boulders | 10511 Windsor Ln, Houston, TX 77031</p>
+    <p><a href="tel:+12819010788">(281) 901-0788</a></p>
+    <div class="social-links">
+        <a href="https://www.google.com/search?q=bedrock+boulders" target="_blank" rel="noopener">Google</a>
+        <a href="https://www.facebook.com/bdbybedrockboulders" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.instagram.com/bedrockboulders" target="_blank" rel="noopener">Instagram</a>
+    </div>
+    <div class="org-logos">
+        <img src="Images/galveston-logo.png" class="org-logo" alt="Galveston Chamber logo" loading="lazy">
+        <img src="Images/tfda-logo.png" class="org-logo" alt="Texas Funeral Director Association logo" loading="lazy">
+        <img src="Images/bni-logo.png" class="org-logo" alt="BNI logo" loading="lazy">
+        <img src="Images/kbc-logo.png" class="org-logo" alt="KBC logo" loading="lazy">
+        <img src="Images/nia-logo.png" class="org-logo" alt="NIA logo" loading="lazy">
+        <img src="Images/cyfair-chamber-logo.png" class="org-logo" alt="Cyfair Chamber logo" loading="lazy">
+        <img src="Images/fort-bend-chamber-logo.png" class="org-logo" alt="Fort Bend Chamber logo" loading="lazy">
+        <img src="Images/central-fort-bend-chamber-logo.png" class="org-logo" alt="Central Fort Bend Chamber logo" loading="lazy">
+        <img src="Images/tnla-logo.png" class="org-logo" alt="TNLA logo" loading="lazy">
+        <img src="Images/boulder-designs.png" class="org-logo" alt="Boulder Designs" loading="lazy">
+    </div>
+</footer>
 
-    <footer>
-        <p>© 2025 Bedrock Boulders | 10511 Windsor Ln, Houston, TX 77031</p>
-        <p><a href="tel:+12819010788" aria-label="Call Bedrock Boulders at (281) 901-0788">(281) 901-0788</a></p>
-        <div class="social-links">
-            <a href="https://www.google.com/search?q=bedrock+boulders" target="_blank" rel="noopener">Google</a>
-            <a href="https://www.facebook.com/bdbybedrockboulders" target="_blank" rel="noopener">Facebook</a>
-            <a href="https://www.instagram.com/bedrockboulders" target="_blank" rel="noopener">Instagram</a>
-        </div>
-        <div class="org-logos">
-            <img src="Images/galveston-logo.png" class="org-logo" alt="Galveston Chamber logo" loading="lazy">
-            <img src="Images/tfda-logo.png" class="org-logo" alt="Texas Funeral Director Association logo" loading="lazy">
-            <img src="Images/bni-logo.png" class="org-logo" alt="BNI logo" loading="lazy">
-            <img src="Images/kbc-logo.png" class="org-logo" alt="KBC logo" loading="lazy">
-            <img src="Images/nia-logo.png" class="org-logo" alt="NIA logo" loading="lazy">
-            <img src="Images/cyfair-chamber-logo.png" class="org-logo" alt="Cyfair Chamber logo" loading="lazy">
-            <img src="Images/fort-bend-chamber-logo.png" class="org-logo" alt="Fort Bend Chamber logo" loading="lazy">
-            <img src="Images/central-fort-bend-chamber-logo.png" class="org-logo" alt="Central Fort Bend Chamber logo" loading="lazy">
-            <img src="Images/tnla-logo.png" class="org-logo" alt="TNLA logo" loading="lazy">
-            <img src="Images/boulder-designs.png" class="org-logo" alt="Boulder Designs" loading="lazy">
-        </div>
-    </footer>
+<script>
+// === FABRIC.JS MOBILE-FRIENDLY INITIALIZATION ===
+let canvas;
+fabric.devicePixelRatio = 1;
 
-    <script>
-      window.onload = function() {
-        const colorImages = {
-          brown: 'Images/blank-headstone-brown.png',
-          red:   'Images/red.png',
-          white: 'Images/white.png',
-          bench: 'Images/bench.png'
-        };
+let currentBackground = null;
 
-        function getCanvasSize() {
-          const maxWidth = Math.min(920, window.innerWidth - 380);
-          return {
-            width: maxWidth,
-            height: Math.round(maxWidth * 1.125)
-          };
+function initCanvas() {
+    canvas = new fabric.Canvas('designer-canvas', {
+        width: 900,
+        height: 700,
+        backgroundColor: '#f5f5f5',
+        enableRetinaScaling: true,
+        allowTouchScrolling: false,
+        selection: true,
+        preserveObjectStacking: true
+    });
+
+    loadTemplate('Images/blank-headstone-brown.png');
+
+    // Keyboard delete support
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Delete' || e.key === 'Backspace') {
+            deleteSelected();
         }
+    });
 
-        let canvasSize = getCanvasSize();
-        const canvas = new fabric.Canvas('canvas', {
-          backgroundColor: '#ffffff',
-          width: canvasSize.width,
-          height: canvasSize.height,
-          selection: true,
-          renderOnAddRemove: true,
-          preserveObjectStacking: true
+    canvas.on('mouse:down', function() {
+        console.log('Touch/Mouse down');
+    });
+}
+
+function loadTemplate(imagePath) {
+    fabric.Image.fromURL(imagePath, function(img) {
+        if (!img) return;
+        const scale = canvas.width / img.width;
+        img.scale(scale);
+        img.set({
+            left: 0,
+            top: 0,
+            selectable: false,
+            evented: false
         });
+        canvas.clear();
+        canvas.add(img);
+        canvas.sendToBack(img);
+        currentBackground = img;
+        addDefaultTexts();
+        canvas.requestRenderAll();
+    }, { crossOrigin: 'anonymous' });
+}
 
-        let headstoneImg;
+function addDefaultTexts() {
+    const font = document.getElementById('fontSelect').value || 'Georgia';
 
-        function loadHeadstone(color = 'brown') {
-          const url = colorImages[color] || colorImages.brown;
-          fabric.Image.fromURL(url, function(img) {
-            if (!img) return;
-            const scale = Math.min(0.92, (canvas.width * 0.92) / img.width);
-            img.scale(scale);
-            img.set({
-              left: (canvas.width - img.getScaledWidth()) / 2,
-              top: 40,
-              selectable: false,
-              hasControls: false,
-              evented: false
-            });
-            headstoneImg = img;
-            canvas.clear();
-            canvas.add(headstoneImg);
-            canvas.sendToBack(headstoneImg);
-            updateTexts();
-            canvas.requestRenderAll();
-          }, { crossOrigin: 'anonymous' });
-        }
+    canvas.getObjects().forEach(obj => {
+        if (obj.type === 'textbox' || obj.type === 'i-text') canvas.remove(obj);
+    });
 
-        function initDesign() {
-          loadHeadstone('brown');
-        }
+    const firstName = new fabric.Textbox("MARTHA", {
+        left: 270, top: 150, width: 400, fontSize: 60, fill: '#000000',
+        fontFamily: font, fontWeight: 'bold', textAlign: 'center',
+        charSpacing: 10   // Increased letter spacing
+    });
+    canvas.add(firstName);
 
-        function updateTexts() {
-          const font = document.getElementById('fontSelect').value;
-          const sizeName = parseInt(document.getElementById('sizeName').value);
-          const sizeDates = parseInt(document.getElementById('sizeDates').value);
-          const size3 = parseInt(document.getElementById('size3').value);
+    const lastName = new fabric.Textbox("PARKER", {
+        left: 270, top: 210, width: 400, fontSize: 60, fill: '#000000',
+        fontFamily: font, fontWeight: 'bold', textAlign: 'center',
+        charSpacing: 10
+    });
+    canvas.add(lastName);
 
-          canvas.getObjects('i-text').forEach(obj => canvas.remove(obj));
+    const birth = new fabric.Textbox("March 15, 1950", {
+        left: 270, top: 355, width: 400, fontSize: 30, fill: '#000000',
+        fontFamily: font, fontWeight: 'bold', textAlign: 'center',
+        charSpacing: 6
+    });
+    canvas.add(birth);
 
-          // First Name
-          const tFirst = new fabric.IText(document.getElementById('textFirst').value || 'John', {
-            left: canvas.width / 2, top: 195, fontFamily: font, fontSize: sizeName, fill: '#000', originX: 'center',
-            selectable: true, hasControls: false, lockRotation: true, lockScalingX: true, lockScalingY: true
-          });
-          canvas.add(tFirst);
+    const death = new fabric.Textbox("October 22, 2025", {
+        left: 270, top: 390, width: 400, fontSize: 30, fill: '#000000',
+        fontFamily: font, fontWeight: 'bold', textAlign: 'center',
+        charSpacing: 6
+    });
+    canvas.add(death);
 
-          // Last Name
-          const tLast = new fabric.IText(document.getElementById('textLast').value || 'Doe', {
-            left: canvas.width / 2, top: 235, fontFamily: font, fontSize: sizeName, fill: '#000', originX: 'center',
-            selectable: true, hasControls: false, lockRotation: true, lockScalingX: true, lockScalingY: true
-          });
-          canvas.add(tLast);
+    const quote = new fabric.Textbox("In Loving Memory", {
+        left: 180, top: 500, width: 600, fontSize: 45, fill: '#000000',
+        fontFamily: font, fontWeight: 'bold', textAlign: 'center',
+        charSpacing: 6
+    });
+    canvas.add(quote);
 
-          // Birth
-          const tBirth = new fabric.IText(document.getElementById('textBirth').value || 'March 15, 1950', {
-            left: canvas.width / 2, top: 295, fontFamily: font, fontSize: sizeDates, fill: '#000', originX: 'center',
-            selectable: true, hasControls: false, lockRotation: true, lockScalingX: true, lockScalingY: true
-          });
-          canvas.add(tBirth);
+    canvas.requestRenderAll();
+}
 
-          // Death
-          const tDeath = new fabric.IText(document.getElementById('textDeath').value || 'October 22, 2025', {
-            left: canvas.width / 2, top: 335, fontFamily: font, fontSize: sizeDates, fill: '#000', originX: 'center',
-            selectable: true, hasControls: false, lockRotation: true, lockScalingX: true, lockScalingY: true
-          });
-          canvas.add(tDeath);
+function addText() {
+    const font = document.getElementById('fontSelect').value || 'Georgia';
+    const text = new fabric.Textbox("Additional Text", {
+        left: 250,
+        top: 460,
+        width: 400,
+        fontSize: 28,
+        fill: '#000000',
+        fontFamily: font,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        charSpacing: 3   // Good spacing for additional text
+    });
+    canvas.add(text);
+    canvas.setActiveObject(text);
+    canvas.renderAll();
+}
 
-          // Epitaph
-          const t3 = new fabric.IText(document.getElementById('text3').value || 'Beloved Father', {
-            left: canvas.width / 2, top: 415, fontFamily: font, fontSize: size3, fill: '#000', originX: 'center',
-            fontStyle: 'italic', selectable: true, hasControls: false, lockRotation: true, lockScalingX: true, lockScalingY: true
-          });
-          canvas.add(t3);
+function deleteSelected() {
+    const activeObject = canvas.getActiveObject();
+    if (activeObject && activeObject.type !== 'image') {
+        canvas.remove(activeObject);
+        canvas.requestRenderAll();
+    } else if (activeObject) {
+        alert("Cannot delete the headstone background.");
+    } else {
+        alert("Please select an object to delete.");
+    }
+}
 
-          canvas.requestRenderAll();
-        }
+function uploadImage() {
+    document.getElementById('imageUpload').click();
+}
 
-        // Color change handler
-        document.getElementById('colorSelect').addEventListener('change', function() {
-          loadHeadstone(this.value);
+function handleImageUpload(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(ev) {
+        fabric.Image.fromURL(ev.target.result, function(img) {
+            img.scaleToWidth(200);
+            img.set({ left: 350, top: 320 });
+            canvas.add(img);
+            canvas.setActiveObject(img);
+            canvas.renderAll();
         });
+    };
+    reader.readAsDataURL(file);
+}
 
-        // Responsive canvas
-        window.addEventListener('resize', () => {
-          const newSize = getCanvasSize();
-          canvas.setWidth(newSize.width);
-          canvas.setHeight(newSize.height);
-          if (headstoneImg) {
-            const scale = Math.min(0.92, (newSize.width * 0.92) / headstoneImg.width);
-            headstoneImg.scale(scale);
-            headstoneImg.set({ left: (newSize.width - headstoneImg.getScaledWidth()) / 2 });
-          }
-          updateTexts();
-        });
+function resetCanvas() {
+    canvas.clear();
+    if (currentBackground) {
+        canvas.add(currentBackground);
+        canvas.sendToBack(currentBackground);
+    }
+    addDefaultTexts();
+    canvas.requestRenderAll();
+}
 
-        // Reset
-        document.getElementById('resetBtn').addEventListener('click', () => {
-          document.getElementById('textFirst').value = 'John';
-          document.getElementById('textLast').value = 'Doe';
-          document.getElementById('textBirth').value = 'March 15, 1950';
-          document.getElementById('textDeath').value = 'October 22, 2025';
-          document.getElementById('text3').value = 'Beloved Father';
-          document.getElementById('fontSelect').value = 'Georgia';
-          document.getElementById('sizeName').value = '32';
-          document.getElementById('sizeDates').value = '24';
-          document.getElementById('size3').value = '26';
-          updateTexts();
-        });
+function exportDesign() {
+    const dataURL = canvas.toDataURL({ format: 'png', multiplier: 2 });
+    const link = document.createElement('a');
+    link.download = 'my-headstone-design.png';
+    link.href = dataURL;
+    link.click();
+}
 
-        // Events
-        document.getElementById('fontSelect').addEventListener('change', updateTexts);
-        document.getElementById('sizeName').addEventListener('change', updateTexts);
-        document.getElementById('sizeDates').addEventListener('change', updateTexts);
-        document.getElementById('size3').addEventListener('change', updateTexts);
-        document.getElementById('textFirst').addEventListener('input', updateTexts);
-        document.getElementById('textLast').addEventListener('input', updateTexts);
-        document.getElementById('textBirth').addEventListener('input', updateTexts);
-        document.getElementById('textDeath').addEventListener('input', updateTexts);
-        document.getElementById('text3').addEventListener('input', updateTexts);
+// Font change - live update
+document.getElementById('fontSelect').addEventListener('change', function() {
+    addDefaultTexts();
+});
 
-        document.getElementById('downloadBtn').addEventListener('click', () => {
-          const dataURL = canvas.toDataURL({ format: 'png', multiplier: 2 });
-          const link = document.createElement('a');
-          link.download = 'my-headstone-design.png';
-          link.href = dataURL;
-          link.click();
-        });
+// Template change
+document.getElementById('templateSelect').addEventListener('change', function() {
+    loadTemplate(this.value);
+});
 
-        initDesign();
-      };
-    </script>
+// Initialize
+window.onload = initCanvas;
+</script>
 </body>
 </html>
