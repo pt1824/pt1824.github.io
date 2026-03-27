@@ -9,105 +9,97 @@
         gtag('js', new Date());
         gtag('config', 'G-50CZMEMCYK');
     </script>
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-MK5XP3V8');</script>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MK5XP3V8');</script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Headstone Designer | Bedrock Boulders - Houston, TX</title>
-    <meta name="description" content="Design your custom headstone online. Choose template, font, photo &amp; more. Free quote in 24 hours.">
+    <title>Free Headstone Designer • Custom Grave Markers | Bedrock Boulders Houston</title>
+    <meta name="description" content="Design your custom headstone online in minutes. Choose shape, color, font, photo &amp; symbols (including cross). Free proof in 24 hours. Affordable headstones in Houston, TX.">
+    <meta name="keywords" content="headstone designer, custom headstones houston, grave marker design, cemetery headstones, headstones near me, free headstone quote">
+    
+    <!-- Open Graph / Social -->
+    <meta property="og:title" content="Free Online Headstone Designer - Bedrock Boulders Houston">
+    <meta property="og:description" content="Design beautiful custom headstones with cross, photos, and text. Get a free quote in 24 hours.">
+    <meta property="og:image" content="https://www.houstonheadstones.com/Images/headstone-design-example.jpg">
+    <meta property="og:url" content="https://www.houstonheadstones.com/designer.html">
+
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Georgia&family=Playfair+Display&family=Great+Vibes&family=Cinzel&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;family=Georgia&amp;family=Playfair+Display&amp;family=Great+Vibes&amp;family=Cinzel&amp;display=swap" rel="stylesheet">
     <script src="fabric.min.js"></script>
+
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #f8f8f8;
-            color: #333;
-        }
-        .designer-area {
-            padding: 25px 20px;
-            text-align: center;
-        }
+        body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f8f8f8; color:#333; }
+        .designer-area { padding: 25px 15px; text-align:center; }
         #canvas-wrapper {
             display: inline-block;
-            border: 3px solid #ddd;
+            border: 4px solid #ddd;
             background: #fff;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-            touch-action: none;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+            border-radius: 8px;
+            overflow: hidden;
+            max-width: 100%;
             margin-bottom: 20px;
         }
-        canvas {
-            display: block;
-            max-width: 100%;
-            height: auto;
-        }
+        canvas { display:block; max-width:100%; height:auto; }
+        
         .controls {
             background: #f9f5eb;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-            max-width: 1000px;
+            padding: 25px 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            max-width: 1100px;
             margin: 0 auto;
         }
         .control-row {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 15px;
             justify-content: center;
             align-items: flex-end;
-            margin-bottom: 15px;
+            margin-bottom: 18px;
         }
-        .control-group {
-            min-width: 240px;
-            flex: 1;
-        }
+        .control-group { min-width: 240px; flex: 1; }
         select, button {
-            padding: 12px 18px;
+            padding: 14px 20px;
             font-size: 16px;
             border: 1px solid #ccc;
             border-radius: 8px;
             cursor: pointer;
         }
-        select {
-            width: 100%;
-            max-width: 280px;
-        }
+        select { width: 100%; max-width: 300px; }
         button {
             background: #e67e22;
             color: white;
-            min-width: 150px;
-            flex: 1;
+            min-width: 160px;
         }
         button:hover { background: #d35400; }
         .quote-btn {
             background: #27ae60;
             color: white;
-            font-size: 18px;
-            padding: 15px 30px;
+            font-size: 19px;
+            padding: 18px 40px;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             width: 100%;
-            max-width: 420px;
-            margin: 10px auto 0;
+            max-width: 480px;
+            margin: 15px auto 0;
             display: block;
             text-decoration: none;
             text-align: center;
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(39,174,96,0.3);
         }
+        .quote-btn:hover { background: #219653; transform: translateY(-2px); }
+        
+        h1 { color: #2c3e50; margin-bottom: 10px; }
+        .subtitle { color: #555; font-size: 1.1rem; margin-bottom: 25px; }
     </style>
 </head>
 <body>
 <header class="header">
     <div class="header-container">
         <div class="logo">
-            <a href="index.html">
-                <img src="Images/bedrock-boulders-logo.png" alt="Bedrock Boulders Logo" loading="lazy">
-            </a>
+            <a href="index.html"><img src="Images/bedrock-boulders-logo.png" alt="Bedrock Boulders Logo" loading="lazy"></a>
         </div>
         <nav class="main-nav" aria-label="Main navigation">
             <ul class="nav-links">
@@ -128,22 +120,21 @@
 </header>
 
 <main style="margin-top: 140px; padding: 1rem; max-width: 1600px; margin-left: auto; margin-right: auto;">
-    <h1 style="text-align: center; color: var(--heading-dark);">Design Your Custom Headstone</h1>
-    <p style="text-align: center; max-width: 800px; margin: 0.8rem auto 1.5rem;">
-        Choose template, font, stock photo or upload your own, and preview your memorial.
+    <h1 style="text-align: center;">Design Your Custom Headstone</h1>
+    <p class="subtitle" style="text-align:center; max-width:800px; margin:0 auto 30px;">
+        Choose shape, color, text, photo &amp; symbols • Cross added by default • Free professional proof in 24 hours
     </p>
 
     <div class="designer-area">
-        <!-- Canvas -->
         <div id="canvas-wrapper">
             <canvas id="designer-canvas" width="900" height="700"></canvas>
         </div>
 
-        <!-- Controls -->
         <div class="controls">
-            <!-- First row: Template + Font + Stock Photo -->
+            <!-- Row 1 -->
             <div class="control-row">
                 <div class="control-group">
+                    <label><strong>Headstone Style</strong></label>
                     <select id="templateSelect">
                         <option value="Images/blank-headstone-brown.png">Classic Brown</option>
                         <option value="Images/red.png">Red Granite</option>
@@ -152,67 +143,54 @@
                     </select>
                 </div>
                 <div class="control-group">
+                    <label><strong>Font Style</strong></label>
                     <select id="fontSelect">
-                        <option value="Georgia">Georgia (Classic Serif)</option>
+                        <option value="Georgia">Georgia (Classic)</option>
                         <option value="'Playfair Display'">Playfair Display (Elegant)</option>
                         <option value="Cinzel">Cinzel (Roman)</option>
                         <option value="'Great Vibes'">Great Vibes (Script)</option>
-                        <option value="'Times New Roman'">Times New Roman</option>
                     </select>
                 </div>
                 <div class="control-group">
+                    <label><strong>Add Symbol</strong></label>
                     <select id="stockPhotoSelect">
-                        <option value="">-- Stock Photo / Symbol --</option>
-                        <option value="Images/stock-photos/rose.png">Rose</option>
-                        <option value="Images/stock-photos/cross.png">Cross</option>
-                        <option value="Images/stock-photos/angel.png">Angel</option>
-                        <option value="Images/stock-photos/praying-hands.png">Praying Hands</option>
-                        <option value="Images/stock-photos/heart.png">Heart</option>
-                        <option value="Images/stock-photos/dove.png">Dove</option>
-                        <option value="Images/stock-photos/bible.png">Bible</option>
-                        <option value="Images/stock-photos/landscape.png">Landscape</option>
-                        <!-- Add more options here as you upload new images -->
+                        <option value="">Choose additional symbol</option>
+                        <option value="Images/rose.png">Rose</option>
+                        <option value="Images/angel.png">Angel</option>
+                        <option value="Images/praying-hands.png">Praying Hands</option>
+                        <option value="Images/heart.png">Heart</option>
+                        <option value="Images/dove.png">Dove</option>
+                        <option value="Images/bible.png">Bible</option>
                     </select>
                 </div>
             </div>
 
-            <!-- Second row: Action buttons -->
+            <!-- Row 2: Actions -->
             <div class="control-row">
                 <button onclick="addText()">Add Text</button>
                 <button onclick="uploadImage()">Upload Photo</button>
                 <button onclick="deleteSelected()">Delete Selected</button>
-                <button onclick="resetCanvas()">Reset</button>
+                <button onclick="resetCanvas()">Reset Design</button>
                 <button onclick="exportDesign()">Download PNG</button>
             </div>
 
-            <a href="quote.html" class="quote-btn">Get Free Quote with This Design</a>
+            <a href="quote.html" class="quote-btn" onclick="gtag('event', 'click', {'event_category': 'Designer', 'event_label': 'Get Free Quote'});">
+                Get Free Quote with This Design (24-Hour Proof)
+            </a>
         </div>
     </div>
 </main>
 
 <footer>
-    <p>© 2025 Bedrock Boulders | 10511 Windsor Ln, Houston, TX 77031</p>
-    <p><a href="tel:+12819010788">(281) 901-0788</a></p>
+    <p>© 2026 Bedrock Boulders | 10511 Windsor Ln, Houston, TX 77031</p>
+    <p><a href="tel:+12819010788">(281) 901-0788</a> • Hablamos Español</p>
     <div class="social-links">
-        <a href="https://www.google.com/search?q=bedrock+boulders" target="_blank" rel="noopener">Google</a>
-        <a href="https://www.facebook.com/bdbybedrockboulders" target="_blank" rel="noopener">Facebook</a>
-        <a href="https://www.instagram.com/bedrockboulders" target="_blank" rel="noopener">Instagram</a>
-    </div>
-    <div class="org-logos">
-        <img src="Images/galveston-logo.png" class="org-logo" alt="Galveston Chamber logo" loading="lazy">
-        <img src="Images/tfda-logo.png" class="org-logo" alt="Texas Funeral Director Association logo" loading="lazy">
-        <img src="Images/bni-logo.png" class="org-logo" alt="BNI logo" loading="lazy">
-        <img src="Images/kbc-logo.png" class="org-logo" alt="KBC logo" loading="lazy">
-        <img src="Images/nia-logo.png" class="org-logo" alt="NIA logo" loading="lazy">
-        <img src="Images/cyfair-chamber-logo.png" class="org-logo" alt="Cyfair Chamber logo" loading="lazy">
-        <img src="Images/fort-bend-chamber-logo.png" class="org-logo" alt="Fort Bend Chamber logo" loading="lazy">
-        <img src="Images/central-fort-bend-chamber-logo.png" class="org-logo" alt="Central Fort Bend Chamber logo" loading="lazy">
-        <img src="Images/tnla-logo.png" class="org-logo" alt="TNLA logo" loading="lazy">
-        <img src="Images/boulder-designs.png" class="org-logo" alt="Boulder Designs" loading="lazy">
+        <a href="https://www.google.com/search?q=bedrock+boulders" target="_blank">Google</a>
+        <a href="https://www.facebook.com/bdbybedrockboulders" target="_blank">Facebook</a>
+        <a href="https://www.instagram.com/bedrockboulders" target="_blank">Instagram</a>
     </div>
 </footer>
 
-<!-- Hidden file input -->
 <input type="file" id="imageUpload" accept="image/*" style="display:none" onchange="handleImageUpload(event)">
 
 <script>
@@ -225,13 +203,13 @@ function initCanvas() {
         width: 900,
         height: 700,
         backgroundColor: '#f5f5f5',
-        enableRetinaScaling: true,
-        allowTouchScrolling: false,
         selection: true,
         preserveObjectStacking: true
     });
-    loadTemplate('Images/blank-headstone-brown.png');
 
+    loadTemplate('Images/blank-headstone-brown.png');
+    
+    // Keyboard delete support
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Delete' || e.key === 'Backspace') deleteSelected();
     });
@@ -246,80 +224,85 @@ function loadTemplate(imagePath) {
         canvas.add(img);
         canvas.sendToBack(img);
         currentBackground = img;
-        addDefaultTexts();
+
+        addDefaultDesign();   // This now includes the cross by default
         canvas.requestRenderAll();
     }, { crossOrigin: 'anonymous' });
 }
 
-// Add selected stock photo from dropdown
-function addStockPhoto() {
-    const select = document.getElementById('stockPhotoSelect');
-    const imagePath = select.value;
-    if (!imagePath) return;
-
-    fabric.Image.fromURL(imagePath, function(img) {
-        img.scaleToWidth(220);
-        img.set({
-            left: 340,
-            top: 280,
-            shadow: new fabric.Shadow({ color: 'rgba(0,0,0,0.25)', blur: 6 })
-        });
-        canvas.add(img);
-        canvas.setActiveObject(img);
-        canvas.requestRenderAll();
-    }, { crossOrigin: 'anonymous' });
-
-    // Reset dropdown
-    select.value = '';
-}
-
-function addDefaultTexts() {
-    const font = document.getElementById('fontSelect').value || 'Georgia';
+function addDefaultDesign() {
+    // Clear old text objects
     canvas.getObjects().forEach(obj => {
         if (obj.type === 'textbox' || obj.type === 'i-text') canvas.remove(obj);
     });
 
-    const texts = [
-        { text: "MARTHA", top: 150, fontSize: 60 },
-        { text: "PARKER", top: 210, fontSize: 60 },
-        { text: "March 15, 1950", top: 355, fontSize: 30 },
-        { text: "October 22, 2025", top: 390, fontSize: 30 },
-        { text: "In Loving Memory", top: 500, fontSize: 45 }
+    const font = document.getElementById('fontSelect').value || 'Georgia';
+
+    const defaultTexts = [
+        { text: "MARTHA", left: 270, top: 140, fontSize: 68 },
+        { text: "PARKER", left: 270, top: 205, fontSize: 68 },
+        { text: "MAR 15\n 1950", left: 120, top: 340, fontSize: 32 },
+        { text: "OCT 22\n 2025", left: 420, top: 340,  fontSize: 32 },
+        { text: "In Loving Memory", left: 270, top: 510, fontSize: 38 }
     ];
 
-    texts.forEach(item => {
+    defaultTexts.forEach(item => {
         const textbox = new fabric.Textbox(item.text, {
-            left: 270, top: item.top, width: 400,
-            fontSize: item.fontSize, fill: '#000000',
+            left: item.left, top: item.top, width: 400,
+            fontSize: item.fontSize, fill: '#111',
             fontFamily: font, fontWeight: 'bold',
-            textAlign: 'center', charSpacing: 6
+            textAlign: 'center', charSpacing: 10
         });
         canvas.add(textbox);
     });
-    canvas.requestRenderAll();
+
+    // === ADD CROSS BY DEFAULT ===
+    fabric.Image.fromURL('Images/cross.png', function(crossImg) {
+        crossImg.scaleToWidth(110);
+        crossImg.set({
+            left: 415,
+            top: 300,
+            opacity: 0.95,
+            shadow: new fabric.Shadow({ color: 'rgba(0,0,0,0.3)', blur: 8 })
+        });
+        canvas.add(crossImg);
+        canvas.requestRenderAll();
+    }, { crossOrigin: 'anonymous' });
 }
 
 function addText() {
     const font = document.getElementById('fontSelect').value || 'Georgia';
-    const text = new fabric.Textbox("Additional Text", {
+    const text = new fabric.Textbox("New Text", {
         left: 250, top: 460, width: 400,
-        fontSize: 28, fill: '#000000',
+        fontSize: 32, fill: '#111',
         fontFamily: font, fontWeight: 'bold',
-        textAlign: 'center', charSpacing: 3
+        textAlign: 'center'
     });
     canvas.add(text);
     canvas.setActiveObject(text);
     canvas.renderAll();
 }
 
+function addStockPhoto() {
+    const select = document.getElementById('stockPhotoSelect');
+    const imagePath = select.value;
+    if (!imagePath) return;
+
+    fabric.Image.fromURL(imagePath, function(img) {
+        img.scaleToWidth(180);
+        img.set({ left: 400, top: 300, shadow: new fabric.Shadow({color:'rgba(0,0,0,0.3)', blur:6}) });
+        canvas.add(img);
+        canvas.setActiveObject(img);
+        canvas.requestRenderAll();
+    }, { crossOrigin: 'anonymous' });
+
+    select.value = '';
+}
+
 function deleteSelected() {
     const active = canvas.getActiveObject();
-    if (!active) {
-        alert("Please select an object to delete.");
-        return;
-    }
-    if (active === currentBackground) {
-        alert("Cannot delete the headstone background.");
+    if (!active || active === currentBackground) {
+        alert("Please select an object (not the background) to delete.");
         return;
     }
     canvas.remove(active);
@@ -336,8 +319,8 @@ function handleImageUpload(e) {
     const reader = new FileReader();
     reader.onload = function(ev) {
         fabric.Image.fromURL(ev.target.result, function(img) {
-            img.scaleToWidth(200);
-            img.set({ left: 350, top: 320 });
+            img.scaleToWidth(100);
+            img.set({ left: 330, top: 300 });
             canvas.add(img);
             canvas.setActiveObject(img);
             canvas.renderAll();
@@ -347,34 +330,40 @@ function handleImageUpload(e) {
 }
 
 function resetCanvas() {
-    canvas.clear();
-    if (currentBackground) {
-        canvas.add(currentBackground);
-        canvas.sendToBack(currentBackground);
+    if (confirm("Reset the entire design?")) {
+        loadTemplate(document.getElementById('templateSelect').value);
     }
-    addDefaultTexts();
-    canvas.requestRenderAll();
 }
 
 function exportDesign() {
-    const dataURL = canvas.toDataURL({ format: 'png', multiplier: 2 });
+    const dataURL = canvas.toDataURL({ format: 'png', multiplier: 2.5 });
     const link = document.createElement('a');
-    link.download = 'my-headstone-design.png';
+    link.download = 'my-custom-headstone-design.png';
     link.href = dataURL;
     link.click();
+    
+    gtag('event', 'export_design', { 'event_category': 'Designer', 'event_label': 'PNG Download' });
 }
 
 // Event Listeners
-document.getElementById('fontSelect').addEventListener('change', addDefaultTexts);
+document.getElementById('fontSelect').addEventListener('change', () => {
+    // Re-apply font to existing texts (simple version)
+    canvas.getObjects().forEach(obj => {
+        if (obj.type === 'textbox' || obj.type === 'i-text') {
+            obj.set('fontFamily', document.getElementById('fontSelect').value || 'Georgia');
+        }
+    });
+    canvas.requestRenderAll();
+});
+
 document.getElementById('templateSelect').addEventListener('change', function() {
     loadTemplate(this.value);
 });
+
 document.getElementById('stockPhotoSelect').addEventListener('change', addStockPhoto);
 
 // Initialize
-window.onload = function() {
-    initCanvas();
-};
+window.onload = initCanvas;
 </script>
 </body>
 </html>
