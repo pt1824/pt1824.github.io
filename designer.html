@@ -198,7 +198,7 @@ let currentBackground = null;
 function initCanvas() {
     canvas = new fabric.Canvas('designer-canvas', {
         width: 900,
-        height: 700,
+        height: 730,
         backgroundColor: '#f5f5f5',
         selection: true,
         preserveObjectStacking: true
@@ -250,11 +250,11 @@ function addDefaultDesign() {
     const font = document.getElementById('fontSelect').value || 'Georgia';
 
     const defaultTexts = [
-        { text: "MARTHA", width: 400, left: 270, top: 140, fontSize: 68 },
-        { text: "PARKER", width: 400, left: 270, top: 205, fontSize: 68 },
+        { text: "MARTHA", width: 400, left: 270, top: 160, fontSize: 50 },
+        { text: "PARKER", width: 400, left: 270, top: 205, fontSize: 80 },
         { text: "MAR 15\n1950", width: 150, left: 250, top: 330, fontSize: 32 },
         { text: "OCT 22\n2025", width: 150, left: 540, top: 330, fontSize: 32 },
-        { text: "In Loving Memory", width: 400, left: 270, top: 480, fontSize: 38 }
+        { text: "In Loving Memory", width: 400, left: 270, top: 480, fontSize: 42 }
     ];
 
     defaultTexts.forEach(item => {
