@@ -22,14 +22,24 @@
     <meta property="og:description" content="Design beautiful custom headstones with cross, photos, and text. Get a free quote in 24 hours.">
     <meta property="og:image" content="https://www.houstonheadstones.com/Images/headstone-design-example.jpg">
     <meta property="og:url" content="https://www.houstonheadstones.com/designer.html">
-
+    
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;family=Georgia&amp;family=Playfair+Display&amp;family=Great+Vibes&amp;family=Cinzel&amp;display=swap" rel="stylesheet">
     <script src="fabric.min.js"></script>
-
+    
     <style>
-        body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f8f8f8; color:#333; }
-        .designer-area { padding: 25px 15px; text-align:center; }
+        body { 
+            font-family: Arial, sans-serif; 
+            margin:0; padding:0; 
+            background:#f8f8f8; 
+            color:#333; 
+        }
+        
+        .designer-area { 
+            padding: 20px 10px; 
+            text-align: center; 
+        }
+        
         #canvas-wrapper {
             display: inline-block;
             border: 4px solid #ddd;
@@ -39,9 +49,16 @@
             overflow: hidden;
             max-width: 100%;
             margin-bottom: 20px;
+            position: relative;
         }
-        canvas { display:block; max-width:100%; height:auto; }
-      
+        
+        #designer-canvas {
+            display: block;
+            width: 900px;     /* Fixed internal size */
+            height: 730px;
+            transform-origin: top left;
+        }
+     
         .controls {
             background: #f9f5eb;
             padding: 25px 20px;
@@ -50,6 +67,7 @@
             max-width: 1100px;
             margin: 0 auto;
         }
+        
         .control-row {
             display: flex;
             flex-wrap: wrap;
@@ -58,7 +76,9 @@
             align-items: flex-end;
             margin-bottom: 18px;
         }
+        
         .control-group { min-width: 240px; flex: 1; }
+        
         select, button {
             padding: 14px 20px;
             font-size: 16px;
@@ -66,13 +86,17 @@
             border-radius: 8px;
             cursor: pointer;
         }
+        
         select { width: 100%; max-width: 300px; }
+        
         button {
             background: #e67e22;
             color: white;
             min-width: 160px;
         }
+        
         button:hover { background: #d35400; }
+        
         .quote-btn {
             background: #27ae60;
             color: white;
@@ -89,10 +113,16 @@
             font-weight: 700;
             box-shadow: 0 4px 12px rgba(39,174,96,0.3);
         }
+        
         .quote-btn:hover { background: #219653; transform: translateY(-2px); }
-      
-        h1 { color: #2c3e50; margin-bottom: 10px; }
-        .subtitle { color: #555; font-size: 1.1rem; margin-bottom: 25px; }
+
+        /* Mobile improvements */
+        @media (max-width: 768px) {
+            .designer-area { padding: 15px 8px; }
+            .controls { padding: 18px 12px; }
+            .control-group { min-width: 100%; }
+            button { min-width: 100%; }
+        }
     </style>
 </head>
 <body>
@@ -121,13 +151,13 @@
 
 <main style="margin-top: 140px; padding: 1rem; max-width: 1600px; margin-left: auto; margin-right: auto;">
     <h1 style="text-align: center;">Design Your Custom Headstone</h1>
+    
     <div class="designer-area">
         <div id="canvas-wrapper">
-            <canvas id="designer-canvas" width="900" height="700"></canvas>
+            <canvas id="designer-canvas" width="900" height="730"></canvas>
         </div>
-
+        
         <div class="controls">
-            <!-- Row 1 -->
             <div class="control-row">
                 <div class="control-group">
                     <label><strong>Headstone</strong></label>
@@ -135,9 +165,9 @@
                         <option value="Images/blank-headstone-brown.png">Brown</option>
                         <option value="Images/red.png">Red</option>
                         <option value="Images/white.png">White</option>
-						<option value="Images/heart.png">Heart</option>
-						<option value="Images/DoubleCross.png">Double Cross</option>
-                        <option value="Images/bench.png"> Bench</option>
+                        <option value="Images/heart.png">Heart</option>
+                        <option value="Images/DoubleCross.png">Double Cross</option>
+                        <option value="Images/bench.png">Bench</option>
                     </select>
                 </div>
                 <div class="control-group">
@@ -163,8 +193,7 @@
                     </select>
                 </div>
             </div>
-
-            <!-- Row 2: Actions -->
+            
             <div class="control-row">
                 <button onclick="addText()">Add Text</button>
                 <button onclick="uploadImage()">Upload Photo</button>
@@ -172,7 +201,7 @@
                 <button onclick="resetCanvas()">Reset Design</button>
                 <button onclick="exportDesign()">Download PNG</button>
             </div>
-
+            
             <a href="quote.html" class="quote-btn" onclick="gtag('event', 'click', {'event_category': 'Designer', 'event_label': 'Get Free Quote'});">
                 Get Free Quote with This Design (24-Hour Proof)
             </a>
@@ -203,12 +232,12 @@ function initCanvas() {
         height: 730,
         backgroundColor: '#f5f5f5',
         selection: true,
-        preserveObjectStacking: true
+        preserveObjectStacking: true,
+        allowTouchScrolling: true
     });
-
+    
     loadTemplate('Images/blank-headstone-brown.png');
-
-    // Keyboard delete only works when NOT editing text
+    
     document.addEventListener('keydown', function(e) {
         if ((e.key === 'Delete' || e.key === 'Backspace') && !isEditingText()) {
             deleteSelected();
@@ -222,27 +251,34 @@ function isEditingText() {
     return active && (active.type === 'textbox' || active.type === 'i-text') && active.isEditing === true;
 }
 
+// Keep your existing loadTemplate, addDefaultDesign, addCrossSymbol, etc. unchanged
 function loadTemplate(imagePath) {
     fabric.Image.fromURL(imagePath, function(img) {
-        const scale = Math.min(canvas.width / img.width, canvas.height / img.height * 0.95);
+        const scale = Math.min(900 / img.width, 730 / img.height * 0.95);
         img.scale(scale);
         img.set({
-            left: (canvas.width - img.width * img.scaleX) / 2,
-            top: (canvas.height - img.height * img.scaleY) / 2,
+            left: 450,
+            top: 365,
             selectable: false,
-            evented: false
+            evented: false,
+            originX: 'center',
+            originY: 'center'
         });
+        
         canvas.clear();
         canvas.add(img);
         canvas.sendToBack(img);
         currentBackground = img;
+        
         addDefaultDesign();
         canvas.requestRenderAll();
+        
+        setTimeout(resizeCanvas, 50);
     }, { crossOrigin: 'anonymous' });
 }
 
 function addDefaultDesign() {
-    // Remove previous editable objects (except background)
+    // Remove old editable objects
     canvas.getObjects().forEach(obj => {
         if (obj !== currentBackground && (obj.type === 'textbox' || obj.type === 'i-text' || obj.type === 'image')) {
             canvas.remove(obj);
@@ -250,7 +286,7 @@ function addDefaultDesign() {
     });
 
     const font = document.getElementById('fontSelect').value || 'Georgia';
-
+    
     const defaultTexts = [
         { text: "MARTHA", width: 400, left: 270, top: 160, fontSize: 50 },
         { text: "PARKER", width: 400, left: 270, top: 205, fontSize: 80 },
@@ -275,41 +311,31 @@ function addDefaultDesign() {
         canvas.add(textbox);
     });
 
-    // Add default cross
     addCrossSymbol();
 }
 
 function addCrossSymbol() {
-    // Prevent adding duplicate crosses
-    const existingCross = canvas.getObjects().find(obj => 
+    const existing = canvas.getObjects().find(obj => 
         obj.type === 'image' && obj.getSrc && obj.getSrc().includes('cross.png')
     );
-    if (existingCross) return;
+    if (existing) return;
 
-    fabric.Image.fromURL('Images/cross.png', function(crossImg) {
-        crossImg.scaleToWidth(100);
-        crossImg.set({
-            left: 415,
-            top: 300,
-            shadow: new fabric.Shadow({ color: 'rgba(0,0,0,0.3)', blur:6 })
-        });
-        canvas.add(crossImg);
+    fabric.Image.fromURL('Images/cross.png', function(img) {
+        img.scaleToWidth(100);
+        img.set({ left: 415, top: 300, shadow: new fabric.Shadow({ color: 'rgba(0,0,0,0.3)', blur:6 }) });
+        canvas.add(img);
         canvas.requestRenderAll();
     }, { crossOrigin: 'anonymous' });
 }
 
-function addText() {
+// Keep all your other functions unchanged: addText, addStockPhoto, deleteSelected, uploadImage, handleImageUpload, resetCanvas, exportDesign, font change listener, etc.
+
+function addText() { /* your existing code */ 
     const font = document.getElementById('fontSelect').value || 'Georgia';
     const text = new fabric.Textbox("New Text", {
-        left: 250,
-        top: 460,
-        width: 400,
-        fontSize: 32,
-        fill: '#111',
-        fontFamily: font,
-        fontWeight: 'bold',
-        textAlign: 'center',
-        editable: true
+        left: 250, top: 460, width: 400, fontSize: 32,
+        fill: '#111', fontFamily: font, fontWeight: 'bold',
+        textAlign: 'center', editable: true
     });
     canvas.add(text);
     canvas.setActiveObject(text);
@@ -320,19 +346,14 @@ function addStockPhoto() {
     const select = document.getElementById('stockPhotoSelect');
     const imagePath = select.value;
     if (!imagePath) return;
-
-	fabric.Image.fromURL(imagePath, function(img) {
+    
+    fabric.Image.fromURL(imagePath, function(img) {
         img.scaleToWidth(100);
-        img.set({
-            left: 410,
-            top: 300,
-            shadow: new fabric.Shadow({color:'rgba(0,0,0,0.3)', blur:6})
-        });
+        img.set({ left: 410, top: 300, shadow: new fabric.Shadow({color:'rgba(0,0,0,0.3)', blur:6}) });
         canvas.add(img);
         canvas.setActiveObject(img);
         canvas.requestRenderAll();
     }, { crossOrigin: 'anonymous' });
-
     select.value = '';
 }
 
@@ -378,10 +399,28 @@ function exportDesign() {
     link.download = 'my-custom-headstone-design.png';
     link.href = dataURL;
     link.click();
-    gtag('event', 'export_design', { 'event_category': 'Designer', 'event_label': 'PNG Download' });
 }
 
-// Event Listeners
+// =============== RESPONSIVE SCALING (No more repositioning) ===============
+function resizeCanvas() {
+    const wrapper = document.getElementById('canvas-wrapper');
+    const canvasEl = document.getElementById('designer-canvas');
+    
+    if (!wrapper || !canvasEl) return;
+
+    const maxWidth = wrapper.clientWidth - 20;
+    const scale = Math.min(maxWidth / 900, 1);   // never bigger than original
+
+    canvasEl.style.transform = `scale(${scale})`;
+    wrapper.style.height = (730 * scale) + 'px';   // prevent layout collapse
+}
+
+document.getElementById('templateSelect').addEventListener('change', function() {
+    loadTemplate(this.value);
+});
+
+document.getElementById('stockPhotoSelect').addEventListener('change', addStockPhoto);
+
 document.getElementById('fontSelect').addEventListener('change', () => {
     const newFont = document.getElementById('fontSelect').value || 'Georgia';
     canvas.getObjects().forEach(obj => {
@@ -392,14 +431,17 @@ document.getElementById('fontSelect').addEventListener('change', () => {
     canvas.requestRenderAll();
 });
 
-document.getElementById('templateSelect').addEventListener('change', function() {
-    loadTemplate(this.value);
-});
-
-document.getElementById('stockPhotoSelect').addEventListener('change', addStockPhoto);
-
 // Initialize
-window.onload = initCanvas;
+window.onload = function() {
+    initCanvas();
+    
+    setTimeout(() => {
+        resizeCanvas();
+    }, 100);
+
+    window.addEventListener('resize', resizeCanvas);
+    window.addEventListener('orientationchange', () => setTimeout(resizeCanvas, 300));
+};
 </script>
 </body>
 </html>
