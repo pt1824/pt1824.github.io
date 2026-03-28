@@ -10,36 +10,36 @@
         gtag('config', 'G-50CZMEMCYK');
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MK5XP3V8');</script>
-
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Free Headstone Designer • Custom Grave Markers | Bedrock Boulders Houston</title>
     <meta name="description" content="Design your custom headstone online in minutes. Choose shape, color, font, photo &amp; symbols (including cross). Free proof in 24 hours. Affordable headstones in Houston, TX.">
     <meta name="keywords" content="headstone designer, custom headstones houston, grave marker design, cemetery headstones, headstones near me, free headstone quote">
-
+    
     <!-- Open Graph / Social -->
     <meta property="og:title" content="Free Online Headstone Designer - Bedrock Boulders Houston">
     <meta property="og:description" content="Design beautiful custom headstones with cross, photos, and text. Get a free quote in 24 hours.">
     <meta property="og:image" content="https://www.houstonheadstones.com/Images/headstone-design-example.jpg">
     <meta property="og:url" content="https://www.houstonheadstones.com/designer.html">
-    
+   
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;family=Georgia&amp;family=Playfair+Display&amp;family=Great+Vibes&amp;family=Cinzel&amp;display=swap" rel="stylesheet">
     <script src="fabric.min.js"></script>
-    
+   
     <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            margin:0; padding:0; 
-            background:#f8f8f8; 
-            color:#333; 
+        body {
+            font-family: Arial, sans-serif;
+            margin:0; padding:0;
+            background:#f8f8f8;
+            color:#333;
         }
-        
-        .designer-area { 
-            padding: 20px 10px; 
-            text-align: center; 
+       
+        .designer-area {
+            padding: 20px 10px;
+            text-align: center;
         }
-        
+       
         #canvas-wrapper {
             display: inline-block;
             border: 4px solid #ddd;
@@ -51,14 +51,13 @@
             margin-bottom: 20px;
             position: relative;
         }
-        
+       
         #designer-canvas {
             display: block;
-            width: 900px;     /* Fixed internal size */
-            height: 730px;
-            transform-origin: top left;
+            width: 100%;
+            height: auto;
         }
-     
+    
         .controls {
             background: #f9f5eb;
             padding: 25px 20px;
@@ -67,7 +66,7 @@
             max-width: 1100px;
             margin: 0 auto;
         }
-        
+       
         .control-row {
             display: flex;
             flex-wrap: wrap;
@@ -76,9 +75,9 @@
             align-items: flex-end;
             margin-bottom: 18px;
         }
-        
+       
         .control-group { min-width: 240px; flex: 1; }
-        
+       
         select, button {
             padding: 14px 20px;
             font-size: 16px;
@@ -86,17 +85,17 @@
             border-radius: 8px;
             cursor: pointer;
         }
-        
+       
         select { width: 100%; max-width: 300px; }
-        
+       
         button {
             background: #e67e22;
             color: white;
             min-width: 160px;
         }
-        
+       
         button:hover { background: #d35400; }
-        
+       
         .quote-btn {
             background: #27ae60;
             color: white;
@@ -113,10 +112,9 @@
             font-weight: 700;
             box-shadow: 0 4px 12px rgba(39,174,96,0.3);
         }
-        
+       
         .quote-btn:hover { background: #219653; transform: translateY(-2px); }
 
-        /* Mobile improvements */
         @media (max-width: 768px) {
             .designer-area { padding: 15px 8px; }
             .controls { padding: 18px 12px; }
@@ -151,12 +149,12 @@
 
 <main style="margin-top: 140px; padding: 1rem; max-width: 1600px; margin-left: auto; margin-right: auto;">
     <h1 style="text-align: center;">Design Your Custom Headstone</h1>
-    
+   
     <div class="designer-area">
         <div id="canvas-wrapper">
             <canvas id="designer-canvas" width="900" height="730"></canvas>
         </div>
-        
+       
         <div class="controls">
             <div class="control-row">
                 <div class="control-group">
@@ -193,7 +191,7 @@
                     </select>
                 </div>
             </div>
-            
+           
             <div class="control-row">
                 <button onclick="addText()">Add Text</button>
                 <button onclick="uploadImage()">Upload Photo</button>
@@ -201,7 +199,7 @@
                 <button onclick="resetCanvas()">Reset Design</button>
                 <button onclick="exportDesign()">Download PNG</button>
             </div>
-            
+           
             <a href="quote.html" class="quote-btn" onclick="gtag('event', 'click', {'event_category': 'Designer', 'event_label': 'Get Free Quote'});">
                 Get Free Quote with This Design (24-Hour Proof)
             </a>
@@ -233,11 +231,13 @@ function initCanvas() {
         backgroundColor: '#f5f5f5',
         selection: true,
         preserveObjectStacking: true,
-        allowTouchScrolling: true
+        allowTouchScrolling: true,
+        touchCornerSize: 24,           // Larger touch targets on mobile
+        cornerSize: 12
     });
-    
+   
     loadTemplate('Images/blank-headstone-brown.png');
-    
+   
     document.addEventListener('keydown', function(e) {
         if ((e.key === 'Delete' || e.key === 'Backspace') && !isEditingText()) {
             deleteSelected();
@@ -251,7 +251,6 @@ function isEditingText() {
     return active && (active.type === 'textbox' || active.type === 'i-text') && active.isEditing === true;
 }
 
-// Keep your existing loadTemplate, addDefaultDesign, addCrossSymbol, etc. unchanged
 function loadTemplate(imagePath) {
     fabric.Image.fromURL(imagePath, function(img) {
         const scale = Math.min(900 / img.width, 730 / img.height * 0.95);
@@ -264,21 +263,20 @@ function loadTemplate(imagePath) {
             originX: 'center',
             originY: 'center'
         });
-        
+       
         canvas.clear();
         canvas.add(img);
         canvas.sendToBack(img);
         currentBackground = img;
-        
+       
         addDefaultDesign();
         canvas.requestRenderAll();
-        
+       
         setTimeout(resizeCanvas, 50);
     }, { crossOrigin: 'anonymous' });
 }
 
 function addDefaultDesign() {
-    // Remove old editable objects
     canvas.getObjects().forEach(obj => {
         if (obj !== currentBackground && (obj.type === 'textbox' || obj.type === 'i-text' || obj.type === 'image')) {
             canvas.remove(obj);
@@ -286,7 +284,7 @@ function addDefaultDesign() {
     });
 
     const font = document.getElementById('fontSelect').value || 'Georgia';
-    
+   
     const defaultTexts = [
         { text: "MARTHA", width: 400, left: 270, top: 160, fontSize: 50 },
         { text: "PARKER", width: 400, left: 270, top: 205, fontSize: 80 },
@@ -315,7 +313,7 @@ function addDefaultDesign() {
 }
 
 function addCrossSymbol() {
-    const existing = canvas.getObjects().find(obj => 
+    const existing = canvas.getObjects().find(obj =>
         obj.type === 'image' && obj.getSrc && obj.getSrc().includes('cross.png')
     );
     if (existing) return;
@@ -328,9 +326,7 @@ function addCrossSymbol() {
     }, { crossOrigin: 'anonymous' });
 }
 
-// Keep all your other functions unchanged: addText, addStockPhoto, deleteSelected, uploadImage, handleImageUpload, resetCanvas, exportDesign, font change listener, etc.
-
-function addText() { /* your existing code */ 
+function addText() {
     const font = document.getElementById('fontSelect').value || 'Georgia';
     const text = new fabric.Textbox("New Text", {
         left: 250, top: 460, width: 400, fontSize: 32,
@@ -346,7 +342,7 @@ function addStockPhoto() {
     const select = document.getElementById('stockPhotoSelect');
     const imagePath = select.value;
     if (!imagePath) return;
-    
+   
     fabric.Image.fromURL(imagePath, function(img) {
         img.scaleToWidth(100);
         img.set({ left: 410, top: 300, shadow: new fabric.Shadow({color:'rgba(0,0,0,0.3)', blur:6}) });
@@ -401,20 +397,25 @@ function exportDesign() {
     link.click();
 }
 
-// =============== RESPONSIVE SCALING (No more repositioning) ===============
+// =============== RESPONSIVE CANVAS (Fixed Touch) ===============
 function resizeCanvas() {
+    if (!canvas) return;
+
     const wrapper = document.getElementById('canvas-wrapper');
-    const canvasEl = document.getElementById('designer-canvas');
-    
-    if (!wrapper || !canvasEl) return;
+    let availableWidth = wrapper.clientWidth - 20;
+    availableWidth = Math.min(availableWidth, 900);
 
-    const maxWidth = wrapper.clientWidth - 20;
-    const scale = Math.min(maxWidth / 900, 1);   // never bigger than original
+    const aspectRatio = 730 / 900;
+    const newHeight = Math.round(availableWidth * aspectRatio);
 
-    canvasEl.style.transform = `scale(${scale})`;
-    wrapper.style.height = (730 * scale) + 'px';   // prevent layout collapse
+    // Use native Fabric zoom + dimensions instead of CSS scale
+    canvas.setDimensions({ width: availableWidth, height: newHeight });
+    canvas.setZoom(availableWidth / 900);
+
+    canvas.requestRenderAll();
 }
 
+// Event Listeners
 document.getElementById('templateSelect').addEventListener('change', function() {
     loadTemplate(this.value);
 });
@@ -434,13 +435,13 @@ document.getElementById('fontSelect').addEventListener('change', () => {
 // Initialize
 window.onload = function() {
     initCanvas();
-    
+   
     setTimeout(() => {
         resizeCanvas();
-    }, 100);
+    }, 150);
 
     window.addEventListener('resize', resizeCanvas);
-    window.addEventListener('orientationchange', () => setTimeout(resizeCanvas, 300));
+    window.addEventListener('orientationchange', () => setTimeout(resizeCanvas, 400));
 };
 </script>
 </body>
