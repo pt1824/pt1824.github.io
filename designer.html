@@ -10,21 +10,23 @@
         gtag('config', 'G-50CZMEMCYK');
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MK5XP3V8');</script>
-  
+ 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Free Headstone Designer • Custom Grave Markers | Bedrock Boulders Houston</title>
     <meta name="description" content="Design your custom headstone online in minutes. Choose shape, color, font, photo &amp; symbols. Free proof in 24 hours. Affordable headstones in Houston, TX.">
     <meta name="keywords" content="headstone designer, custom headstones houston, grave marker design, cemetery headstones, headstones near me, free headstone quote">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;family=Georgia&amp;family=Playfair+Display&amp;family=Great+Vibes&amp;family=Cinzel&amp;display=swap" rel="stylesheet">
+    
+    <!-- Expanded Google Fonts for headstones (10 options) -->
+    <link href="https://fonts.googleapis.com/css2?family=Georgia&amp;family=Playfair+Display&amp;family=Great+Vibes&amp;family=Cinzel&amp;family=Times+New+Roman&amp;family=Garamond&amp;family=Crimson+Text&amp;family=Old+Standard+TT&amp;family=Dancing+Script&amp;display=swap" rel="stylesheet">
+
     <script src="fabric.min.js"></script>
- 
     <style>
         body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f8f8f8; color:#333; }
-     
+    
         .designer-area { padding: 30px 10px; text-align: center; }
-     
+    
         #canvas-wrapper {
             display: inline-block;
             border: 8px solid #fff;
@@ -35,9 +37,9 @@
             max-width: 100%;
             margin-bottom: 30px;
         }
-     
+    
         #designer-canvas { display: block; width: 100%; height: auto; }
-  
+ 
         .controls {
             background: #f9f5eb;
             padding: 28px 24px;
@@ -46,15 +48,15 @@
             max-width: 1100px;
             margin: 0 auto;
         }
-     
+    
         .control-row { display: flex; flex-wrap: wrap; gap: 18px; justify-content: center; align-items: flex-end; margin-bottom: 20px; }
         .control-group { min-width: 260px; flex: 1; }
-     
+    
         select, button { padding: 14px 20px; font-size: 16px; border: 1px solid #ccc; border-radius: 8px; cursor: pointer; }
         select { width: 100%; max-width: 340px; }
         button { background: #e67e22; color: white; min-width: 170px; }
         button:hover { background: #d35400; }
-     
+    
         .quote-btn {
             background: #27ae60; color: white; font-size: 20px; padding: 20px 40px;
             border: none; border-radius: 12px; width: 100%; max-width: 520px;
@@ -101,13 +103,12 @@
 </header>
 <main style="margin-top: 140px; padding: 1rem; max-width: 1600px; margin-left: auto; margin-right: auto;">
     <h1 style="text-align: center;">Design Your Custom Headstone</h1>
- 
     <div class="designer-area">
         <div id="canvas-wrapper">
             <canvas id="designer-canvas"></canvas>
         </div>
         <div class="resize-tip">💡 Tip: Click any headstone, text, or symbol then drag the corner handles to resize or move it.</div>
-     
+    
         <div class="controls">
             <div class="control-row">
                 <div class="control-group">
@@ -126,10 +127,16 @@
                 <div class="control-group">
                     <label><strong>Font Style</strong></label>
                     <select id="fontSelect">
-                        <option value="Georgia">Georgia (Classic)</option>
+                        <option value="Georgia">Georgia (Classic Serif)</option>
+                        <option value="'Times New Roman'">Times New Roman (Traditional)</option>
+                        <option value="Garamond">Garamond (Elegant Serif)</option>
+                        <option value="Cinzel">Cinzel (Roman Inscription)</option>
                         <option value="'Playfair Display'">Playfair Display (Elegant)</option>
-                        <option value="Cinzel">Cinzel (Roman)</option>
+                        <option value="'Crimson Text'">Crimson Text (Refined)</option>
+                        <option value="'Old Standard TT'">Old Standard TT (Classic)</option>
                         <option value="'Great Vibes'">Great Vibes (Script)</option>
+                        <option value="'Dancing Script'">Dancing Script (Flowing)</option>
+                        <option value="'Aphasia BT'">Aphasia BT (Distinctive Roman)</option>
                     </select>
                 </div>
                 <div class="control-group">
@@ -146,7 +153,7 @@
                     </select>
                 </div>
             </div>
-         
+        
             <div class="control-row">
                 <button onclick="addText()">Add Text</button>
                 <button onclick="uploadImage()">Upload Photo</button>
@@ -154,7 +161,7 @@
                 <button onclick="resetCanvas()">Reset Design</button>
                 <button onclick="exportDesign()">Download PNG</button>
             </div>
-         
+        
             <a href="quote.html" class="quote-btn" onclick="gtag('event', 'click', {'event_category': 'Designer', 'event_label': 'Get Free Quote'});">
                 Get Free Quote with This Design
             </a>
@@ -172,13 +179,14 @@
 </footer>
 <input type="file" id="imageUpload" accept="image/*" style="display:none" onchange="handleImageUpload(event)">
 <script>
-// FABRIC.JS SETUP
+// Your existing full script (unchanged except for the font listener if needed)
 let canvas;
 let fixedBackground = null;
 let currentHeadstone = null;
 const BG_WIDTH = 1784;
 const BG_HEIGHT = 1169;
 const ASPECT_RATIO = BG_WIDTH / BG_HEIGHT;
+
 function initCanvas() {
     const initialWidth = 1100;
     const initialHeight = Math.round(initialWidth / ASPECT_RATIO);
@@ -221,10 +229,9 @@ function isEditingText() {
 }
 function loadHeadstone(imagePath) {
     fabric.Image.fromURL(imagePath, function(img) {
-        // Improved per-headstone default scaling so none are too small
-        let defaultScale = .95; // Brown & most upright styles - now much larger
-let defaultLeft = canvas.width / 2 - 10;
-let defaultTop = canvas.height / 2 - 0;
+        let defaultScale = .95;
+        let defaultLeft = canvas.width / 2 - 10;
+        let defaultTop = canvas.height / 2 - 0;
         if (imagePath.includes('Bench')){ defaultScale = 1.15, defaultTop = defaultTop + 30 }
         else if (imagePath.includes('Heart')){ defaultScale = 1.2, defaultTop = defaultTop + 20 }
         else if (imagePath.includes('Cross')){ defaultScale = 0.85, defaultTop = defaultTop + 30 }
@@ -256,7 +263,6 @@ function addDefaultDesign() {
         }
     });
     const font = document.getElementById('fontSelect').value || 'Georgia';
- 
     const defaultTexts = [
         { text: "MARTHA", width: 480, left: canvas.width * 0.28, top: canvas.height * 0.26, fontSize: 50 },
         { text: "PARKER", width: 480, left: canvas.width * 0.28, top: canvas.height * 0.32, fontSize: 70 },
@@ -278,8 +284,6 @@ function addDefaultDesign() {
         canvas.add(img);
     }, { crossOrigin: 'anonymous' });
 }
-// === Add the rest of your functions here (addText, addStockPhoto, deleteSelected, uploadImage, handleImageUpload, resetCanvas, exportDesign, resizeCanvas) ===
-// They are identical to the previous version I sent.
 function addText() {
     const font = document.getElementById('fontSelect').value || 'Georgia';
     const text = new fabric.Textbox("New Text", {
@@ -295,7 +299,6 @@ function addStockPhoto() {
     const select = document.getElementById('stockPhotoSelect');
     const imagePath = select.value;
     if (!imagePath) return;
- 
     fabric.Image.fromURL(imagePath, function(img) {
         img.scaleToWidth(120);
         img.set({ left: canvas.width / 2, top: canvas.height * 0.43, shadow: new fabric.Shadow({color:'rgba(0,0,0,0.3)', blur:8}) });
