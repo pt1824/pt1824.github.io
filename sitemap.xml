@@ -10,43 +10,49 @@
 
   <url>
     <loc>https://www.houstonheadstones.com/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.houstonheadstones.com/about.html</loc>
-    <lastmod>2025-07-21</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.houstonheadstones.com/headstones.html</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.houstonheadstones.com/designer.html</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.houstonheadstones.com/signage.html</loc>
-    <lastmod>2025-07-21</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.houstonheadstones.com/testimonials.html</loc>
-    <lastmod>2025-07-21</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.houstonheadstones.com/blog.html</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.houstonheadstones.com/contact.html</loc>
-    <lastmod>2025-07-21</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -54,43 +60,43 @@
   <!-- Blog posts (newest to oldest) -->
   <url>
     <loc>https://www.houstonheadstones.com/blog/ranch-entrance-boulder-guide.html</loc>
-    <lastmod>2025-09-05</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.houstonheadstones.com/blog/designing-custom-headstone.html</loc>
-    <lastmod>2025-07-15</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.houstonheadstones.com/blog/engineered-stone-headstones.html</loc>
-    <lastmod>2025-06-20</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.houstonheadstones.com/blog/headstone-maintenance.html</loc>
-    <lastmod>2025-05-10</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.houstonheadstones.com/blog/personalized-headstone-symbols.html</loc>
-    <lastmod>2025-04-05</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.houstonheadstones.com/blog/cemetery-regulations-headstones.html</loc>
-    <lastmod>2025-03-01</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.houstonheadstones.com/blog/affordable-headstones-houston.html</loc>
-    <lastmod>2025-02-15</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
