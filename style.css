@@ -99,7 +99,7 @@ body {
 /* Logo */
 .logo img {
     height: 80px;
-    width: 160px;
+    width: 350px;
     object-fit: contain;
     animation: fadeIn 1s ease-in;
 }
