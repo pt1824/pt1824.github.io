@@ -114,29 +114,59 @@
 			<p class="language-notice">Hablamos Español</p>
 			
             <!-- Contact Form -->
-            <form action="https://formspree.io/f/mgvydlky" method="POST" aria-label="Contact Bedrock Boulders">
-                <label for="name">Full Name <span aria-hidden="true">*</span></label>
-                <input type="text" id="name" name="name" required aria-required="true"><br>
+			<form action="https://formspree.io/f/mgvydlky" method="POST" id="contact-form" aria-label="Contact Bedrock Boulders">
+				<label for="name">Name <span aria-hidden="true">*</span></label>
+				<input type="text" id="name" name="name" required aria-required="true"><br>
 
-                <label for="phone">Phone Number <span aria-hidden="true">(Optional)</span></label>
-                <input type="tel" id="phone" name="phone" required aria-required="false"><br>
+				<label for="phone">Phone Number <span aria-hidden="true">*</span></label>
+				<input type="tel" id="phone" name="phone"><br>
 
-                <label for="email">Email Address <span aria-hidden="true">*</span></label>
-                <input type="email" id="email" name="_replyto" required aria-required="true"><br>
+				<label for="email">Email Address <span aria-hidden="true">*</span></label>
+				<input type="email" id="email" name="_replyto" required aria-required="true"><br>
 
-                <label for="service">Service You’re Interested In</label>
-                <select id="service" name="service">
-                    <option value="Headstone">Headstone</option>
-                    <option value="Ranch Sign">Ranch Sign</option>
-                    <option value="Commercial Sign">Commercial Sign</option>
-                    <option value="Other">Other</option>
-                </select><br>
+				<label for="service">Service You’re Interested In</label>
+				<select id="service" name="service">
+					<option value="Headstone">Headstone</option>
+					<option value="Ranch Sign">Ranch Sign</option>
+					<option value="Commercial Sign">Commercial Sign</option>
+					<option value="Other">Other</option>
+				</select><br>
 
-                <label for="message">Tell Us What You Need</label>
-                <textarea id="message" name="message"></textarea><br>
+				<label for="message">Tell Us What You Need</label>
+				<textarea id="message" name="message"></textarea><br>
 
-                <button type="submit">Submit</button>
-            </form>
+				<!-- Honeypot field - leave this exactly as is -->
+				<input type="text" name="_gotcha" id="gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
+				<button type="submit" id="submit-btn">Submit</button>
+			</form>
+
+			<script>
+				const form = document.getElementById('contact-form');
+				const gotcha = document.getElementById('gotcha');
+				const submitBtn = document.getElementById('submit-btn');
+
+				// Disable the button the moment anything is typed into the honeypot
+				gotcha.addEventListener('input', function () {
+					if (this.value.trim() !== '') {
+						submitBtn.disabled = true;
+						submitBtn.style.opacity = '0.5';
+						submitBtn.style.cursor = 'not-allowed';
+					} else {
+						submitBtn.disabled = false;
+						submitBtn.style.opacity = '1';
+						submitBtn.style.cursor = 'pointer';
+					}
+				});
+
+				// Extra safety: block the form from submitting if honeypot has a value
+				form.addEventListener('submit', function (e) {
+					if (gotcha.value.trim() !== '') {
+						e.preventDefault();
+						return false;
+					}
+				});
+			</script>
 
             <p><em>We respond within 1 business day.</em></p>
         </section>

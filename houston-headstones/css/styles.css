@@ -1,0 +1,394 @@
+/* Houston Headstones - Professional Memorial Site */
+:root {
+  --charcoal: #2c2c2c;
+  --deep-green: #1a3a2f;
+  --soft-gold: #c9a227;
+  --light-gold: #e8d48b;
+  --cream: #f8f5f0;
+  --warm-gray: #6b6b6b;
+  --light-gray: #e9e5df;
+  --white: #ffffff;
+  --shadow: 0 4px 20px rgba(0,0,0,0.08);
+  --radius: 8px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Source Sans 3', system-ui, -apple-system, sans-serif;
+  color: var(--charcoal);
+  background: var(--cream);
+  line-height: 1.6;
+  font-size: 17px;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 600;
+  color: var(--deep-green);
+  line-height: 1.25;
+}
+
+a {
+  color: var(--deep-green);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--soft-gold);
+}
+
+/* Navbar */
+.navbar {
+  background: var(--white);
+  box-shadow: var(--shadow);
+  padding: 0.75rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--deep-green) !important;
+  letter-spacing: 0.5px;
+}
+
+.navbar-brand span {
+  color: var(--soft-gold);
+  font-weight: 500;
+}
+
+.nav-link {
+  color: var(--charcoal) !important;
+  font-weight: 500;
+  padding: 0.5rem 1rem !important;
+  font-size: 0.95rem;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--soft-gold) !important;
+}
+
+.btn-gold {
+  background: var(--soft-gold);
+  color: var(--deep-green);
+  border: none;
+  font-weight: 600;
+  padding: 0.65rem 1.5rem;
+  border-radius: var(--radius);
+  transition: all 0.2s ease;
+}
+
+.btn-gold:hover {
+  background: var(--light-gold);
+  color: var(--deep-green);
+  transform: translateY(-1px);
+}
+
+.btn-outline-dark {
+  border: 2px solid var(--deep-green);
+  color: var(--deep-green);
+  font-weight: 600;
+  padding: 0.6rem 1.4rem;
+  border-radius: var(--radius);
+}
+
+.btn-outline-dark:hover {
+  background: var(--deep-green);
+  color: white;
+}
+
+/* Hero */
+.hero {
+  position: relative;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, rgba(26,58,47,0.85), rgba(44,44,44,0.7)), url('../images/black-upright.jpg') center/cover no-repeat;
+  color: white;
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.hero h1 {
+  font-size: 3.2rem;
+  color: white;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.hero p.lead {
+  font-size: 1.25rem;
+  opacity: 0.95;
+  margin-bottom: 2rem;
+}
+
+.hero .btn {
+  margin: 0.5rem;
+}
+
+/* Sections */
+section {
+  padding: 5rem 0;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-title h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.section-title p {
+  color: var(--warm-gray);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Cards */
+.feature-card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 2rem;
+  height: 100%;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid var(--light-gray);
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+}
+
+.feature-card .icon {
+  font-size: 2.2rem;
+  color: var(--soft-gold);
+  margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Gallery */
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 1.5rem;
+  background: white;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+.gallery-caption {
+  padding: 1rem 1.25rem;
+  background: white;
+}
+
+.gallery-caption h4 {
+  font-size: 1.15rem;
+  margin-bottom: 0.25rem;
+}
+
+.gallery-caption p {
+  font-size: 0.9rem;
+  color: var(--warm-gray);
+  margin: 0;
+}
+
+/* Pricing */
+.price-card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 2.5rem 2rem;
+  text-align: center;
+  box-shadow: var(--shadow);
+  height: 100%;
+  border: 1px solid var(--light-gray);
+  transition: all 0.2s ease;
+}
+
+.price-card.featured {
+  border: 2px solid var(--soft-gold);
+  transform: scale(1.03);
+}
+
+.price-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.price {
+  font-size: 2.5rem;
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--deep-green);
+  font-weight: 700;
+  margin: 1rem 0;
+}
+
+.price small {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--warm-gray);
+}
+
+.price-card ul {
+  list-style: none;
+  text-align: left;
+  margin: 1.5rem 0;
+}
+
+.price-card ul li {
+  padding: 0.4rem 0;
+  border-bottom: 1px solid var(--light-gray);
+  font-size: 0.95rem;
+}
+
+.price-card ul li:before {
+  content: "✓ ";
+  color: var(--soft-gold);
+  font-weight: bold;
+}
+
+/* About */
+.about-img {
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Contact */
+.contact-info {
+  background: var(--deep-green);
+  color: white;
+  padding: 2.5rem;
+  border-radius: var(--radius);
+  height: 100%;
+}
+
+.contact-info h3 {
+  color: white;
+  margin-bottom: 1.5rem;
+}
+
+.contact-info a {
+  color: var(--light-gold);
+}
+
+.contact-info .info-item {
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.form-control, .form-select {
+  border-radius: var(--radius);
+  border: 1px solid #ddd;
+  padding: 0.75rem 1rem;
+}
+
+.form-control:focus {
+  border-color: var(--soft-gold);
+  box-shadow: 0 0 0 0.2rem rgba(201,162,39,0.25);
+}
+
+/* Footer */
+footer {
+  background: var(--charcoal);
+  color: #ccc;
+  padding: 3rem 0 1.5rem;
+}
+
+footer h5 {
+  color: white;
+  font-family: 'Cormorant Garamond', serif;
+  margin-bottom: 1rem;
+}
+
+footer a {
+  color: #bbb;
+}
+
+footer a:hover {
+  color: var(--soft-gold);
+}
+
+.footer-bottom {
+  border-top: 1px solid #444;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/* Utilities */
+.bg-cream {
+  background: var(--cream);
+}
+
+.bg-white {
+  background: white;
+}
+
+.text-gold {
+  color: var(--soft-gold);
+}
+
+.lead-muted {
+  color: var(--warm-gray);
+  font-size: 1.1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.3rem;
+  }
+  .hero {
+    min-height: 70vh;
+  }
+  section {
+    padding: 3.5rem 0;
+  }
+  .price-card.featured {
+    transform: none;
+  }
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
