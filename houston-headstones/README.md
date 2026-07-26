@@ -19,6 +19,17 @@ Replace `YOUR_FORM_ID` in `contact.html` with a free Formspree form endpoint (si
 
 Alternatively, change the form `action` to a `mailto:` link or use Netlify Forms if you later move hosting.
 
+## Pages Included
+
+- `index.html` – Home
+- `gallery.html` – Gallery
+- `pricing.html` – Pricing
+- `designer.html` – Free design proof process
+- `blog.html` – Helpful family guides
+- `testimonials.html` – Customer feedback
+- `about.html` – About
+- `contact.html` – Contact form
+
 ## Customization Notes
 
 - Phone and email appear in footer and contact page — update as needed.
