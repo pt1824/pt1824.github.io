@@ -15,7 +15,7 @@
 <body>
   <nav class="navbar navbar-expand-lg">
     <div class="container">
-      <a class="navbar-brand" href="index.html">Houston <span>Headstones</span></a>
+      <a class="navbar-brand d-flex align-items-center" href="index.html"><img src="images/logo.png" alt="Houston Headstones" style="height:42px;width:auto;margin-right:10px;"><span class="d-none d-md-inline">Houston <span style="color:var(--soft-gold)">Headstones</span></span></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -65,8 +65,10 @@
             <div class="info-item">
               <i class="bi bi-geo-alt-fill" style="font-size: 1.3rem;"></i>
               <div>
-                <strong>Service Area</strong><br>
-                Greater Houston, TX and surrounding communities
+                <strong>Location</strong><br>
+                10511 Windsor Ln<br>
+                Houston, TX 77031<br>
+                <span class="small">Serving Greater Houston & surrounding communities</span>
               </div>
             </div>
             <div class="info-item">
@@ -117,13 +119,39 @@
                   <textarea class="form-control" id="message" name="message" rows="5" placeholder="Names, dates, preferred color, any special symbols, cemetery rules you know of, or questions..."></textarea>
                 </div>
                 <div class="col-12">
-                  <button type="submit" class="btn btn-gold btn-lg w-100">Send Request for Free Proof</button>
+                  <label for="math" class="form-label">Simple security check: What is <span id="mathQuestion">3 + 5</span>? *</label>
+                  <input type="number" class="form-control" id="math" name="math" required placeholder="Enter the answer" style="max-width: 120px;">
+                  <div id="mathError" class="text-danger small mt-1" style="display:none;">Please solve the math problem correctly.</div>
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn btn-gold btn-lg w-100" id="submitBtn" disabled>Send Request for Free Proof</button>
                 </div>
               </div>
             </form>
             <p class="text-muted small mt-3 mb-0">By submitting you agree we may contact you about your request. We never share your information.</p>
+            <div class="mt-4 pt-3 border-top">
+              <p class="mb-2"><strong>Already a customer?</strong></p>
+              <a href="https://g.page/r/CfzI5r73A3GUEB0/review" class="btn btn-outline-dark" target="_blank" rel="noopener">
+                <i class="bi bi-star-fill text-warning me-1"></i> Write Us a Review on Google
+              </a>
+              <p class="small text-muted mt-2 mb-0">Your feedback helps other Houston families find us.</p>
+            </div>
           </div>
         </div>
+      </div>
+
+      <!-- Full-width map spanning both columns -->
+      <div class="mt-5 rounded overflow-hidden" style="box-shadow: var(--shadow);">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3475.2617980024356!2d-95.56741638489307!3d29.639056882054584!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640dd4292fbb7e9%3A0xf4e09554f62529c0!2s10511%20Windsor%20Ln%2C%20Houston%2C%20TX%2077031!5e0!3m2!1sen!2sus!4v1720172345678" 
+          width="100%" 
+          height="360" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Houston Headstones location map">
+        </iframe>
       </div>
     </div>
   </section>
@@ -132,7 +160,7 @@
     <div class="container">
       <div class="row g-4">
         <div class="col-md-4">
-          <h5>Houston Headstones</h5>
+          <div class="d-flex align-items-center mb-2"><img src="images/logo.png" alt="Houston Headstones" style="height:36px;width:auto;margin-right:8px;"><h5 class="mb-0">Houston Headstones</h5></div>
           <p>Custom granite memorials by Bedrock Boulders. Serving Houston and surrounding areas with quality and care.</p>
         </div>
         <div class="col-md-4">
@@ -162,10 +190,39 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Simple note: replace YOUR_FORM_ID with a free Formspree form ID for actual submissions.
-    // Until then the form can still be tested locally or switched to mailto.
+    // Simple math CAPTCHA
+    const a = Math.floor(Math.random() * 8) + 2;
+    const b = Math.floor(Math.random() * 8) + 2;
+    const answer = a + b;
+    document.getElementById('mathQuestion').textContent = a + ' + ' + b;
+    
+    const mathInput = document.getElementById('math');
+    const submitBtn = document.getElementById('submitBtn');
+    const mathError = document.getElementById('mathError');
+    
+    function checkMath() {
+      const val = parseInt(mathInput.value, 10);
+      if (val === answer) {
+        submitBtn.disabled = false;
+        mathError.style.display = 'none';
+      } else {
+        submitBtn.disabled = true;
+        if (mathInput.value !== '') {
+          mathError.style.display = 'block';
+        } else {
+          mathError.style.display = 'none';
+        }
+      }
+    }
+    
+    mathInput.addEventListener('input', checkMath);
+    
     document.getElementById('contactForm').addEventListener('submit', function(e) {
-      // Optional: for pure static without Formspree, you can change action to mailto
+      if (parseInt(mathInput.value, 10) !== answer) {
+        e.preventDefault();
+        mathError.style.display = 'block';
+        submitBtn.disabled = true;
+      }
     });
   </script>
 </body>
