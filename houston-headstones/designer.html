@@ -13,7 +13,7 @@
     
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Free headstone designer tool from Houston Headstones. Design your custom memorial online, download a PNG proof, and receive a free professional layout within 24 hours.">
+  <meta name="description" content="Free interactive headstone designer from Houston Headstones. Design your custom granite memorial online, add text and photos, download a PNG proof, and receive a free professional layout within 24 hours.">
   <title>Free Headstone Designer | Houston Headstones</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,6 +21,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.min.js"></script>
 </head>
 <body>
   <nav class="navbar navbar-expand-lg">
@@ -47,69 +48,137 @@
     </div>
   </nav>
 
-  <section class="bg-cream" style="padding-top: 4rem;">
-    <div class="container">
-      <div class="section-title">
+  <section class="bg-cream" style="padding-top: 3.5rem; padding-bottom: 4rem;">
+    <div class="container" style="max-width: 1280px;">
+      <div class="section-title mb-4">
         <h2>Free Headstone Designer</h2>
-        <p class="lead-muted">Design your custom headstone online in minutes. Choose the layout, add text, upload a photo, and download a proof. We will refine it into a professional design within 24 hours.</p>
+        <p class="lead-muted">Design your custom granite memorial in minutes. Choose a shape and color, add text and a photo, then download a PNG proof. We refine it into a professional layout—usually within one business day.</p>
       </div>
 
-      <div class="row g-5 align-items-center mb-5">
-        <div class="col-lg-7">
-          <div class="bg-white p-4 p-md-5 rounded" style="box-shadow: var(--shadow);">
-            <h3 class="mb-3">How to Use the Online Designer</h3>
-            <ol class="mb-4">
-              <li class="mb-2">Open the free designer tool on our main site (or describe what you want here).</li>
-              <li class="mb-2">Click any headstone shape, text, or symbol, then drag the corner handles to resize or move it.</li>
-              <li class="mb-2">Use the tools: <strong>Add Text</strong>, <strong>Upload Photo</strong>, <strong>Delete Selected</strong>, or <strong>Reset Design</strong>.</li>
-              <li class="mb-2">When you are happy with the layout, click <strong>Download PNG</strong>.</li>
-              <li class="mb-2">Email the PNG file to <strong>main@bedrockboulders.net</strong> or submit it through our contact form.</li>
-            </ol>
-            <p class="mb-0">We will turn your rough design into a clean professional proof and send it back, usually within one business day. No deposit is required for the first proof.</p>
-          </div>
+      <div class="designer-tip">
+        <strong>How to use:</strong> Select a shape &amp; color on the left → click objects on the canvas to move or resize them with the corner handles → double-click text to edit → use the toolbar to add more text, upload a photo, or place symbols. When ready, click <strong>Download PNG</strong> and email the file to us (or use the contact form).
+      </div>
+
+      <div class="designer-wrap mb-5">
+        <!-- Toolbar -->
+        <div class="designer-toolbar">
+          <button type="button" class="btn btn-tool" id="btn-add-text" title="Add text"><i class="bi bi-type"></i> Add Text</button>
+          <button type="button" class="btn btn-tool" id="btn-upload" title="Upload photo"><i class="bi bi-image"></i> Upload Photo</button>
+          <input type="file" id="photo-input" accept="image/*" style="display:none;">
+          <button type="button" class="btn btn-tool" id="btn-delete" title="Delete selected"><i class="bi bi-trash"></i> Delete</button>
+          <button type="button" class="btn btn-tool" id="btn-reset" title="Clear design"><i class="bi bi-arrow-counterclockwise"></i> Reset</button>
+          <button type="button" class="btn btn-download" id="btn-download"><i class="bi bi-download"></i> Download PNG</button>
         </div>
-        <div class="col-lg-5">
-          <img src="images/engraving-detail.jpg" alt="Example of detailed granite engraving" class="about-img mb-3">
-          <div class="feature-card">
-            <h4 class="mb-2">Prefer to talk it through?</h4>
-            <p class="mb-3">You do not have to use the online tool. Call or message us with the names, dates, preferred color, and any special details. We will create the first proof for you.</p>
-            <a href="contact.html" class="btn btn-gold">Request Free Proof</a>
+
+        <div class="designer-main">
+          <!-- Left sidebar: shapes, colors, symbols -->
+          <div class="designer-sidebar">
+            <h6>Shape</h6>
+            <div id="shape-btns">
+              <div class="shape-btn active" data-shape="upright" title="Upright (24×20)">▲<br>Upright</div>
+              <div class="shape-btn" data-shape="flat" title="Flat marker (2×1)">▬<br>Flat</div>
+              <div class="shape-btn" data-shape="double" title="Companion (36×20)">▬▬<br>Double</div>
+            </div>
+
+            <h6>Granite Color</h6>
+            <div id="color-swatches">
+              <div class="color-swatch active" data-color="#1a1a1a" style="background:#1a1a1a;" title="Black"></div>
+              <div class="color-swatch" data-color="#4a4a4a" style="background:#4a4a4a;" title="Gray"></div>
+              <div class="color-swatch" data-color="#5c4033" style="background:#5c4033;" title="Brown"></div>
+              <div class="color-swatch" data-color="#6b2d3c" style="background:#6b2d3c;" title="Red / Mahogany"></div>
+              <div class="color-swatch" data-color="#8b5a6b" style="background:#8b5a6b;" title="Pink"></div>
+              <div class="color-swatch" data-color="#2f4f4f" style="background:#2f4f4f;" title="Green"></div>
+              <div class="color-swatch" data-color="#3d5a80" style="background:#3d5a80;" title="Blue"></div>
+            </div>
+
+            <h6>Symbols</h6>
+            <div id="symbol-btns">
+              <div class="symbol-btn" data-symbol="✝" title="Cross">✝</div>
+              <div class="symbol-btn" data-symbol="♥" title="Heart">♥</div>
+              <div class="symbol-btn" data-symbol="★" title="Star">★</div>
+              <div class="symbol-btn" data-symbol="🕊" title="Dove">🕊</div>
+              <div class="symbol-btn" data-symbol="🌹" title="Rose">🌹</div>
+              <div class="symbol-btn" data-symbol="⚓" title="Anchor">⚓</div>
+              <div class="symbol-btn" data-symbol="✝✝" title="Double cross">✝</div>
+              <div class="symbol-btn" data-symbol="❀" title="Flower">❀</div>
+            </div>
+
+            <p class="small text-muted mt-3 mb-0" style="font-size:0.75rem;line-height:1.35;">Tip: After adding a symbol or text, click it on the canvas and drag the corners to resize.</p>
+          </div>
+
+          <!-- Canvas -->
+          <div class="canvas-area">
+            <canvas id="headstone-canvas" width="720" height="640"></canvas>
+            <p class="small text-muted mt-2 mb-1">Click object → drag to move · corner handles to resize · double-click text to edit</p>
+            <p class="small mb-0" style="color:var(--deep-green);font-weight:500;">
+              When ready: <strong>Download PNG</strong> → email to
+              <a href="mailto:main@bedrockboulders.net">main@bedrockboulders.net</a>
+              or call <a href="tel:2819010788">281-901-0788</a>
+            </p>
+          </div>
+
+          <!-- Properties panel -->
+          <div class="props-panel" id="props-panel">
+            <h6 class="text-uppercase" style="font-size:0.75rem;letter-spacing:0.06em;color:var(--warm-gray);">Selected Object</h6>
+            <div id="props-empty" class="small text-muted">Select text or a symbol on the canvas to edit its properties.</div>
+            <div id="props-controls" style="display:none;">
+              <label>Font</label>
+              <select class="form-select form-select-sm" id="prop-font">
+                <option value="Cormorant Garamond">Cormorant (elegant)</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Arial">Arial</option>
+                <option value="Source Sans 3">Source Sans</option>
+              </select>
+              <label>Size</label>
+              <input type="number" class="form-control form-control-sm" id="prop-size" min="12" max="120" value="28">
+              <label>Color</label>
+              <input type="color" class="form-control form-control-sm form-control-color" id="prop-color" value="#f5f0e6" title="Text / symbol color">
+              <label class="mt-1">Style</label>
+              <div class="btn-group btn-group-sm w-100 mb-2">
+                <button type="button" class="btn btn-outline-secondary" id="prop-bold" title="Bold"><i class="bi bi-type-bold"></i></button>
+                <button type="button" class="btn btn-outline-secondary" id="prop-italic" title="Italic"><i class="bi bi-type-italic"></i></button>
+                <button type="button" class="btn btn-outline-secondary" id="prop-center" title="Center"><i class="bi bi-text-center"></i></button>
+              </div>
+              <button type="button" class="btn btn-sm btn-outline-danger w-100" id="prop-delete"><i class="bi bi-trash"></i> Delete object</button>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="feature-card text-center h-100">
-            <div class="icon"><i class="bi bi-pencil-square"></i></div>
-            <h3>Add Text & Symbols</h3>
-            <p>Names, dates, short inscriptions, crosses, flowers, military emblems, and more.</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="feature-card text-center h-100">
-            <div class="icon"><i class="bi bi-image"></i></div>
-            <h3>Upload Photos</h3>
-            <p>Add ceramic photo plaques of your loved one. We guide you on size and placement.</p>
-          </div>
-        </div>
+      <!-- After design -->
+      <div class="row g-4 mb-5">
         <div class="col-md-4">
           <div class="feature-card text-center h-100">
             <div class="icon"><i class="bi bi-download"></i></div>
-            <h3>Download & Send</h3>
-            <p>Download your PNG proof and email it to main@bedrockboulders.net for a professional version.</p>
+            <h3>1. Download PNG</h3>
+            <p>Save your layout as a high-quality image. This is your rough proof.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-card text-center h-100">
+            <div class="icon"><i class="bi bi-envelope"></i></div>
+            <h3>2. Send It to Us</h3>
+            <p>Email the PNG to <strong>main@bedrockboulders.net</strong> or submit via the contact form.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-card text-center h-100">
+            <div class="icon"><i class="bi bi-check2-circle"></i></div>
+            <h3>3. Free Pro Proof</h3>
+            <p>We clean up lettering, proportions &amp; cemetery requirements and return a polished proof—usually within 24 hours.</p>
           </div>
         </div>
       </div>
 
-      <div class="mt-5 p-4 bg-white rounded" style="box-shadow: var(--shadow);">
+      <div class="p-4 bg-white rounded mb-4" style="box-shadow: var(--shadow);">
         <h3 class="mb-3">What Happens After You Send the Design</h3>
-        <p>We review your layout, clean up the lettering and proportions, check against typical cemetery requirements, and return a polished digital proof. You can request changes until everything feels right. Only then do we discuss pricing and production.</p>
-        <p class="mb-0">Typical production time after final approval is 6–10 weeks.</p>
+        <p>We review your layout, refine the lettering and spacing, check against typical cemetery regulations, and return a polished digital proof. You can request changes until everything feels right. Only then do we discuss final pricing and production.</p>
+        <p class="mb-0">Typical production time after final approval is 6–10 weeks. No deposit is required for the first proof.</p>
       </div>
 
-      <div class="text-center mt-5">
-        <a href="contact.html" class="btn btn-gold btn-lg me-2">Send Us Your Design or Request a Proof</a>
+      <div class="text-center">
+        <a href="contact.html" class="btn btn-gold btn-lg me-2">Send Design / Request Free Proof</a>
         <a href="tel:2819010788" class="btn btn-outline-dark btn-lg">Call 281-901-0788</a>
       </div>
     </div>
@@ -148,5 +217,445 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+(function () {
+  // ----- State -----
+  let currentShape = 'upright';
+  let currentColor = '#1a1a1a';
+  let baseShape = null; // the granite shape object (locked)
+
+  // ----- Canvas (larger working area) -----
+  const CANVAS_W = 720;
+  const CANVAS_H = 640;
+
+  const canvas = new fabric.Canvas('headstone-canvas', {
+    backgroundColor: '#e8e4dc',
+    selection: true,
+    preserveObjectStacking: true,
+    width: CANVAS_W,
+    height: CANVAS_H
+  });
+
+  // Responsive: fill as much of the available middle area as possible
+  function fitCanvas() {
+    const container = document.querySelector('.canvas-area');
+    if (!container) return;
+    const availW = container.clientWidth - 16;
+    const availH = Math.max(container.clientHeight - 40, 480);
+    // Prefer width fill, but never exceed available height
+    let scale = availW / CANVAS_W;
+    if (CANVAS_H * scale > availH) {
+      scale = availH / CANVAS_H;
+    }
+    // Keep a reasonable minimum so it doesn't get tiny on narrow screens
+    scale = Math.max(0.55, Math.min(scale, 1.15));
+    canvas.setWidth(CANVAS_W * scale);
+    canvas.setHeight(CANVAS_H * scale);
+    canvas.setZoom(scale);
+    canvas.renderAll();
+  }
+  window.addEventListener('resize', fitCanvas);
+  setTimeout(fitCanvas, 50);
+  setTimeout(fitCanvas, 300); // second pass after layout settles
+
+  // ----- Draw base headstone shape -----
+  // Ratios: Upright 24×20, Flat 2×1, Double 36×20
+  function drawBaseShape(shape, color) {
+    if (baseShape) {
+      canvas.remove(baseShape);
+      baseShape = null;
+    }
+    // Remove previous base if marked
+    canvas.getObjects().filter(o => o.isBase).forEach(o => canvas.remove(o));
+
+    let obj;
+    const cx = CANVAS_W / 2;   // 360
+    const cy = CANVAS_H / 2;   // 320
+
+    if (shape === 'upright') {
+      // 24×20 ratio (W:H = 1.2) — 480 × 400
+      const w = 480, h = 400;
+      obj = new fabric.Rect({
+        left: cx - w / 2,
+        top: cy - h / 2,
+        width: w,
+        height: h,
+        rx: 18,
+        ry: 18,
+        fill: color,
+        stroke: '#111',
+        strokeWidth: 3,
+        selectable: false,
+        evented: false,
+        isBase: true
+      });
+    } else if (shape === 'flat') {
+      // 2×1 ratio — 560 × 280
+      const w = 560, h = 280;
+      obj = new fabric.Rect({
+        left: cx - w / 2,
+        top: cy - h / 2,
+        width: w,
+        height: h,
+        rx: 10,
+        ry: 10,
+        fill: color,
+        stroke: '#111',
+        strokeWidth: 3,
+        selectable: false,
+        evented: false,
+        isBase: true
+      });
+    } else if (shape === 'double') {
+      // 36×20 ratio (W:H = 1.8) — 576 × 320
+      const w = 576, h = 320;
+      obj = new fabric.Rect({
+        left: cx - w / 2,
+        top: cy - h / 2,
+        width: w,
+        height: h,
+        rx: 14,
+        ry: 14,
+        fill: color,
+        stroke: '#111',
+        strokeWidth: 3,
+        selectable: false,
+        evented: false,
+        isBase: true
+      });
+    }
+
+    if (obj) {
+      canvas.add(obj);
+      canvas.sendToBack(obj);
+      baseShape = obj;
+    }
+    canvas.renderAll();
+  }
+
+  // Initial shape
+  drawBaseShape(currentShape, currentColor);
+
+  // Default sample text (positioned for the larger upright)
+  function addDefaultText() {
+    const t1 = new fabric.IText('IN LOVING MEMORY', {
+      left: CANVAS_W / 2, top: 160,
+      fontFamily: 'Cormorant Garamond',
+      fontSize: 32,
+      fill: '#f5f0e6',
+      fontWeight: '600',
+      originX: 'center',
+      textAlign: 'center',
+      editable: true
+    });
+    const t2 = new fabric.IText('Beloved Name', {
+      left: CANVAS_W / 2, top: 220,
+      fontFamily: 'Cormorant Garamond',
+      fontSize: 42,
+      fill: '#f5f0e6',
+      fontWeight: '700',
+      originX: 'center',
+      textAlign: 'center',
+      editable: true
+    });
+    const t3 = new fabric.IText('1950  –  2026', {
+      left: CANVAS_W / 2, top: 290,
+      fontFamily: 'Source Sans 3',
+      fontSize: 26,
+      fill: '#e8d48b',
+      originX: 'center',
+      textAlign: 'center',
+      editable: true
+    });
+    canvas.add(t1, t2, t3);
+    canvas.renderAll();
+  }
+  addDefaultText();
+
+  // ----- Shape buttons -----
+  document.querySelectorAll('.shape-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.shape-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentShape = btn.dataset.shape;
+      drawBaseShape(currentShape, currentColor);
+    });
+  });
+
+  // ----- Color swatches -----
+  document.querySelectorAll('.color-swatch').forEach(sw => {
+    sw.addEventListener('click', () => {
+      document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
+      sw.classList.add('active');
+      currentColor = sw.dataset.color;
+      drawBaseShape(currentShape, currentColor);
+    });
+  });
+
+  // ----- Symbols -----
+  document.querySelectorAll('.symbol-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const sym = btn.dataset.symbol;
+      const text = new fabric.IText(sym, {
+        left: CANVAS_W / 2 + (Math.random() * 50 - 25),
+        top: 380 + (Math.random() * 30 - 15),
+        fontSize: 52,
+        fill: '#f5f0e6',
+        originX: 'center',
+        originY: 'center',
+        fontFamily: 'serif'
+      });
+      canvas.add(text);
+      canvas.setActiveObject(text);
+      canvas.renderAll();
+      updatePropsPanel();
+    });
+  });
+
+  // ----- Toolbar actions -----
+  document.getElementById('btn-add-text').addEventListener('click', () => {
+    const t = new fabric.IText('Your text here', {
+      left: CANVAS_W / 2,
+      top: 360,
+      fontFamily: 'Cormorant Garamond',
+      fontSize: 28,
+      fill: '#f5f0e6',
+      originX: 'center',
+      textAlign: 'center',
+      editable: true
+    });
+    canvas.add(t);
+    canvas.setActiveObject(t);
+    canvas.renderAll();
+    updatePropsPanel();
+  });
+
+  document.getElementById('btn-upload').addEventListener('click', () => {
+    document.getElementById('photo-input').click();
+  });
+
+  document.getElementById('photo-input').addEventListener('change', function (e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function (ev) {
+      fabric.Image.fromURL(ev.target.result, function (img) {
+        // Scale photo to reasonable plaque size
+        const maxDim = 150;
+        const scale = Math.min(maxDim / img.width, maxDim / img.height);
+        img.set({
+          left: CANVAS_W / 2,
+          top: 430,
+          originX: 'center',
+          originY: 'center',
+          scaleX: scale,
+          scaleY: scale,
+          // subtle border to look like ceramic plaque
+          stroke: '#c9a227',
+          strokeWidth: 3
+        });
+        canvas.add(img);
+        canvas.setActiveObject(img);
+        canvas.renderAll();
+        updatePropsPanel();
+      }, { crossOrigin: 'anonymous' });
+    };
+    reader.readAsDataURL(file);
+    e.target.value = '';
+  });
+
+  document.getElementById('btn-delete').addEventListener('click', deleteActive);
+  document.getElementById('prop-delete').addEventListener('click', deleteActive);
+
+  function deleteActive() {
+    const active = canvas.getActiveObject();
+    if (active && !active.isBase) {
+      canvas.remove(active);
+      canvas.discardActiveObject();
+      canvas.renderAll();
+      updatePropsPanel();
+    }
+  }
+
+  document.getElementById('btn-reset').addEventListener('click', () => {
+    if (!confirm('Clear the entire design and start over?')) return;
+    canvas.getObjects().slice().forEach(o => {
+      if (!o.isBase) canvas.remove(o);
+    });
+    drawBaseShape(currentShape, currentColor);
+    addDefaultText();
+    canvas.discardActiveObject();
+    updatePropsPanel();
+  });
+
+  document.getElementById('btn-download').addEventListener('click', () => {
+    // Reset to full logical size for clean export
+    canvas.setZoom(1);
+    canvas.setWidth(CANVAS_W);
+    canvas.setHeight(CANVAS_H);
+
+    // Contact footer (text only — no logo)
+    const footerBg = new fabric.Rect({
+      left: 0,
+      top: CANVAS_H - 52,
+      width: CANVAS_W,
+      height: 52,
+      fill: '#1a3a2f',
+      selectable: false,
+      evented: false
+    });
+    const footerLine1 = new fabric.Text('Houston Headstones  ·  Free professional proof', {
+      left: CANVAS_W / 2,
+      top: CANVAS_H - 40,
+      fontSize: 15,
+      fontFamily: 'Source Sans 3, Arial, sans-serif',
+      fill: '#e8d48b',
+      originX: 'center',
+      fontWeight: '600',
+      selectable: false,
+      evented: false
+    });
+    const footerLine2 = new fabric.Text('281-901-0788  ·  main@bedrockboulders.net  ·  houstonheadstones.com', {
+      left: CANVAS_W / 2,
+      top: CANVAS_H - 22,
+      fontSize: 13,
+      fontFamily: 'Source Sans 3, Arial, sans-serif',
+      fill: '#ffffff',
+      originX: 'center',
+      selectable: false,
+      evented: false
+    });
+
+    canvas.add(footerBg, footerLine1, footerLine2);
+    canvas.renderAll();
+
+    const dataURL = canvas.toDataURL({
+      format: 'png',
+      quality: 1,
+      multiplier: 2
+    });
+
+    // Remove temporary footer so the live canvas stays clean
+    canvas.remove(footerBg, footerLine1, footerLine2);
+    fitCanvas();
+
+    const link = document.createElement('a');
+    link.download = 'houston-headstones-design-proof.png';
+    link.href = dataURL;
+    link.click();
+
+    setTimeout(() => {
+      alert(
+        'PNG downloaded!\n\n' +
+        'Your design includes our contact info at the bottom of the image.\n\n' +
+        'Next step — send the file to us:\n' +
+        '• Email: main@bedrockboulders.net\n' +
+        '• Or use the Contact page on this site\n' +
+        '• Call / text: 281-901-0788\n\n' +
+        'We will return a polished professional proof, usually within one business day. No deposit required for the first proof.'
+      );
+    }, 400);
+  });
+
+  // ----- Properties panel -----
+  function updatePropsPanel() {
+    const active = canvas.getActiveObject();
+    const empty = document.getElementById('props-empty');
+    const controls = document.getElementById('props-controls');
+
+    if (!active || active.isBase) {
+      empty.style.display = 'block';
+      controls.style.display = 'none';
+      return;
+    }
+
+    empty.style.display = 'none';
+    controls.style.display = 'block';
+
+    // Only show text-specific controls for text objects
+    const isText = active.type === 'i-text' || active.type === 'text';
+    document.getElementById('prop-font').disabled = !isText;
+    document.getElementById('prop-size').disabled = !isText;
+    document.getElementById('prop-bold').disabled = !isText;
+    document.getElementById('prop-italic').disabled = !isText;
+    document.getElementById('prop-center').disabled = !isText;
+
+    if (isText) {
+      document.getElementById('prop-font').value = active.fontFamily || 'Cormorant Garamond';
+      document.getElementById('prop-size').value = Math.round(active.fontSize) || 24;
+      document.getElementById('prop-color').value = rgbToHex(active.fill) || '#f5f0e6';
+    } else {
+      // image or other – color still usable for stroke sometimes
+      document.getElementById('prop-color').value = '#f5f0e6';
+    }
+  }
+
+  function rgbToHex(val) {
+    if (!val) return '#f5f0e6';
+    if (val.startsWith('#')) return val;
+    const m = val.match(/(\d+),\s*(\d+),\s*(\d+)/);
+    if (!m) return '#f5f0e6';
+    return '#' + [m[1], m[2], m[3]].map(x => (+x).toString(16).padStart(2, '0')).join('');
+  }
+
+  canvas.on('selection:created', updatePropsPanel);
+  canvas.on('selection:updated', updatePropsPanel);
+  canvas.on('selection:cleared', updatePropsPanel);
+
+  // Property controls
+  document.getElementById('prop-font').addEventListener('change', function () {
+    const a = canvas.getActiveObject();
+    if (a && (a.type === 'i-text' || a.type === 'text')) {
+      a.set('fontFamily', this.value);
+      canvas.renderAll();
+    }
+  });
+  document.getElementById('prop-size').addEventListener('input', function () {
+    const a = canvas.getActiveObject();
+    if (a && (a.type === 'i-text' || a.type === 'text')) {
+      a.set('fontSize', parseInt(this.value, 10) || 24);
+      canvas.renderAll();
+    }
+  });
+  document.getElementById('prop-color').addEventListener('input', function () {
+    const a = canvas.getActiveObject();
+    if (a) {
+      a.set('fill', this.value);
+      canvas.renderAll();
+    }
+  });
+  document.getElementById('prop-bold').addEventListener('click', function () {
+    const a = canvas.getActiveObject();
+    if (a && (a.type === 'i-text' || a.type === 'text')) {
+      a.set('fontWeight', a.fontWeight === 'bold' || a.fontWeight === '700' ? 'normal' : 'bold');
+      canvas.renderAll();
+    }
+  });
+  document.getElementById('prop-italic').addEventListener('click', function () {
+    const a = canvas.getActiveObject();
+    if (a && (a.type === 'i-text' || a.type === 'text')) {
+      a.set('fontStyle', a.fontStyle === 'italic' ? 'normal' : 'italic');
+      canvas.renderAll();
+    }
+  });
+  document.getElementById('prop-center').addEventListener('click', function () {
+    const a = canvas.getActiveObject();
+    if (a && (a.type === 'i-text' || a.type === 'text')) {
+      a.set({ textAlign: 'center', originX: 'center' });
+      canvas.renderAll();
+    }
+  });
+
+  // Keyboard delete
+  document.addEventListener('keydown', function (e) {
+    if ((e.key === 'Delete' || e.key === 'Backspace') && 
+        document.activeElement.tagName !== 'INPUT' && 
+        document.activeElement.tagName !== 'TEXTAREA' &&
+        !canvas.getActiveObject()?.isEditing) {
+      deleteActive();
+    }
+  });
+})();
+  </script>
 </body>
 </html>
