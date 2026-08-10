@@ -15,6 +15,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Free online headstone designer for custom granite memorials. Create your design, get a fast professional proof, and work with a local family-owned Houston shop. Affordable options available.">
   <title>Free Headstone Designer | Houston Headstones by Bedrock Boulders</title>
+  <link rel="canonical" href="https://www.houstonheadstones.com/designer.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Houston Headstones by Bedrock Boulders">
+  <meta property="og:title" content="Free Headstone Designer | Houston Headstones by Bedrock Boulders">
+  <meta property="og:description" content="Design your custom granite headstone online. Get a fast free professional proof from a local family-owned Houston shop.">
+  <meta property="og:url" content="https://www.houstonheadstones.com/designer.html">
+  <meta property="og:image" content="https://www.houstonheadstones.com/images/black-upright.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Headstone Designer | Houston Headstones">
+  <meta name="twitter:description" content="Design your custom granite memorial online and get a fast free professional proof.">
+  <meta name="twitter:image" content="https://www.houstonheadstones.com/images/black-upright.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
@@ -36,6 +47,7 @@
           <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
           <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
           <li class="nav-item"><a class="nav-link active" href="designer.html">Designer</a></li>
+          <li class="nav-item"><a class="nav-link" href="locations.html">Locations</a></li>
           <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
           <li class="nav-item"><a class="nav-link" href="testimonials.html">Testimonials</a></li>
           <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
@@ -51,7 +63,7 @@
   <section class="bg-cream" style="padding-top: 3.5rem; padding-bottom: 4rem;">
     <div class="container" style="max-width: 1280px;">
       <div class="section-title mb-4">
-        <h2>Free Headstone Designer</h2>
+        <h1>Free Headstone Designer</h1>
         <p class="lead-muted">Design your custom granite memorial in minutes. Choose a shape and color, add text and a photo, then download a PNG proof. We refine it into a professional layout—usually within one business day.</p>
       </div>
 
@@ -82,14 +94,13 @@
 
             <h6>Granite Color</h6>
             <div id="color-swatches">
-              <div class="color-swatch active" data-color="#1a1a1a" style="background:#1a1a1a;" title="Black"></div>
-              <div class="color-swatch" data-color="#4a4a4a" style="background:#4a4a4a;" title="Gray"></div>
-              <div class="color-swatch" data-color="#5c4033" style="background:#5c4033;" title="Brown"></div>
-              <div class="color-swatch" data-color="#6b2d3c" style="background:#6b2d3c;" title="Red / Mahogany"></div>
-              <div class="color-swatch" data-color="#8b5a6b" style="background:#8b5a6b;" title="Pink"></div>
-              <div class="color-swatch" data-color="#2f4f4f" style="background:#2f4f4f;" title="Green"></div>
-              <div class="color-swatch" data-color="#3d5a80" style="background:#3d5a80;" title="Blue"></div>
+              <div class="color-swatch active" data-granite="black" title="Black" style="background-image:url('images/granite-black.jpg');"></div>
+              <div class="color-swatch" data-granite="grey" title="Grey" style="background-image:url('images/granite-grey.jpg');"></div>
+              <div class="color-swatch" data-granite="paradiso" title="Paradiso" style="background-image:url('images/granite-paradiso.jpg');"></div>
+              <div class="color-swatch" data-granite="bahama-blue" title="Bahama Blue" style="background-image:url('images/granite-bahama-blue.jpg');"></div>
+              <div class="color-swatch" data-granite="india-red" title="India Red" style="background-image:url('images/granite-india-red.jpg');"></div>
             </div>
+            <p class="small text-muted mb-0" id="granite-name-label" style="font-size:0.78rem;">Black</p>
 
             <h6>Symbols</h6>
             <div id="symbol-btns">
@@ -196,10 +207,11 @@
           <ul class="list-unstyled">
             <li><a href="gallery.html">Gallery</a></li>
             <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="upright-headstones.html">Upright Headstones</a></li>
+            <li><a href="flat-markers.html">Flat Markers</a></li>
+            <li><a href="companion-headstones.html">Companion Headstones</a></li>
             <li><a href="designer.html">Designer</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="testimonials.html">Testimonials</a></li>
-            <li><a href="about.html">About Us</a></li>
+            <li><a href="locations.html">Locations</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
@@ -207,7 +219,7 @@
           <h5>Contact</h5>
           <p><i class="bi bi-telephone"></i> <a href="tel:2819010788">281-901-0788</a></p>
           <p><i class="bi bi-envelope"></i> <a href="mailto:contact@houstonheadstones.com">contact@houstonheadstones.com</a></p>
-          <p>Houston, Texas</p>
+          <p>10511 Windsor Ln, Houston, TX 77031</p>
         </div>
       </div>
       <div class="footer-bottom">
@@ -221,8 +233,16 @@
 (function () {
   // ----- State -----
   let currentShape = 'upright';
-  let currentColor = '#1a1a1a';
+  let currentGranite = 'black';
   let baseShape = null; // the granite shape object (locked)
+
+  const GRANITE_TEXTURES = {
+    'black':       { src: 'images/granite-black.jpg',       label: 'Black' },
+    'grey':        { src: 'images/granite-grey.jpg',        label: 'Grey' },
+    'paradiso':    { src: 'images/granite-paradiso.jpg',    label: 'Paradiso' },
+    'bahama-blue': { src: 'images/granite-bahama-blue.jpg', label: 'Bahama Blue' },
+    'india-red':   { src: 'images/granite-india-red.jpg',   label: 'India Red' }
+  };
 
   // ----- Canvas (larger working area) -----
   const CANVAS_W = 720;
@@ -258,83 +278,66 @@
   setTimeout(fitCanvas, 50);
   setTimeout(fitCanvas, 300); // second pass after layout settles
 
-  // ----- Draw base headstone shape -----
+  // ----- Draw base headstone shape with granite texture -----
   // Ratios: Upright 24×20, Flat 2×1, Double 36×20
-  function drawBaseShape(shape, color) {
-    if (baseShape) {
-      canvas.remove(baseShape);
-      baseShape = null;
-    }
-    // Remove previous base if marked
+  function drawBaseShape(shape, graniteKey) {
+    // Remove previous base objects
     canvas.getObjects().filter(o => o.isBase).forEach(o => canvas.remove(o));
+    baseShape = null;
 
-    let obj;
-    const cx = CANVAS_W / 2;   // 360
-    const cy = CANVAS_H / 2;   // 320
+    const cx = CANVAS_W / 2;
+    const cy = CANVAS_H / 2;
+    let w, h, rx, ry;
 
     if (shape === 'upright') {
-      // 24×20 ratio (W:H = 1.2) — 480 × 400
-      const w = 480, h = 400;
-      obj = new fabric.Rect({
-        left: cx - w / 2,
-        top: cy - h / 2,
-        width: w,
-        height: h,
-        rx: 18,
-        ry: 18,
-        fill: color,
-        stroke: '#111',
-        strokeWidth: 3,
-        selectable: false,
-        evented: false,
-        isBase: true
-      });
+      w = 480; h = 400; rx = 18; ry = 18;
     } else if (shape === 'flat') {
-      // 2×1 ratio — 560 × 280
-      const w = 560, h = 280;
-      obj = new fabric.Rect({
-        left: cx - w / 2,
-        top: cy - h / 2,
-        width: w,
-        height: h,
-        rx: 10,
-        ry: 10,
-        fill: color,
-        stroke: '#111',
-        strokeWidth: 3,
-        selectable: false,
-        evented: false,
-        isBase: true
-      });
+      w = 560; h = 280; rx = 10; ry = 10;
     } else if (shape === 'double') {
-      // 36×20 ratio (W:H = 1.8) — 576 × 320
-      const w = 576, h = 320;
-      obj = new fabric.Rect({
-        left: cx - w / 2,
-        top: cy - h / 2,
-        width: w,
-        height: h,
-        rx: 14,
-        ry: 14,
-        fill: color,
-        stroke: '#111',
-        strokeWidth: 3,
-        selectable: false,
-        evented: false,
-        isBase: true
-      });
+      w = 576; h = 320; rx = 14; ry = 14;
+    } else {
+      w = 480; h = 400; rx = 18; ry = 18;
     }
 
-    if (obj) {
+    const tex = GRANITE_TEXTURES[graniteKey] || GRANITE_TEXTURES.black;
+    const labelEl = document.getElementById('granite-name-label');
+    if (labelEl) labelEl.textContent = tex.label;
+
+    // Load texture and fill the entire shape with a scaled pattern
+    fabric.util.loadImage(tex.src, function (imgEl) {
+      if (!imgEl) return;
+
+      const pattern = new fabric.Pattern({
+        source: imgEl,
+        repeat: 'no-repeat',
+        // Scale texture to exactly cover the shape (width × height)
+        patternTransform: [w / imgEl.width, 0, 0, h / imgEl.height, 0, 0]
+      });
+
+      const obj = new fabric.Rect({
+        left: cx - w / 2,
+        top: cy - h / 2,
+        width: w,
+        height: h,
+        rx: rx,
+        ry: ry,
+        fill: pattern,
+        stroke: '#111',
+        strokeWidth: 3,
+        selectable: false,
+        evented: false,
+        isBase: true
+      });
+
       canvas.add(obj);
       canvas.sendToBack(obj);
       baseShape = obj;
-    }
-    canvas.renderAll();
+      canvas.renderAll();
+    });
   }
 
   // Initial shape
-  drawBaseShape(currentShape, currentColor);
+  drawBaseShape(currentShape, currentGranite);
 
   // Default sample text (positioned for the larger upright)
   function addDefaultText() {
@@ -378,17 +381,17 @@
       document.querySelectorAll('.shape-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       currentShape = btn.dataset.shape;
-      drawBaseShape(currentShape, currentColor);
+      drawBaseShape(currentShape, currentGranite);
     });
   });
 
-  // ----- Color swatches -----
+  // ----- Granite color swatches -----
   document.querySelectorAll('.color-swatch').forEach(sw => {
     sw.addEventListener('click', () => {
       document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
       sw.classList.add('active');
-      currentColor = sw.dataset.color;
-      drawBaseShape(currentShape, currentColor);
+      currentGranite = sw.dataset.granite;
+      drawBaseShape(currentShape, currentGranite);
     });
   });
 
@@ -482,7 +485,7 @@
     canvas.getObjects().slice().forEach(o => {
       if (!o.isBase) canvas.remove(o);
     });
-    drawBaseShape(currentShape, currentColor);
+    drawBaseShape(currentShape, currentGranite);
     addDefaultText();
     canvas.discardActiveObject();
     updatePropsPanel();

@@ -450,8 +450,9 @@ html {
   width: 200px;
   background: #f3f0ea;
   border-right: 1px solid var(--light-gray);
-  padding: 1rem;
+  padding: 0.75rem;
   flex-shrink: 0;
+  overflow-x: hidden;
 }
 
 .designer-sidebar h6 {
@@ -467,7 +468,7 @@ html {
   margin-top: 0;
 }
 
-.shape-btn, .color-swatch, .symbol-btn {
+.shape-btn, .symbol-btn {
   display: inline-block;
   margin: 0 0.3rem 0.4rem 0;
   cursor: pointer;
@@ -476,8 +477,8 @@ html {
   transition: border-color 0.15s, transform 0.15s;
 }
 
-.shape-btn:hover, .color-swatch:hover, .symbol-btn:hover,
-.shape-btn.active, .color-swatch.active {
+.shape-btn:hover, .symbol-btn:hover,
+.shape-btn.active {
   border-color: var(--soft-gold);
   transform: scale(1.05);
 }
@@ -493,11 +494,36 @@ html {
   line-height: 1.2;
 }
 
+#color-swatches {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  gap: 4px;
+  align-items: center;
+  width: 100%;
+}
+
 .color-swatch {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
   border-radius: 50%;
-  border: 2px solid #ccc;
+  border: 2px solid #bbb;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0 !important;
+  padding: 0 !important;
+  flex: 0 0 28px;
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  box-sizing: border-box;
+}
+
+.color-swatch:hover,
+.color-swatch.active {
+  border-color: var(--soft-gold);
+  box-shadow: 0 0 0 2px rgba(201, 162, 39, 0.35);
 }
 
 .symbol-btn {
