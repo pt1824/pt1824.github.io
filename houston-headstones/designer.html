@@ -68,7 +68,7 @@
       </div>
 
       <div class="designer-tip">
-        <strong>How to use:</strong> Select a shape &amp; color on the left → click objects on the canvas to move or resize them with the corner handles → double-click text to edit → use the toolbar to add more text, upload a photo, or place symbols. When ready, click <strong>Download PNG</strong> and email the file to us (or use the contact form).
+        <strong>How to use:</strong> Choose a shape, granite color, and template on the left → double-click any text to edit names and dates → drag objects to move or resize → optionally upload a photo. When ready, click <strong>Download PNG</strong> and email the file to us (or use the contact form).
       </div>
 
       <div class="designer-wrap mb-5">
@@ -83,7 +83,7 @@
         </div>
 
         <div class="designer-main">
-          <!-- Left sidebar: shapes, colors, symbols -->
+          <!-- Left sidebar: shapes, colors, templates -->
           <div class="designer-sidebar">
             <h6>Shape</h6>
             <div id="shape-btns">
@@ -102,19 +102,16 @@
             </div>
             <p class="small text-muted mb-0" id="granite-name-label" style="font-size:0.78rem;">Black</p>
 
-            <h6>Symbols</h6>
-            <div id="symbol-btns">
-              <div class="symbol-btn" data-symbol="✝" title="Cross">✝</div>
-              <div class="symbol-btn" data-symbol="♥" title="Heart">♥</div>
-              <div class="symbol-btn" data-symbol="★" title="Star">★</div>
-              <div class="symbol-btn" data-symbol="🕊" title="Dove">🕊</div>
-              <div class="symbol-btn" data-symbol="🌹" title="Rose">🌹</div>
-              <div class="symbol-btn" data-symbol="⚓" title="Anchor">⚓</div>
-              <div class="symbol-btn" data-symbol="✝✝" title="Double cross">✝</div>
-              <div class="symbol-btn" data-symbol="❀" title="Flower">❀</div>
+            <h6>Template</h6>
+            <div id="template-btns">
+              <button type="button" class="template-btn active" data-template="classic">Classic</button>
+              <button type="button" class="template-btn" data-template="simple">Simple</button>
+              <button type="button" class="template-btn" data-template="epitaph">With Epitaph</button>
+              <button type="button" class="template-btn" data-template="cross">With Cross</button>
+              <button type="button" class="template-btn" data-template="companion">Companion</button>
             </div>
 
-            <p class="small text-muted mt-3 mb-0" style="font-size:0.75rem;line-height:1.35;">Tip: After adding a symbol or text, click it on the canvas and drag the corners to resize.</p>
+            <p class="small text-muted mt-3 mb-0" style="font-size:0.75rem;line-height:1.35;">Pick a template, then edit any text. Drag corners to resize or move.</p>
           </div>
 
           <!-- Canvas -->
@@ -131,7 +128,7 @@
           <!-- Properties panel -->
           <div class="props-panel" id="props-panel">
             <h6 class="text-uppercase" style="font-size:0.75rem;letter-spacing:0.06em;color:var(--warm-gray);">Selected Object</h6>
-            <div id="props-empty" class="small text-muted">Select text or a symbol on the canvas to edit its properties.</div>
+            <div id="props-empty" class="small text-muted">Select text on the canvas to edit its properties.</div>
             <div id="props-controls" style="display:none;">
               <label>Font</label>
               <select class="form-select form-select-sm" id="prop-font">
@@ -144,7 +141,7 @@
               <label>Size</label>
               <input type="number" class="form-control form-control-sm" id="prop-size" min="12" max="120" value="28">
               <label>Color</label>
-              <input type="color" class="form-control form-control-sm form-control-color" id="prop-color" value="#f5f0e6" title="Text / symbol color">
+              <input type="color" class="form-control form-control-sm form-control-color" id="prop-color" value="#f5f0e6" title="Text color">
               <label class="mt-1">Style</label>
               <div class="btn-group btn-group-sm w-100 mb-2">
                 <button type="button" class="btn btn-outline-secondary" id="prop-bold" title="Bold"><i class="bi bi-type-bold"></i></button>
@@ -339,41 +336,119 @@
   // Initial shape
   drawBaseShape(currentShape, currentGranite);
 
-  // Default sample text (positioned for the larger upright)
-  function addDefaultText() {
-    const t1 = new fabric.IText('IN LOVING MEMORY', {
-      left: CANVAS_W / 2, top: 160,
-      fontFamily: 'Cormorant Garamond',
-      fontSize: 32,
-      fill: '#f5f0e6',
-      fontWeight: '600',
-      originX: 'center',
-      textAlign: 'center',
-      editable: true
+  // ----- Templates -----
+  let currentTemplate = 'classic';
+
+  function clearTextObjects() {
+    canvas.getObjects().slice().forEach(o => {
+      if (!o.isBase) canvas.remove(o);
     });
-    const t2 = new fabric.IText('Beloved Name', {
-      left: CANVAS_W / 2, top: 220,
-      fontFamily: 'Cormorant Garamond',
-      fontSize: 42,
-      fill: '#f5f0e6',
-      fontWeight: '700',
-      originX: 'center',
-      textAlign: 'center',
-      editable: true
-    });
-    const t3 = new fabric.IText('1950  –  2026', {
-      left: CANVAS_W / 2, top: 290,
-      fontFamily: 'Source Sans 3',
-      fontSize: 26,
-      fill: '#e8d48b',
-      originX: 'center',
-      textAlign: 'center',
-      editable: true
-    });
-    canvas.add(t1, t2, t3);
-    canvas.renderAll();
+    canvas.discardActiveObject();
   }
-  addDefaultText();
+
+  function applyTemplate(name) {
+    currentTemplate = name;
+    clearTextObjects();
+    const cx = CANVAS_W / 2;
+    const items = [];
+
+    if (name === 'classic') {
+      items.push(
+        new fabric.IText('IN LOVING MEMORY', {
+          left: cx, top: 160, fontFamily: 'Cormorant Garamond', fontSize: 28,
+          fill: '#f5f0e6', fontWeight: '600', originX: 'center', textAlign: 'center', editable: true
+        }),
+        new fabric.IText('Beloved Name', {
+          left: cx, top: 220, fontFamily: 'Cormorant Garamond', fontSize: 42,
+          fill: '#f5f0e6', fontWeight: '700', originX: 'center', textAlign: 'center', editable: true
+        }),
+        new fabric.IText('1950  –  2026', {
+          left: cx, top: 290, fontFamily: 'Source Sans 3', fontSize: 24,
+          fill: '#e8d48b', originX: 'center', textAlign: 'center', editable: true
+        })
+      );
+    } else if (name === 'simple') {
+      items.push(
+        new fabric.IText('Beloved Name', {
+          left: cx, top: 210, fontFamily: 'Cormorant Garamond', fontSize: 44,
+          fill: '#f5f0e6', fontWeight: '700', originX: 'center', textAlign: 'center', editable: true
+        }),
+        new fabric.IText('1950  –  2026', {
+          left: cx, top: 280, fontFamily: 'Source Sans 3', fontSize: 26,
+          fill: '#e8d48b', originX: 'center', textAlign: 'center', editable: true
+        })
+      );
+    } else if (name === 'epitaph') {
+      items.push(
+        new fabric.IText('IN LOVING MEMORY', {
+          left: cx, top: 145, fontFamily: 'Cormorant Garamond', fontSize: 24,
+          fill: '#f5f0e6', fontWeight: '600', originX: 'center', textAlign: 'center', editable: true
+        }),
+        new fabric.IText('Beloved Name', {
+          left: cx, top: 195, fontFamily: 'Cormorant Garamond', fontSize: 38,
+          fill: '#f5f0e6', fontWeight: '700', originX: 'center', textAlign: 'center', editable: true
+        }),
+        new fabric.IText('1950  –  2026', {
+          left: cx, top: 255, fontFamily: 'Source Sans 3', fontSize: 22,
+          fill: '#e8d48b', originX: 'center', textAlign: 'center', editable: true
+        }),
+        new fabric.IText('Forever in our hearts', {
+          left: cx, top: 320, fontFamily: 'Cormorant Garamond', fontSize: 22,
+          fill: '#f5f0e6', fontStyle: 'italic', originX: 'center', textAlign: 'center', editable: true
+        })
+      );
+    } else if (name === 'cross') {
+      items.push(
+        new fabric.IText('✝', {
+          left: cx, top: 130, fontFamily: 'serif', fontSize: 48,
+          fill: '#f5f0e6', originX: 'center', originY: 'center', editable: true
+        }),
+        new fabric.IText('IN LOVING MEMORY', {
+          left: cx, top: 175, fontFamily: 'Cormorant Garamond', fontSize: 24,
+          fill: '#f5f0e6', fontWeight: '600', originX: 'center', textAlign: 'center', editable: true
+        }),
+        new fabric.IText('Beloved Name', {
+          left: cx, top: 225, fontFamily: 'Cormorant Garamond', fontSize: 38,
+          fill: '#f5f0e6', fontWeight: '700', originX: 'center', textAlign: 'center', editable: true
+        }),
+        new fabric.IText('1950  –  2026', {
+          left: cx, top: 290, fontFamily: 'Source Sans 3', fontSize: 22,
+          fill: '#e8d48b', originX: 'center', textAlign: 'center', editable: true
+        })
+      );
+    } else if (name === 'companion') {
+      // Two-column layout for double / shared stones
+      items.push(
+        new fabric.IText('IN LOVING MEMORY', {
+          left: cx, top: 150, fontFamily: 'Cormorant Garamond', fontSize: 24,
+          fill: '#f5f0e6', fontWeight: '600', originX: 'center', textAlign: 'center', editable: true
+        }),
+        new fabric.IText('Beloved Name', {
+          left: cx - 130, top: 220, fontFamily: 'Cormorant Garamond', fontSize: 30,
+          fill: '#f5f0e6', fontWeight: '700', originX: 'center', textAlign: 'center', editable: true
+        }),
+        new fabric.IText('1950 – 2026', {
+          left: cx - 130, top: 270, fontFamily: 'Source Sans 3', fontSize: 18,
+          fill: '#e8d48b', originX: 'center', textAlign: 'center', editable: true
+        }),
+        new fabric.IText('Beloved Name', {
+          left: cx + 130, top: 220, fontFamily: 'Cormorant Garamond', fontSize: 30,
+          fill: '#f5f0e6', fontWeight: '700', originX: 'center', textAlign: 'center', editable: true
+        }),
+        new fabric.IText('1950 – 2026', {
+          left: cx + 130, top: 270, fontFamily: 'Source Sans 3', fontSize: 18,
+          fill: '#e8d48b', originX: 'center', textAlign: 'center', editable: true
+        })
+      );
+    }
+
+    items.forEach(t => canvas.add(t));
+    canvas.renderAll();
+    updatePropsPanel();
+  }
+
+  // Initial template
+  applyTemplate('classic');
 
   // ----- Shape buttons -----
   document.querySelectorAll('.shape-btn').forEach(btn => {
@@ -395,23 +470,12 @@
     });
   });
 
-  // ----- Symbols -----
-  document.querySelectorAll('.symbol-btn').forEach(btn => {
+  // ----- Template buttons -----
+  document.querySelectorAll('.template-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      const sym = btn.dataset.symbol;
-      const text = new fabric.IText(sym, {
-        left: CANVAS_W / 2 + (Math.random() * 50 - 25),
-        top: 380 + (Math.random() * 30 - 15),
-        fontSize: 52,
-        fill: '#f5f0e6',
-        originX: 'center',
-        originY: 'center',
-        fontFamily: 'serif'
-      });
-      canvas.add(text);
-      canvas.setActiveObject(text);
-      canvas.renderAll();
-      updatePropsPanel();
+      document.querySelectorAll('.template-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      applyTemplate(btn.dataset.template);
     });
   });
 
@@ -482,11 +546,8 @@
 
   document.getElementById('btn-reset').addEventListener('click', () => {
     if (!confirm('Clear the entire design and start over?')) return;
-    canvas.getObjects().slice().forEach(o => {
-      if (!o.isBase) canvas.remove(o);
-    });
     drawBaseShape(currentShape, currentGranite);
-    addDefaultText();
+    applyTemplate(currentTemplate || 'classic');
     canvas.discardActiveObject();
     updatePropsPanel();
   });

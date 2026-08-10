@@ -468,7 +468,7 @@ html {
   margin-top: 0;
 }
 
-.shape-btn, .symbol-btn {
+.shape-btn {
   display: inline-block;
   margin: 0 0.3rem 0.4rem 0;
   cursor: pointer;
@@ -477,7 +477,7 @@ html {
   transition: border-color 0.15s, transform 0.15s;
 }
 
-.shape-btn:hover, .symbol-btn:hover,
+.shape-btn:hover,
 .shape-btn.active {
   border-color: var(--soft-gold);
   transform: scale(1.05);
@@ -526,15 +526,37 @@ html {
   box-shadow: 0 0 0 2px rgba(201, 162, 39, 0.35);
 }
 
-.symbol-btn {
-  width: 40px;
-  height: 40px;
+#template-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.template-btn {
+  display: block;
+  width: 100%;
+  text-align: left;
   background: white;
   border: 1px solid #ddd;
-  font-size: 1.25rem;
-  line-height: 38px;
-  text-align: center;
   border-radius: 6px;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--charcoal);
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+}
+
+.template-btn:hover {
+  border-color: var(--soft-gold);
+  background: #fffdf5;
+}
+
+.template-btn.active {
+  border-color: var(--soft-gold);
+  background: var(--soft-gold);
+  color: var(--deep-green);
+  font-weight: 600;
 }
 
 .canvas-area {
