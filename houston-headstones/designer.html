@@ -104,11 +104,13 @@
 
             <h6>Template</h6>
             <div id="template-btns">
-              <button type="button" class="template-btn active" data-template="classic">Classic</button>
-              <button type="button" class="template-btn" data-template="simple">Simple</button>
-              <button type="button" class="template-btn" data-template="epitaph">With Epitaph</button>
-              <button type="button" class="template-btn" data-template="cross">With Cross</button>
+              <button type="button" class="template-btn active" data-template="classic">Classic Ornate</button>
+              <button type="button" class="template-btn" data-template="faith">Faith · Cross</button>
+              <button type="button" class="template-btn" data-template="dove">Peace · Dove</button>
+              <button type="button" class="template-btn" data-template="heart">Heart &amp; Love</button>
               <button type="button" class="template-btn" data-template="companion">Companion</button>
+              <button type="button" class="template-btn" data-template="veteran">Veteran</button>
+              <button type="button" class="template-btn" data-template="simple">Simple</button>
             </div>
 
             <p class="small text-muted mt-3 mb-0" style="font-size:0.75rem;line-height:1.35;">Pick a template, then edit any text. Drag corners to resize or move.</p>
@@ -352,93 +354,104 @@
     const cx = CANVAS_W / 2;
     const items = [];
 
+    // Shared text style helpers
+    const header = (text, top, size) => new fabric.IText(text, {
+      left: cx, top: top, fontFamily: 'Cormorant Garamond', fontSize: size || 22,
+      fill: '#e8d48b', fontWeight: '600', originX: 'center', textAlign: 'center',
+      charSpacing: 80, editable: true
+    });
+    const nameLine = (text, top, size) => new fabric.IText(text, {
+      left: cx, top: top, fontFamily: 'Cormorant Garamond', fontSize: size || 40,
+      fill: '#f5f0e6', fontWeight: '700', originX: 'center', textAlign: 'center', editable: true
+    });
+    const dates = (text, top, size) => new fabric.IText(text, {
+      left: cx, top: top, fontFamily: 'Source Sans 3', fontSize: size || 22,
+      fill: '#e8d48b', originX: 'center', textAlign: 'center', editable: true
+    });
+    const body = (text, top, size, italic) => new fabric.IText(text, {
+      left: cx, top: top, fontFamily: 'Cormorant Garamond', fontSize: size || 20,
+      fill: '#f5f0e6', fontStyle: italic ? 'italic' : 'normal',
+      originX: 'center', textAlign: 'center', editable: true
+    });
+    const symbol = (text, top, size) => new fabric.IText(text, {
+      left: cx, top: top, fontFamily: 'serif', fontSize: size || 44,
+      fill: '#f5f0e6', originX: 'center', originY: 'center', editable: true
+    });
+
     if (name === 'classic') {
+      // Traditional full layout: header · ornament · name · dates · relation · epitaph
       items.push(
-        new fabric.IText('IN LOVING MEMORY', {
-          left: cx, top: 160, fontFamily: 'Cormorant Garamond', fontSize: 28,
-          fill: '#f5f0e6', fontWeight: '600', originX: 'center', textAlign: 'center', editable: true
-        }),
+        header('IN LOVING MEMORY', 130, 20),
+        symbol('❧  ✦  ❧', 165, 18),
+        nameLine('Beloved Name', 195, 40),
+        dates('January 1, 1950  –  March 15, 2026', 255, 18),
+        body('Beloved Mother, Wife & Friend', 295, 20),
+        body('Forever in our hearts', 340, 20, true)
+      );
+    } else if (name === 'faith') {
+      items.push(
+        symbol('✝', 125, 52),
+        header('IN LOVING MEMORY', 165, 18),
+        nameLine('Beloved Name', 205, 38),
+        dates('1950  –  2026', 260, 20),
+        body('At peace with God', 305, 20, true),
+        body('"I am the resurrection and the life."', 345, 16, true)
+      );
+    } else if (name === 'dove') {
+      items.push(
+        symbol('🕊', 125, 42),
+        header('IN LOVING MEMORY', 165, 18),
+        nameLine('Beloved Name', 205, 38),
+        dates('1950  –  2026', 260, 20),
+        body('Gone from our sight,', 305, 18, true),
+        body('near in our hearts', 335, 18, true)
+      );
+    } else if (name === 'heart') {
+      items.push(
+        symbol('♥', 125, 40),
+        header('FOREVER LOVED', 165, 18),
+        nameLine('Beloved Name', 205, 38),
+        dates('1950  –  2026', 260, 20),
+        body('Always in our hearts', 305, 20, true),
+        body('Until we meet again', 340, 18, true)
+      );
+    } else if (name === 'companion') {
+      // Traditional companion: shared header, two columns, shared epitaph
+      items.push(
+        header('TOGETHER FOREVER', 130, 18),
+        symbol('♥', 160, 22),
         new fabric.IText('Beloved Name', {
-          left: cx, top: 220, fontFamily: 'Cormorant Garamond', fontSize: 42,
+          left: cx - 135, top: 200, fontFamily: 'Cormorant Garamond', fontSize: 28,
           fill: '#f5f0e6', fontWeight: '700', originX: 'center', textAlign: 'center', editable: true
         }),
-        new fabric.IText('1950  –  2026', {
-          left: cx, top: 290, fontFamily: 'Source Sans 3', fontSize: 24,
+        new fabric.IText('1950 – 2026', {
+          left: cx - 135, top: 245, fontFamily: 'Source Sans 3', fontSize: 16,
           fill: '#e8d48b', originX: 'center', textAlign: 'center', editable: true
-        })
+        }),
+        new fabric.IText('Beloved Name', {
+          left: cx + 135, top: 200, fontFamily: 'Cormorant Garamond', fontSize: 28,
+          fill: '#f5f0e6', fontWeight: '700', originX: 'center', textAlign: 'center', editable: true
+        }),
+        new fabric.IText('1950 – 2026', {
+          left: cx + 135, top: 245, fontFamily: 'Source Sans 3', fontSize: 16,
+          fill: '#e8d48b', originX: 'center', textAlign: 'center', editable: true
+        }),
+        body('Married  June 12, 1975', 300, 16, true),
+        body('Side by side · Heart to heart', 335, 18, true)
+      );
+    } else if (name === 'veteran') {
+      items.push(
+        header('IN HONOR OF', 130, 18),
+        nameLine('Beloved Name', 175, 36),
+        body('Sergeant  ·  U.S. Army', 230, 20),
+        dates('1950  –  2026', 270, 20),
+        body('Vietnam  ·  Purple Heart', 310, 16),
+        body('Proudly served  ·  Forever remembered', 350, 16, true)
       );
     } else if (name === 'simple') {
       items.push(
-        new fabric.IText('Beloved Name', {
-          left: cx, top: 210, fontFamily: 'Cormorant Garamond', fontSize: 44,
-          fill: '#f5f0e6', fontWeight: '700', originX: 'center', textAlign: 'center', editable: true
-        }),
-        new fabric.IText('1950  –  2026', {
-          left: cx, top: 280, fontFamily: 'Source Sans 3', fontSize: 26,
-          fill: '#e8d48b', originX: 'center', textAlign: 'center', editable: true
-        })
-      );
-    } else if (name === 'epitaph') {
-      items.push(
-        new fabric.IText('IN LOVING MEMORY', {
-          left: cx, top: 145, fontFamily: 'Cormorant Garamond', fontSize: 24,
-          fill: '#f5f0e6', fontWeight: '600', originX: 'center', textAlign: 'center', editable: true
-        }),
-        new fabric.IText('Beloved Name', {
-          left: cx, top: 195, fontFamily: 'Cormorant Garamond', fontSize: 38,
-          fill: '#f5f0e6', fontWeight: '700', originX: 'center', textAlign: 'center', editable: true
-        }),
-        new fabric.IText('1950  –  2026', {
-          left: cx, top: 255, fontFamily: 'Source Sans 3', fontSize: 22,
-          fill: '#e8d48b', originX: 'center', textAlign: 'center', editable: true
-        }),
-        new fabric.IText('Forever in our hearts', {
-          left: cx, top: 320, fontFamily: 'Cormorant Garamond', fontSize: 22,
-          fill: '#f5f0e6', fontStyle: 'italic', originX: 'center', textAlign: 'center', editable: true
-        })
-      );
-    } else if (name === 'cross') {
-      items.push(
-        new fabric.IText('✝', {
-          left: cx, top: 130, fontFamily: 'serif', fontSize: 48,
-          fill: '#f5f0e6', originX: 'center', originY: 'center', editable: true
-        }),
-        new fabric.IText('IN LOVING MEMORY', {
-          left: cx, top: 175, fontFamily: 'Cormorant Garamond', fontSize: 24,
-          fill: '#f5f0e6', fontWeight: '600', originX: 'center', textAlign: 'center', editable: true
-        }),
-        new fabric.IText('Beloved Name', {
-          left: cx, top: 225, fontFamily: 'Cormorant Garamond', fontSize: 38,
-          fill: '#f5f0e6', fontWeight: '700', originX: 'center', textAlign: 'center', editable: true
-        }),
-        new fabric.IText('1950  –  2026', {
-          left: cx, top: 290, fontFamily: 'Source Sans 3', fontSize: 22,
-          fill: '#e8d48b', originX: 'center', textAlign: 'center', editable: true
-        })
-      );
-    } else if (name === 'companion') {
-      // Two-column layout for double / shared stones
-      items.push(
-        new fabric.IText('IN LOVING MEMORY', {
-          left: cx, top: 150, fontFamily: 'Cormorant Garamond', fontSize: 24,
-          fill: '#f5f0e6', fontWeight: '600', originX: 'center', textAlign: 'center', editable: true
-        }),
-        new fabric.IText('Beloved Name', {
-          left: cx - 130, top: 220, fontFamily: 'Cormorant Garamond', fontSize: 30,
-          fill: '#f5f0e6', fontWeight: '700', originX: 'center', textAlign: 'center', editable: true
-        }),
-        new fabric.IText('1950 – 2026', {
-          left: cx - 130, top: 270, fontFamily: 'Source Sans 3', fontSize: 18,
-          fill: '#e8d48b', originX: 'center', textAlign: 'center', editable: true
-        }),
-        new fabric.IText('Beloved Name', {
-          left: cx + 130, top: 220, fontFamily: 'Cormorant Garamond', fontSize: 30,
-          fill: '#f5f0e6', fontWeight: '700', originX: 'center', textAlign: 'center', editable: true
-        }),
-        new fabric.IText('1950 – 2026', {
-          left: cx + 130, top: 270, fontFamily: 'Source Sans 3', fontSize: 18,
-          fill: '#e8d48b', originX: 'center', textAlign: 'center', editable: true
-        })
+        nameLine('Beloved Name', 210, 44),
+        dates('1950  –  2026', 280, 24)
       );
     }
 
